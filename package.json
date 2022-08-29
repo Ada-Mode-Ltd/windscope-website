@@ -4,7 +4,7 @@
   "description": "The website for Windscope by Ada Mode.",
   "main": "index.js",
   "scripts": {
-    "dev": "NODE_ENV=development eleventy",
+    "dev": "aNODE_ENV=development eleventy --serve",
     "build": "NODE_ENV=production eleventy --quiet",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
