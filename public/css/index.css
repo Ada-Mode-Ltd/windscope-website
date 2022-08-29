@@ -1,0 +1,11 @@
+@font-face {
+  font-family: "Work Sans";
+  src: url("/fonts/WorkSans-VariableFont_wght.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+h1 {
+  font-family: "Work Sans", sans-serif;
+  font-variation-settings: "wght" 300;
+}
