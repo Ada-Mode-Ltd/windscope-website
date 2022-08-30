@@ -1,6 +1,7 @@
 /* All page sections use one of three top and bottom padding (sometimes a mix of two.) */
 
 :root {
+  --space-8: 0.5rem;
   --space-16: 1rem;
   --space-24: 1.5rem;
   --space-32: 2rem;
@@ -13,11 +14,24 @@
   --space-88: 5.5rem;
   --space-96: 6rem;
   --space-104: 6.5rem;
+  --space-112: 7rem;
+  --space-120: 7.5rem;
+  --space-128: 8rem;
+  --space-136: 8.5rem;
+  --space-144: 9rem;
 
   --v-space-24: 1.5rem;
   --v-space-32: 2rem;
   --v-space-40: 2.5rem;
   --v-space-48: 3rem;
+}
+
+/**
+ * FLOW
+ * Applies a margin to sibling elements based on a --flow-space custom property.
+ */
+.flow > * + * {
+  margin-top: var(--flow-space, var(--v-space-24));
 }
 
 .v-space-24 {

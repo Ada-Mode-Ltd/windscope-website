@@ -1,0 +1,19 @@
+label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+
+  & > input {
+    background-color: var(--ws-light-grey);
+    border-radius: var(--round-8);
+    border: 1px solid transparent;
+    padding: var(--space-16);
+  }
+
+  & > input:focus,
+  & > input:focus-within,
+  & > input:focus-visible {
+    border: 1px solid var(--ws-dark-green);
+    outline: var(--ws-bright-green) auto 1px;
+  }
+}
