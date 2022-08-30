@@ -95,6 +95,7 @@ p,
   font-weight: 500;
   font-variation-settings: "wght" 500;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .text-link.primary {
