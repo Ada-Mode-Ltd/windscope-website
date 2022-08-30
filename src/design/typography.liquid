@@ -3,11 +3,45 @@ layout: design.liquid
 title: Typography
 ---
 
-<h1>Heading 1</h1>
-<h2>Heading 2</h2>
-<h3>Heading 3</h3>
-<h4>Heading 4</h4>
-<h5>Heading 5</h5>
-<p class="text--medium">Medium sized paragraph text.</p>
-<p>Regular paragraph text.</p>
-<p class="text--small">Small paragraph text.</p>
+<div class="v-gap-24">
+    <p>This page has details of the different typography found throughout the Windscope site. You can type some text into the textbox below to see how it would appear.</p>
+
+    <!-- Form with text box -->
+    <input name="text" placeholder="Type some text here" type="text">
+
+    <div class="v-gap-24 ">
+        <h1 data-dynamic data-initial="Heading 1"></h1>
+        <h2 data-dynamic data-initial="Heading 2"></h2>
+        <h3 data-dynamic data-initial="Heading 3"></h3>
+        <h4 data-dynamic data-initial="Heading 4"></h4>
+        <h5 data-dynamic data-initial="Heading 5"></h5>
+        <p class="text--medium" data-dynamic data-initial="Medium sized paragraph text."></p>
+        <p data-dynamic data-initial="Regular paragraph text."></p>
+        <p class="text--small" data-dynamic data-initial="Small paragraph text."></p>
+    </div>
+    <hr>
+</div>
+
+<script>
+    // Select all elements with data-dynamic
+    var elements = document.querySelectorAll("[data-dynamic]");
+    let input = document.getElementsByName("text")[0];
+    content = "";
+
+    input.addEventListener("keyup", function (event) {
+        content = input.value;
+        updateElements();
+    });
+
+    function updateElements() {
+        for (let i = 0; i < elements.length; i++) {
+            if (content.length > 0) {
+                elements[i].innerHTML = content;
+            } else {
+                elements[i].innerHTML = elements[i].getAttribute("data-initial");
+            }
+        }
+    }
+
+    updateElements();
+</script>

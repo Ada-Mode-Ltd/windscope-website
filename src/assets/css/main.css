@@ -1,7 +1,11 @@
 @import "./_reset.css";
 
+/* Utilities - Mostly CSS variables */
 @import "./utilities/colours.css";
 @import "./utilities/rounding.css";
 @import "./utilities/shadows.css";
 @import "./utilities/spacing.css";
 @import "./utilities/typography.css";
+
+/* Components */
+@import "./components/buttons.css";

@@ -13,4 +13,23 @@
   --space-88: 5.5rem;
   --space-96: 6rem;
   --space-104: 6.5rem;
+
+  --v-space-24: 1.5rem;
+  --v-space-32: 2rem;
+  --v-space-40: 2.5rem;
+  --v-space-48: 3rem;
+}
+
+.v-space-24 {
+  margin-block-end: var(--v-space-24);
+}
+
+.v-space-48 {
+  margin-block-end: var(--v-space-48);
+}
+
+.v-gap-24 {
+  display: flex;
+  flex-direction: column;
+  gap: var(--v-space-24);
 }
