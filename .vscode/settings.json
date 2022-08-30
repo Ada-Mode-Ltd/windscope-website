@@ -36,7 +36,8 @@
   },
   "files.associations": {
     "*.html": "html",
-    "*.svelte": "svelte"
+    "*.svelte": "svelte",
+    "*.css": "postcss"
   },
   "[svelte]": {
     "editor.defaultFormatter": "svelte.svelte-vscode"
