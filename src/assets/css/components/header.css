@@ -1,3 +1,7 @@
+header.wrapper {
+  --wrapper-width: 90rem;
+}
+
 nav.page {
   display: flex;
   flex-direction: row;
