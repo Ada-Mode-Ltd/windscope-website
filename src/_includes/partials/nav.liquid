@@ -1,0 +1,44 @@
+{% assign isDesign = page | isDesignSystem %}
+
+{% if isDesign %}
+    {% assign links = collections.design %}
+{% endif %}
+
+<nav class="page" data-page-nav>
+    <div class="left">
+        {% include 'svg/windscope_logo.svg' %}
+        <span data-desktop-links>
+            {% for link in links %}
+                <li>
+                    <a class="text-link secondary" href="{{ link.url }}">{{ link.data.title }}</a>
+                </li>
+            {% endfor %}
+        </span>
+    </div>
+    <div class="right">
+        <div data-menu-container>
+            <button aria-haspopup="true" class="c-header__menu-btn" data-btn="menu" hidden="true">
+                <!-- <span data-menu-button-text>Menu</span> -->
+                <span class="c-header__menu-icon" data-menu-icon-open>
+                    {% include 'svg/menu.svg' %}
+                </span>
+                <span class="c-header__menu-icon" data-menu-icon-close>
+                    {% include 'svg/cross.svg' %}
+                </span>
+            </button>
+            <div data-menu-wrapper="data-menu-wrapper">
+                <nav class="c-header__nav">
+                    <ul class="c-header__list">
+                        {% for link in links %}
+                            <li>
+                                <a class="text-link secondary" href="{{ link.url }}">{{ link.data.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<script src="/assets/js/index.js" type="module"></script>

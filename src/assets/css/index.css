@@ -8,7 +8,7 @@
 @import "./utilities/visibility.css";
 
 /* Defines whole sections of a page */
-@import "./utilities/wrapper.css";
+@import "./sections/wrapper.css";
 
 /* Components */
 @import "./components/buttons.css";

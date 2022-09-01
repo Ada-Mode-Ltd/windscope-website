@@ -43,6 +43,10 @@ nav.page {
       color: var(--ws-bright-green);
     }
   }
+
+  & li {
+    list-style: none;
+  }
 }
 
 .c-header__menu-btn {

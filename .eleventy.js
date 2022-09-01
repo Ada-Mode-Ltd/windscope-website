@@ -7,6 +7,13 @@ const dev = process.env.NODE_ENV === 'production' ? false : true;
 
 module.exports = function(eleventyConfig) {
 
+	// Filters
+	// Check if the page is part of the Design System
+	eleventyConfig.addFilter('isDesignSystem', function (page) {
+		return page.url.startsWith('/design-system/')
+	})
+
+
   eleventyConfig.addPlugin(EleventyPluginNavigation)
 	eleventyConfig.addPlugin(EleventyVitePlugin, {
 		tempFolderName: '.11ty-vite', // Default name of the temp folder
@@ -68,9 +75,9 @@ module.exports = function(eleventyConfig) {
 		}
 	})
 
-    // if (!dev) {
-    //     eleventyConfig.ignores.add("src/design/**");
-    // }
+    if (!dev) {
+        eleventyConfig.ignores.add("src/design-system/**");
+    }
 
     eleventyConfig.addPassthroughCopy("src/assets/css");
     eleventyConfig.addPassthroughCopy("public/assets/fonts");

@@ -7,11 +7,7 @@
     <link rel="stylesheet" href="/assets/css/index.css">
   </head>
   <body class="wrapper">
-    {% unless navComponent %}
-    {% include compnents/pageNav.liquid %}
-    {% else %}
-    {% include navComponent %}
-    {% endunless %}
+    {% include 'partials/nav.liquid' %}
     {{ content }}
   </body>
 </html>
