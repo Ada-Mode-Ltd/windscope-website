@@ -6,8 +6,9 @@
     <title>{{ pageTitle }}</title>
     <link rel="stylesheet" href="/assets/css/index.css">
   </head>
-  <body class="wrapper">
-    {% include 'partials/nav.liquid' %}
+  <body>
+    <header>{% include 'partials/nav.liquid' %}</header>
+
     {{ content }}
   </body>
 </html>
