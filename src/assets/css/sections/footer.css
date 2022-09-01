@@ -1,37 +1,36 @@
-footer {
+footer.wrapper {
   --wrapper-width: 90rem;
   background: var(--ws-snow-grey);
   min-height: 5vh;
-  width: 100vw;
   color: var(--ws-grey);
   font-size: var(--text-regular);
+  padding: var(--space-32);
 
   & > div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: var(--space-32);
+    @mixin flex-row var(--space-16), center, space-between;
+    flex-wrap: wrap;
 
-    & > .left,
+    & > .left {
+      @mixin flex-row var(--space-32), center, flex-start;
+    }
+
     & > .right {
-      @mixin flex-row;
+      @mixin flex-row var(--space-32), center, flex-end;
     }
 
-    &.left {
-      justify-content: flex-start;
-    }
-
-    &.right {
-      justify-content: flex-end;
+    & > .right[data-stick-right] {
+      margin-left: auto;
     }
   }
 
-  & > div:not(:first-child) {
+  & > hr {
     border-top: 1px solid var(--ws-light-grey);
+    margin-block: var(--space-32);
   }
 
   & ul {
     @mixin flex-row;
+    padding: 0;
   }
 
   & li {
