@@ -19,16 +19,17 @@ module.exports = function(eleventyConfig) {
 				mode: 'development',
 				middlewareMode: true,
 			},
-			appType: 'custom',
-			assetsInclude: ['**/*.xml', '**/*.txt'],
+			appType: 'mpa',
+			// assetsInclude: ['**/*.xml', '**/*.txt'],
 			build: {
 				mode: 'production',
 				sourcemap: 'true',
 				manifest: true,
+				dynamicImportVarsOptions: ['./src/assets/fonts/WorkSans-VariableFont_wght.woff2'],
 				// This puts CSS and JS in subfolders – remove if you want all of it to be in /assets instead
 				rollupOptions: {
 					output: {
-						assetFileNames: 'assets/css/main.[hash].css',
+						assetFileNames: 'assets/css/[name].[hash].css',
 						chunkFileNames: 'assets/js/[name].[hash].js',
 						entryFileNames: 'assets/js/[name].[hash].js'
 					},
@@ -56,9 +57,9 @@ module.exports = function(eleventyConfig) {
 					// 					width: 1920,
 					// 				}
 					// 			],
-					// 			penthouse: {
-					// 				forceInclude: ['.fonts-loaded-1 body', '.fonts-loaded-2 body'],
-					// 			  }
+					// 			// penthouse: {
+					// 			// 	forceInclude: ['.fonts-loaded-1 body', '.fonts-loaded-2 body'],
+					// 			//   }
 					// 		}
 					// 	})
 					// ]
@@ -67,12 +68,12 @@ module.exports = function(eleventyConfig) {
 		}
 	})
 
-    if (!dev) {
-        eleventyConfig.ignores.add("src/design/**");
-    }
+    // if (!dev) {
+    //     eleventyConfig.ignores.add("src/design/**");
+    // }
 
     eleventyConfig.addPassthroughCopy("src/assets/css");
-    eleventyConfig.addPassthroughCopy("src/assets/fonts");
+    eleventyConfig.addPassthroughCopy("public/assets/fonts");
     eleventyConfig.addPassthroughCopy("src/assets/js");
     eleventyConfig.addPassthroughCopy("src/assets/img");
 
