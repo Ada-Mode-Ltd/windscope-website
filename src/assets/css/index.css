@@ -1,11 +1,13 @@
-@import "./utilities/_reset.css";
+@import "./base/_reset.css";
+@import "./base/variables.css";
+@import "./base/mixins.css";
+@import "./base/typography.css";
 
-/* Utilities - Mostly CSS variables */
-@import "./utilities/colours.css";
-@import "./utilities/rounding.css";
-@import "./utilities/shadows.css";
+/* Utility classes*/
 @import "./utilities/spacing.css";
-@import "./utilities/typography.css";
+@import "./utilities/visibility.css";
+
+/* Defines whole sections of a page */
 @import "./utilities/wrapper.css";
 
 /* Components */
@@ -14,9 +16,7 @@
 @import "./components/form.css";
 @import "./components/nav.css";
 
-@import "./utilities/mixins.css";
-
 body {
   background: var(--ws-snow-grey);
-  color: var(--ws-slate-grey);
+  color: var(--text-color);
 }

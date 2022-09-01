@@ -1,6 +1,0 @@
-:root {
-  --shadow-dark-light: -5px -5px 16px #303b4f,
-    5px 5px 30px rgba(28, 35, 45, 0.6);
-  --shadow-dark: 5px 5px 30px rgba(28, 35, 45, 0.6);
-  --shadow-light: -5px -5px 8px rgba(255, 255, 255, 0.3), 5px 5px 30px #eeeff1;
-}

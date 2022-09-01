@@ -1,0 +1,28 @@
+/* Mixins for commonly used combinations */
+
+@define-mixin button $type, $bg-color: var(--ws-dark-green),
+  $bg-hover: var(--ws-bright-green), $color: var(--ws-white) {
+  .button.$(type) {
+    background-color: $bg-color;
+    color: $color;
+    @mixin-content;
+    &:hover,
+    &:focus {
+      background-color: $bg-hover;
+    }
+  }
+}
+
+@define-mixin text-link $type, $color, $hover-color {
+  .text-link.$(type) {
+    color: $color;
+    &:visited {
+      color: $color;
+    }
+    @mixin-content;
+    &:hover,
+    &:focus {
+      color: $hover-color;
+    }
+  }
+}

@@ -9,34 +9,18 @@
   flex: none;
   order: 1;
   flex-grow: 0;
+}
 
-  &.primary {
-    background-color: var(--ws-dark-green);
-    color: var(--ws-white);
+@mixin button primary;
 
-    &:hover,
-    &:focus {
-      background-color: var(--ws-bright-green);
-    }
-  }
-
-  &.secondary {
-    background-color: transparent;
-    border: 1px solid var(--ws-grey);
-    color: var(--ws-grey);
-    &:hover,
-    &:focus {
-      border: 1px solid var(--ws-bright-blue);
-      color: var(--ws-bright-blue);
-    }
-  }
-
-  &.tertiary {
-    background-color: var(--ws-bright-blue);
-    color: var(--ws-white);
-    &:hover,
-    &:focus {
-      background-color: var(--ws-bright-blue-dark);
-    }
+@mixin button secondary, transparent, var(--ws-bright-blue), transparent {
+  border: 1px solid var(--ws-grey);
+  &:hover,
+  &:focus {
+    border: 1px solid var(--ws-bright-blue);
+    color: var(--ws-bright-blue);
   }
 }
+
+@mixin button tertiary, var(--ws-bright-blue), var(--ws-white),
+  var(--ws-bright-blue-dark);
