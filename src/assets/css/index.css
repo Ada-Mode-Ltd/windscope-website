@@ -11,6 +11,7 @@
 @import "./sections/wrapper.css";
 @import "./sections/header.css";
 @import "./sections/main.css";
+@import "./sections/footer.css";
 
 /* Components */
 @import "./components/buttons.css";

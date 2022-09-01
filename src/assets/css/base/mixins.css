@@ -26,3 +26,9 @@
     }
   }
 }
+
+@define-mixin flex-row $gap: var(--space-32) {
+  display: flex;
+  gap: var(--space-32);
+  align-items: center;
+}
