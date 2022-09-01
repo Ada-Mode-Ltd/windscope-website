@@ -16,6 +16,11 @@
         </span>
     </div>
     <div class="right">
+        {% assign buttonType = 'primary' %}
+        {% assign buttonLink = '#' %}
+        {% assign buttonText = 'Sign in' %}
+        {% assign buttonIcon = false %}
+        {% include 'components/button.liquid' %}
         <div data-menu-container>
             <button aria-haspopup="true" class="c-header__menu-btn" data-btn="menu" hidden="true">
                 <!-- <span data-menu-button-text>Menu</span> -->
