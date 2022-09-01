@@ -1,5 +1,22 @@
 header.wrapper {
   --wrapper-width: 90rem;
+  max-height: var(--header-height, 7.125rem);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: var(--background-color);
+  transition: transform 0.4s;
+  padding: 0;
+
+  &.scroll-down {
+    transform: translate3d(0, -100%, 0);
+  }
+
+  &.scroll-up {
+    transform: none;
+  }
 }
 
 nav.page {
@@ -9,8 +26,8 @@ nav.page {
   padding: var(--space-24) var(--space-32) var(--space-32);
   gap: var(--space-8);
   justify-content: space-between;
-  max-height: 7.125rem;
   height: 100%;
+  font-weight: 500;
   font-variations-settings: "wght" 500;
 
   & > div,
@@ -71,7 +88,7 @@ nav.page {
   text-underline-offset: 0;
   transition: text-underline-offset 200ms, text-decoration-color 200ms;
 
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     display: none;
   }
 
@@ -93,11 +110,6 @@ nav.page {
 
   &:focus:not(:focus-visible) {
     text-decoration-color: var(--primary);
-  }
-
-  @media (min-width: $md) {
-    font-size: 1.1rem;
-    margin-left: 2rem;
   }
 }
 
@@ -155,7 +167,7 @@ nav.page {
 .js-menu {
   .c-header__nav {
     height: 100vh;
-    max-width: 40rem;
+    /* max-width: 40rem; */
     overflow-y: scroll;
     /* padding: 5rem 1rem 2rem; */
     position: absolute;

@@ -73,4 +73,7 @@
   --space-128: 8rem;
   --space-136: 8.5rem;
   --space-144: 9rem;
+
+  /* Other util variable */
+  --header-height: 7.125rem;
 }
