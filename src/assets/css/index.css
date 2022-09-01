@@ -9,12 +9,13 @@
 
 /* Defines whole sections of a page */
 @import "./sections/wrapper.css";
+@import "./sections/header.css";
+@import "./sections/main.css";
 
 /* Components */
 @import "./components/buttons.css";
 @import "./components/columns.css";
 @import "./components/form.css";
-@import "./components/header.css";
 
 body {
   background: var(--ws-snow-grey);
