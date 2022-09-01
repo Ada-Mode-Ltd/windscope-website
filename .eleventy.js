@@ -13,6 +13,9 @@ module.exports = function(eleventyConfig) {
 		return page.url.startsWith('/design-system/')
 	})
 
+	// Shortcodes
+	eleventyConfig.addShortcode("currentYear", () => `${new Date().getFullYear()}`); // Because copyright text in the footer ...
+
 
   eleventyConfig.addPlugin(EleventyPluginNavigation)
 	eleventyConfig.addPlugin(EleventyVitePlugin, {
@@ -80,9 +83,9 @@ module.exports = function(eleventyConfig) {
     }
 
     eleventyConfig.addPassthroughCopy("src/assets/css");
-    eleventyConfig.addPassthroughCopy("public/assets/fonts");
     eleventyConfig.addPassthroughCopy("src/assets/js");
-    eleventyConfig.addPassthroughCopy("src/assets/img");
+    eleventyConfig.addPassthroughCopy("public/assets/fonts");
+    eleventyConfig.addPassthroughCopy("public/assets/img");
 
     // Return your Object options:
     return {
