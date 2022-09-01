@@ -1,6 +1,6 @@
 .button {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   padding: 16px;
@@ -9,11 +9,36 @@
   flex: none;
   order: 1;
   flex-grow: 0;
+  cursor: pointer;
+  text-decoration: none;
+  width: fit-content;
+  min-width: 12rem;
+
+  & span {
+    display: grid;
+    place-items: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  & svg {
+    max-height: 2.5ex;
+    width: auto;
+    height: 100%;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  &:hover {
+    background-color: #f5f5f5;
+    & svg {
+      transform: translate3d(0.25rem, 0, 0);
+    }
+  }
 }
 
 @mixin button primary;
 
-@mixin button secondary, transparent, var(--ws-bright-blue), transparent {
+@mixin button secondary, transparent, transparent, var(--ws-grey) {
   border: 1px solid var(--ws-grey);
   &:hover,
   &:focus {
@@ -22,5 +47,5 @@
   }
 }
 
-@mixin button tertiary, var(--ws-bright-blue), var(--ws-white),
-  var(--ws-bright-blue-dark);
+@mixin button tertiary, var(--ws-bright-blue), var(--ws-bright-blue-dark),
+  var(--ws-white);

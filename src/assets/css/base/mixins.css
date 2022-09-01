@@ -3,12 +3,12 @@
 @define-mixin button $type, $bg-color: var(--ws-dark-green),
   $bg-hover: var(--ws-bright-green), $color: var(--ws-white) {
   .button.$(type) {
-    background-color: $bg-color;
+    background: $bg-color;
     color: $color;
     @mixin-content;
     &:hover,
     &:focus {
-      background-color: $bg-hover;
+      background: $bg-hover;
     }
   }
 }
