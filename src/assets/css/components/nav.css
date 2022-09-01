@@ -9,7 +9,8 @@ nav.page {
   height: 100%;
   font-variations-settings: "wght" 500;
 
-  & > div {
+  & > div,
+  [data-desktop-links] {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -20,6 +21,12 @@ nav.page {
   & > .left {
     gap: var(--space-56);
 
+    & > [data-desktop-links] {
+      gap: var(--space-56);
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
     /* & > svg {
       margin-inline-end: var(--space-);
     } */
@@ -35,5 +42,194 @@ nav.page {
     &:hover {
       color: var(--ws-bright-green);
     }
+  }
+}
+
+.c-header__menu-btn {
+  display: flex;
+  position: relative;
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  color: var(--white);
+  text-decoration-style: none;
+  font-family: inherit;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  z-index: 2;
+  width: 8rem;
+  cursor: pointer;
+  margin-right: -0.5rem;
+  text-underline-offset: 0;
+  transition: text-underline-offset 200ms, text-decoration-color 200ms;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+
+  @supports (text-decoration-color: transparent) {
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 0;
+  }
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+    text-underline-offset: 0.4em;
+  }
+
+  &:focus-visible {
+    outline: 1px dotted var(--primary);
+  }
+
+  &:focus:not(:focus-visible) {
+    text-decoration-color: var(--primary);
+  }
+
+  @media (min-width: $md) {
+    font-size: 1.1rem;
+    margin-left: 2rem;
+  }
+}
+
+.c-header__menu-icon {
+  display: block;
+  position: relative;
+  width: rem(32px);
+  height: rem(24px);
+  margin-left: 1rem;
+
+  > span,
+  &::before,
+  &::after {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    top: calc(50% - 4px);
+    left: 0;
+    transition: opacity 95ms;
+    transform-origin: center;
+    background-color: var(--white);
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    transition: transform 95ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+
+  &::before {
+    transform: translate3d(0, -10px, 0) rotate(0);
+  }
+
+  &::after {
+    transform: translate3d(0, 10px, 0) rotate(0);
+  }
+}
+
+.is-menu-open {
+  .c-header__menu-icon {
+    span {
+      opacity: 0;
+    }
+
+    &::before {
+      transform: translate3d(0, 0, 0) rotate(45deg);
+    }
+
+    &::after {
+      transform: translate3d(0, 0, 0) rotate(-45deg);
+    }
+  }
+}
+
+.js-menu {
+  .c-header__nav {
+    height: 100vh;
+    max-width: 40rem;
+    overflow-y: scroll;
+    /* padding: 5rem 1rem 2rem; */
+    position: absolute;
+    right: 0;
+    top: 7.125rem;
+    transform: translate3d(100%, 0, 0);
+    transition: transform 0.25s;
+    width: 100vw;
+    z-index: 99;
+    background: var(--ws-snow-grey);
+  }
+
+  .c-header__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-24);
+    margin-left: 0;
+    list-style: none;
+  }
+}
+
+.is-visible {
+  .c-header__nav {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.c-header__logo-sm {
+  display: none;
+  width: rem(35px);
+  height: rem(35px);
+}
+
+.c-header--bg {
+  background-color: var(--headerBg);
+
+  .c-header__title {
+    visibility: visible;
+  }
+
+  .c-header__logo {
+    @media (min-width: $md) {
+      display: block;
+    }
+  }
+
+  .c-header__logo-sm {
+    display: block;
+
+    @media (min-width: $md) {
+      display: none;
+    }
+  }
+}
+
+.no-js {
+  .c-header {
+    position: static;
+    background-color: var(--headerBg);
+
+    @media (min-width: $lg) {
+      position: fixed;
+    }
+  }
+
+  .c-header__menu-btn {
+    display: none;
+  }
+
+  .c-header__right-content {
+    align-items: flex-start;
+
+    @media (min-width: $lg) {
+      align-items: center;
+    }
+  }
+
+  .c-header__social-links {
+    margin-right: 2rem;
+  }
+
+  .c-header__list {
+    justify-content: flex-end;
   }
 }

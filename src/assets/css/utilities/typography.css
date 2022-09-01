@@ -96,10 +96,19 @@ p,
   font-variation-settings: "wght" 500;
   text-decoration: underline;
   cursor: pointer;
+
+  &:visited {
+    color: inherit;
+  }
 }
 
 .text-link.primary {
   color: var(--ws-bright-blue);
+
+  &:visited {
+    color: var(--ws-bright-blue);
+  }
+
   &:hover,
   &:focus {
     color: var(--ws-bright-blue-dark);
@@ -108,6 +117,11 @@ p,
 
 .text-link.secondary {
   color: var(--ws-grey);
+
+  &:visited {
+    color: var(--ws-grey);
+  }
+
   &:hover,
   &:focus {
     color: var(--ws-bright-blue);

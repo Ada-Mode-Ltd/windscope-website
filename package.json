@@ -38,5 +38,8 @@
     "postcss-nested": "^5.0.6",
     "rollup-plugin-critical": "^1.0.8",
     "vite": "^3.0.0"
+  },
+  "dependencies": {
+    "focus-trap": "^7.0.0"
   }
 }
