@@ -1,0 +1,59 @@
+---
+layout: design.liquid
+title: Components
+---
+
+<div class="v-gap-24">
+    <p>This page has details of the different typography found throughout the Windscope site.</p>
+
+    <div class="columns">
+        <div class="flow">
+            <h2>Buttons</h2>
+            <p>This section contains the styles for the different button types used around the site.</p>
+            <label for="text">
+                Edit text:
+                <input name="text-buttons" placeholder="Type some text here" type="text">
+            </label>
+        </div>
+        <div class="flow">
+            <h3>Regular buttons</h3>
+            <a class="button primary" data-dynamic-buttons data-initial="Button: primary" href="#"></a>
+            <a class="button secondary" data-dynamic-buttons data-initial="Button: secondary" href="#"></a>
+            <a class="button tertiary" data-dynamic-buttons data-initial="Button: tertiary" href="#"></a>
+            <hr>
+            <h3>Buttons with icons (aka Freak buttons)</h3>
+            <a class="button primary" data-dynamic-buttons data-icon data-initial="Button: primary" href="#"></a>
+            <a class="button secondary" data-dynamic-buttons data-icon data-initial="Button: secondary" href="#"></a>
+            <a class="button tertiary" data-dynamic-buttons data-icon data-initial="Button: tertiary" href="#"></a>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Select all elements with data-dynamic
+    var buttons = document.querySelectorAll("[data-dynamic-buttons]");
+    let buttonText = document.getElementsByName("text-buttons")[0];
+    content = "";
+
+    buttonText.addEventListener("keyup", function (event) {
+        content = buttonText.value;
+        updateElements(buttons);
+    });
+
+    function updateElements(elements) {
+        for (let i = 0; i < elements.length; i++) {
+            const icon = elements[i].hasAttribute("data-icon")
+                ? `<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+	<path d="M28.05 35.9001L25.9 33.8001L34.3 25.4001H8V22.4001H34.3L25.85 13.9501L28 11.8501L40.05 23.9001L28.05 35.9001Z" fill="currentColor" />
+</svg>`
+                : "";
+            if (content.length > 0) {
+                elements[i].innerHTML = content + icon;
+            } else {
+                elements[i].innerHTML = elements[i].getAttribute("data-initial") + icon;
+            }
+        }
+    }
+
+    updateElements(buttons);
+</script>
