@@ -78,9 +78,10 @@ module.exports = function(eleventyConfig) {
 		}
 	})
 
-    if (!dev) {
-        eleventyConfig.ignores.add("src/design-system/**");
-    }
+	// Maybe you want to ignore these files in production later
+    // if (!dev) {
+    //     eleventyConfig.ignores.add("src/design-system/**");
+    // }
 
     eleventyConfig.addPassthroughCopy("src/assets/css");
     eleventyConfig.addPassthroughCopy("src/assets/js");
