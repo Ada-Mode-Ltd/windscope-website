@@ -18,6 +18,7 @@
 @import "./components/quote.css";
 @import "./components/columns.css";
 @import "./components/form.css";
+@import "./components/person.css";
 
 body {
   background: var(--ws-snow-grey);

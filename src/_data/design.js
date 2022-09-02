@@ -18,5 +18,37 @@ module.exports = {
                 image: "/assets/img/ada_mode_logo.svg",
             }
         }
+    ],
+    people: [
+        {
+            photo: "https://joeschmoe.io/api/v1/random",
+            name: "Name",
+            position: "A job position",
+            linkedInUrl: "",
+        },
+        {
+            photo: "https://joeschmoe.io/api/v1/random",
+            name: "Name",
+            position: "A job position",
+            linkedInUrl: "",
+        },
+        {
+            photo: "https://joeschmoe.io/api/v1/random",
+            name: "Name",
+            position: "A job position",
+            linkedInUrl: "",
+        },
+        {
+            photo: "https://joeschmoe.io/api/v1/random",
+            name: "Name",
+            position: "A job position",
+            linkedInUrl: "",
+        },
+        {
+            photo: "https://joeschmoe.io/api/v1/random",
+            name: "Name",
+            position: "A job position",
+            linkedInUrl: "",
+        },
     ]
 }

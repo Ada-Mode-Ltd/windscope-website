@@ -58,7 +58,6 @@ h5 {
   letter-spacing: -0.5px;
 }
 
-p,
 .text--regular {
   font-size: var(--text-regular);
   font-weight: 400;
@@ -67,6 +66,7 @@ p,
   letter-spacing: -0.1px;
 }
 
+p,
 .text--medium {
   font-size: var(--text-medium);
   font-weight: 400;
@@ -93,6 +93,11 @@ p,
   &:visited {
     color: inherit;
   }
+}
+
+.strong {
+  font-weight: 700;
+  font-variation-settings: "wght" 700;
 }
 
 @mixin text-link primary, var(--ws-bright-blue), var(--ws-bright-blue-dark);
