@@ -3,6 +3,9 @@ layout: design.liquid
 title: Components
 ---
 
+{% assign quote = design.quotes | first %}
+{% assign quotes = design.quotes %}
+
 <div class="v-gap-24">
     <p>This page has details of the different typography found throughout the Windscope site.</p>
 
@@ -17,14 +20,32 @@ title: Components
         </div>
         <div class="flow">
             <h3>Regular buttons</h3>
-            <a class="button primary" data-dynamic-buttons data-initial="Button: primary" href="#"></a>
-            <a class="button secondary" data-dynamic-buttons data-initial="Button: secondary" href="#"></a>
-            <a class="button tertiary" data-dynamic-buttons data-initial="Button: tertiary" href="#"></a>
+            <a class="button primary" data-dynamic-buttons data-initial="Button: Primary" href="#"></a>
+            <a class="button secondary" data-dynamic-buttons data-initial="Button: Secondary" href="#"></a>
+            <a class="button tertiary" data-dynamic-buttons data-initial="Button: Tertiary" href="#"></a>
             <hr>
             <h3>Buttons with icons (aka Freak buttons)</h3>
-            <a class="button primary" data-dynamic-buttons data-icon data-initial="Button: primary" href="#"></a>
-            <a class="button secondary" data-dynamic-buttons data-icon data-initial="Button: secondary" href="#"></a>
-            <a class="button tertiary" data-dynamic-buttons data-icon data-initial="Button: tertiary" href="#"></a>
+            <a class="button primary" data-dynamic-buttons data-icon data-initial="Button: Primary" href="#"></a>
+            <a class="button secondary" data-dynamic-buttons data-icon data-initial="Button: Secondary" href="#"></a>
+            <a class="button tertiary" data-dynamic-buttons data-icon data-initial="Button: Tertiary" href="#"></a>
+        </div>
+    </div>
+    <hr>
+    <div class="flow">
+        <h2>Quote</h2>
+        <p>This section contains the styles for the different single and multiple quotes used around the site.</p>
+        <div class="flow">
+            <h3>Single quote</h3>
+            <div class="quote-holder">{% include 'components/quote.liquid' %}</div>
+        </div>
+        <div class="flow">
+            <h3>Multiple quotes</h3>
+            <div class="quote-holder">
+                {% for quote in quotes %}
+                    {% assign quoteIndex = 'quote-' | append: forloop.index %}
+                    {% include 'components/quote.liquid' %}
+                {% endfor %}
+            </div>
         </div>
     </div>
 </div>
