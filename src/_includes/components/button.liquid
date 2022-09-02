@@ -1,8 +1,8 @@
 <a class="button {{ buttonType }}" href="{{ buttonLink }}">
     {{ buttonText }}
-    <span>
-        {% if buttonIcon %}
+    {% if buttonIcon %}
+        <span>
             {% include 'svg/arrow-right.svg' %}
-        {% endif %}
-    </span>
+        </span>
+    {% endif %}
 </a>

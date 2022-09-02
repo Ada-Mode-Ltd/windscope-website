@@ -12,7 +12,7 @@
   cursor: pointer;
   text-decoration: none;
   width: fit-content;
-  min-width: 12rem;
+  min-width: 8rem;
 
   & span {
     display: grid;
