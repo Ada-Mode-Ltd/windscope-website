@@ -3,6 +3,7 @@ section.cta {
   display: grid;
   grid-template-columns: 1fr;
   overflow: hidden;
+  padding: var(--space-104) var(--space-144);
 
   & > .content {
     text-align: center;
