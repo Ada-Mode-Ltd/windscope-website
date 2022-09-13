@@ -68,6 +68,18 @@ title: Components
             {% include 'components/cta-section.liquid' %}
         </div>
     </div>
+
+    <!-- Features -->
+    <div class="flow">
+        <h3>Product features</h3>
+        <p>This section shows the different variants of the Product Features component that are available. All text is editable.</p>
+        <div class="flow">
+            <h4>Large</h4>
+            {% assign featureStyle = "large" %}
+            {% assign featureImagePlacement = "right" %}
+            {% include 'components/prod-feature.liquid' %}
+        </div>
+    </div>
 </div>
 
 <script>

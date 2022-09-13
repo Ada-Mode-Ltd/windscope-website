@@ -39,3 +39,8 @@
   font-weight: 500;
   font-variation-settings: "wght" $weight;
 }
+
+@define-mixin container-padding $block: var(--space-104),
+  $inline: var(--space-144) {
+  padding: $block $inline;
+}

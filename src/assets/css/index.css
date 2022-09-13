@@ -20,6 +20,7 @@
 @import "./components/form.css";
 @import "./components/person.css";
 @import "./components/cta-section.css";
+@import "./components/prod-feature.css";
 
 body {
   background: var(--ws-snow-grey);

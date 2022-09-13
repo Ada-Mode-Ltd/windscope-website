@@ -1,0 +1,29 @@
+.product-feature {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  &[data-style="large"] {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-104);
+
+    &[data-image-placement="left"] {
+      grid-template-areas: "image content";
+    }
+
+    &[data-image-placement="right"] {
+      grid-template-areas: "content image";
+    }
+
+    &:not([data-image-placement="left"]):not([data-image-placement="right"]) {
+      grid-template-areas: "image" "content";
+    }
+
+    & > img {
+      grid-area: image;
+    }
+
+    & .content {
+      grid-area: content;
+    }
+  }
+}

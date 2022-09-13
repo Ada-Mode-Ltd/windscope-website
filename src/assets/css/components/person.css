@@ -37,4 +37,5 @@
   align-items: center;
   gap: var(--space-56);
   flex-wrap: wrap;
+  @mixin container-padding;
 }
