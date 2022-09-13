@@ -13,6 +13,7 @@
   text-decoration: none;
   width: fit-content;
   min-width: 8rem;
+  @mixin font-weight 500;
 
   & span {
     display: grid;

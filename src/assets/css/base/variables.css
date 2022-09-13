@@ -39,14 +39,14 @@
   --px-32: 32px;
 
   /* Font sizes */
-  --text-small: 0.875rem /* 14px */;
-  --text-regular: 1rem /* 16px */;
-  --text-medium: 1.125rem /* 18px */;
-  --h5: 1.25rem /* 20px */;
-  --h4: clamp(1.5rem, calc(1.36rem + 0.71vw), 2rem);
-  --h3: clamp(1.5rem, calc(1.07rem + 2.14vw), 3rem);
-  --h2: clamp(1.75rem, calc(1.36rem + 1.96vw), 3.13rem);
-  --h1: clamp(2rem, calc(1.54rem + 2.32vw), 3.63rem);
+  --text-small: 0.875rem; /* 14px */
+  --text-regular: 1rem; /* 16px */
+  --text-medium: 1.125rem; /* 18px */
+  --h5: 1.25rem; /* 20px */
+  --h4: clamp(1.5rem, calc(1.36rem + 0.71vw), 2rem); /* 32px */
+  --h3: clamp(1.5rem, calc(1.07rem + 2.14vw), 3rem); /* 48px */
+  --h2: clamp(1.75rem, calc(1.36rem + 1.96vw), 3.13rem); /* 50px */
+  --h1: clamp(2rem, calc(1.54rem + 2.32vw), 3.63rem); /* 58px */
 
   /* Shadows */
   --shadow-dark-light: -5px -5px 16px #303b4f,

@@ -19,6 +19,7 @@
 @import "./components/columns.css";
 @import "./components/form.css";
 @import "./components/person.css";
+@import "./components/cta-section.css";
 
 body {
   background: var(--ws-snow-grey);

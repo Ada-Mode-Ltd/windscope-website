@@ -34,3 +34,8 @@
   align-items: $align;
   justify-content: $justify;
 }
+
+@define-mixin font-weight $weight {
+  font-weight: 500;
+  font-variation-settings: "wght" $weight;
+}

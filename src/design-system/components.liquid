@@ -6,6 +6,7 @@ title: Components
 {% assign quote = design.quotes | first %}
 {% assign quotes = design.quotes %}
 {% assign people = design.people %}
+{% assign editable = true %}
 
 <div class="v-gap-24">
     <p>This page has details of the different typography found throughout the Windscope site.</p>
@@ -56,6 +57,22 @@ title: Components
         <h3>People</h3>
         <p>This section shows multiple person components grouped as the would appear on the website.</p>
         {% include 'components/people.liquid' %}
+    </div>
+
+    <!-- CTA Section -->
+    <div class="flow">
+        <h3>CTA Section</h3>
+        <p>This section shows the different variants of the CTA Section that are available. All text is editable.</p>
+        <div class="flow">
+            <h4>Single column</h4>
+            {% include 'components/cta-section.liquid' %}
+        </div>
+        <hr>
+        <div class="flow">
+            <h4>Split column</h4>
+            {% assign ctaCols = 2 %}
+            {% include 'components/cta-section.liquid' %}
+        </div>
     </div>
 </div>
 
