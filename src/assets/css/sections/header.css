@@ -1,21 +1,26 @@
-header.wrapper {
-  --wrapper-width: 90rem;
+header {
   max-height: var(--header-height, 7.125rem);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  background-color: var(--background-color);
-  transition: transform 0.4s;
-  padding: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: transparent;
+    transition: transform 0.4s;
+    padding: 0;
 
   &.scroll-down {
     transform: translate3d(0, -100%, 0);
+    background-color: var(--background-color);
   }
 
   &.scroll-up {
     transform: none;
+    background-color: var(--background-color);
+  }
+
+  & > .wrapper {
+    --wrapper-width: 90rem;
   }
 }
 

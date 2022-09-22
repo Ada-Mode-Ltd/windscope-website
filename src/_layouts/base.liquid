@@ -11,7 +11,9 @@
 </head>
 
 <body>
-  <header class="wrapper">{% include 'partials/nav.liquid' %}</header>
+  <header>
+    <div class="wrapper">{% include 'partials/nav.liquid' %}</div>
+  </header>
   {{ content }}
   {% include 'partials/footer.liquid' %}
 </body>

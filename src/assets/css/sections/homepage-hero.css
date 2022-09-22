@@ -1,14 +1,17 @@
 section.homepage-hero {
     @mixin dark-bg;
 
-    min-height: 80vh;
+    min-height: 100vh;
     
     & > .wrapper {
         display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    grid-template-rows: 1fr auto;
-    gap: var(--space-96);
-    padding-block-end: var(--space-104);
+        grid-template-columns: 1.5fr 1fr;
+        grid-template-rows: 1fr auto;
+        gap: var(--space-96);
+        padding-block-end: var(--space-104);
+        min-height: 100vh;
+        align-items: center;
+
 
         & > .text {
             grid-column: 1/2;

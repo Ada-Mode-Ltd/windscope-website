@@ -7,7 +7,7 @@ const navScroll = () => {
 window.addEventListener("scroll", () => {
   const currentScroll = window.pageYOffset;
   if (currentScroll <= 0) {
-    body.classList.remove(scrollUp);
+    header.classList.remove(scrollUp);
     return;
   }
  
