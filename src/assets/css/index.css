@@ -12,6 +12,7 @@
 @import "./sections/header.css";
 @import "./sections/main.css";
 @import "./sections/footer.css";
+@import "./sections/homepage-hero.css";
 
 /* Components */
 @import "./components/buttons.css";

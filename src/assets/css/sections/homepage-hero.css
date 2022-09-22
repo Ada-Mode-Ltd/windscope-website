@@ -1,0 +1,53 @@
+section.homepage-hero {
+    @mixin dark-bg;
+
+    min-height: 80vh;
+    
+    & > .wrapper {
+        display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    grid-template-rows: 1fr auto;
+    gap: var(--space-96);
+    padding-block-end: var(--space-104);
+
+        & > .text {
+            grid-column: 1/2;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-24);
+        }
+
+        & > img, svg {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        & .small {
+            grid-row: 2/3;
+            grid-column: 1/2;
+            font-size: var(--text-small);
+
+            & p {
+                font-size: var(--text-small);
+            }
+
+            & .flex {
+                display: grid;
+                grid-template-columns: auto 1fr;
+                gap: var(--space-24);
+                font-size: var(--text-small);
+                align-items: center;
+                
+
+                & > .logo > img, svg {
+                    filter: invert(1) brightness(100);
+                    width: 100%;
+                }
+            }
+                
+            
+        }
+    }
+}

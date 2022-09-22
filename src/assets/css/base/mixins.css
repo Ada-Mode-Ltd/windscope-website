@@ -44,3 +44,8 @@
   $inline: var(--space-144) {
   padding: $block $inline;
 }
+
+@define-mixin dark-bg {
+  background: var(--background-color-dark);
+  color: var(--text-color-light);
+}
