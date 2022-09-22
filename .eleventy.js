@@ -13,6 +13,17 @@ module.exports = function(eleventyConfig) {
 		return page.url.startsWith('/design-system/')
 	})
 
+	eleventyConfig.addFilter('navLink', function (obj) {
+
+		const path = obj.url || obj.path
+		const title = obj?.data?.title || obj.title
+
+		return {
+			title,
+			path,
+		}
+	})
+
 	// Shortcodes
 	eleventyConfig.addShortcode("currentYear", () => `${new Date().getFullYear()}`); // Because copyright text in the footer ...
 

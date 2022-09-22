@@ -35,14 +35,14 @@ section.cta {
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      align-items: start;
+      align-items: flex-start;
       gap: 1.5rem;
 
       & > .button-group {
         display: flex;
         gap: 1.5rem;
         justify-content: flex-start;
-        align-items: start;
+        align-items: flex-start;
         padding: 0;
         flex-wrap: wrap;
       }

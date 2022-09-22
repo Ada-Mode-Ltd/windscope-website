@@ -1,14 +1,19 @@
+{% assign links = nav %}
+
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ pageTitle }}</title>
-    <link rel="stylesheet" href="/assets/css/index.css">
-  </head>
-  <body>
-    <header class="wrapper">{% include 'partials/nav.liquid' %}</header>
-    {{ content }}
-    {% include 'partials/footer.liquid' %}
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ pageTitle }}</title>
+  <link rel="stylesheet" href="/assets/css/index.css">
+</head>
+
+<body>
+  <header class="wrapper">{% include 'partials/nav.liquid' %}</header>
+  {{ content }}
+  {% include 'partials/footer.liquid' %}
+</body>
+
 </html>
