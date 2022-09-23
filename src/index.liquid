@@ -2,26 +2,24 @@
 layout: site
 ---
 <section class="homepage-hero" id="hero">
-    <div class="wrapper">
-        <div class="text">
-            <h1>Advanced wind turbine health monitoring</h1>
-            <p>Conduct maintenance at the right time to maximise turbine availability, minimise cost and increase
-                workforce
-                safety.</p>
-            {% assign buttonType = 'primary' %}
-            {% assign buttonLink = '#' %}
-            {% assign buttonText = 'Book a demo' %}
-            {% include 'components/button.liquid' %}
-        </div>
-        <img src="/assets/img/Homepage-hero-image.svg" alt="">
-        <div class="small">
-            <p>Built by</p>
-            <div class="flex">
-                <div class="logo">
-                    <img src="/assets/img/ada_mode_logo.svg" class="logo" data-light alt="">
-                </div>
-                <p>Backed by our experience in developing cutting-edge AI for power and utility operators.</p>
+    <div class="text wrapper">
+        <h1>Advanced wind turbine health monitoring</h1>
+        <p>Conduct maintenance at the right time to maximise turbine availability, minimise cost and increase
+            workforce
+            safety.</p>
+        {% assign buttonType = 'primary' %}
+        {% assign buttonLink = '#' %}
+        {% assign buttonText = 'Book a demo' %}
+        {% include 'components/button.liquid' %}
+    </div>
+    <div class="small wrapper">
+        <p>Built by</p>
+        <div class="flex">
+            <div class="logo">
+                <img src="/assets/img/ada_mode_logo.svg" class="logo" data-light alt="">
             </div>
+            <p>Backed by our experience in developing cutting-edge AI for power and utility operators.</p>
         </div>
     </div>
+    <img src="/assets/img/Homepage-hero-image.svg" alt="">
 </section>
