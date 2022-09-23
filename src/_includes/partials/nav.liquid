@@ -1,19 +1,12 @@
-{% assign isDesign = page | isDesignSystem %}
-
-{% if isDesign %}
-{% assign links = collections.design %}
-{% else %}
 {% assign links = nav %}
-{% endif %}
 
 <nav class="page" data-page-nav>
     <div class="left">
         {% include 'svg/windscope_logo.svg' %}
         <span data-desktop-links>
             {% for link in links %}
-            {% assign currentLink = link | navLink %}
             <li>
-                <a class="text-link secondary" href="{{ currentLink.path }}">{{ currentLink.title }}</a>
+                <a class="text-link secondary" href="{{ link.path }}">{{ link.title }}</a>
             </li>
             {% endfor %}
         </span>
@@ -21,13 +14,8 @@
     <div class="right">
         {% assign buttonType = 'primary' %}
         {% assign buttonLink = '#' %}
-        {% unless buttonText %}
-        {% assign buttonText = 'Sign in' %}
-        {% endunless %}
         {% assign buttonIcon = false %}
-        {% unless isDesign %}
         <a href="#" class="text-link secondary" data-desktop-links>Contact sales</a>
-        {% endunless %}
         <span data-desktop-links>{% include 'components/button.liquid' %}</span>
         <div data-menu-container>
             <button aria-haspopup="true" class="c-header__menu-btn" data-btn="menu" hidden="true">
@@ -43,16 +31,13 @@
                 <nav class="c-header__nav">
                     <ul class="c-header__list">
                         {% for link in links %}
-                        {% assign currentLink = link | navLink %}
                         <li>
-                            <a class="text-link secondary" href="{{ currentLink.url }}">{{ currentLink.title }}</a>
+                            <a class="text-link secondary" href="{{ link.url }}">{{ link.title }}</a>
                         </li>
                         {% endfor %}
                     </ul>
                     <div>
-                        {% unless isDesign %}
                         <a href="#" class="text-link secondary" data-desktop-links>Contact sales</a>
-                        {% endunless %}
                         <span data-desktop-links>{% include 'components/button.liquid' %}</span>
                     </div>
                 </nav>
