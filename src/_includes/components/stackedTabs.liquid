@@ -23,37 +23,42 @@
     const totalTabs = parseInt(stack.dataset.tabs);
     const images = stack.querySelectorAll('.image[data-tab]');
 
+    // Loop through the tabs changing the active tab every 5000ms, or when a tab is clicked
+    let activeTab = parseInt(stack.querySelector('.text[data-active]').dataset.tab);
+    let intervalID = setInterval(() => {
+        if (activeTab < totalTabs - 1) {
+            activeTab++;
+        } else {
+            activeTab = 0;
+        }
+        changeTab(activeTab);
+    }, 5000);
+
     tabs.forEach(tab => {
+        tab.setAttribute('data-loop', '')
         tab.addEventListener('click', () => {
-            const tabNumber = tab.dataset.tab;
-            tabs.forEach(tab => {
-                const tabNumber = tab.dataset.tab;
-                tab.removeAttribute('data-active');
-                images[tabNumber].removeAttribute('data-active');
-            });
-            tab.setAttribute('data-active', '');
-            images[tabNumber].setAttribute('data-active', '');
+            clearInterval(intervalID);
+            changeTab(tab.dataset.tab);
+            intervalID = setInterval(() => {
+                if (activeTab < totalTabs - 1) {
+                    activeTab++;
+                } else {
+                    activeTab = 0;
+                }
+                changeTab(activeTab);
+            }, 5000);
         });
     });
 
-
-
-    // Change active tab after 5 seconds and repeat indefinitely
-    let activeTab = parseInt(stack.querySelector('.text[data-active]').dataset.tab);
-    setInterval(() => {
-        console.log({
-            activeTab
-        });
+    function changeTab(tab) {
         tabs.forEach(tab => {
-            const tabNumber = tab.dataset.tab;
             tab.removeAttribute('data-active');
-            images[tabNumber].removeAttribute('data-active');
         });
-        tabs[activeTab].setAttribute('data-active', '');
-        images[activeTab].setAttribute('data-active', '');
-        activeTab++;
-        if (activeTab >= totalTabs) {
-            activeTab = 0;
-        }
-    }, 5000);
+        images.forEach(image => {
+            image.removeAttribute('data-active');
+        });
+        tabs[tab].setAttribute('data-active', '');
+        images[tab].setAttribute('data-active', '');
+        activeTab = parseInt(tab);
+    }
 </script>
