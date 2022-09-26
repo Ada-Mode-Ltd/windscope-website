@@ -24,7 +24,7 @@ module.exports = function(eleventyConfig) {
 	// Shortcodes
 	eleventyConfig.addShortcode("currentYear", () => `${new Date().getFullYear()}`); // Because copyright text in the footer ...
 	eleventyConfig.addShortcode("sanityImageUrl", (image) => {
-		const url = urlFor(image.asset)
+		const url = urlFor(image.asset).auto('format').url()
 		return `<img src="${url}" alt="${image.altText}" />`
 	})
 
