@@ -1,0 +1,59 @@
+<h2 class="text-center">{{ sectionTitle }}</h2>
+
+<div class="stacked-tabs" data-tabs="{{ tabs.size }}">
+    {% for tab in tabs %}
+    <div class="text" data-tab="{{ forloop.index0 }}" {% if forloop.first == true %} data-active {% endif %}>
+        <p class="h5">{{ tab.title }}</p>
+        <p>{{ tab.text }}</p>
+    </div>
+    <div class="image" data-tab="{{ forloop.index0 }}" {% if forloop.first == true %} data-active {% endif %}>
+        <!-- <img src="{{ tab.image }}" alt=""> -->
+        {% sanityImageUrl tab.image %}
+    </div>
+    {% endfor %}
+</div>
+
+<p>
+    <a href="{{ sectionLink.url }}">{{ sectionLink.text }}</a>
+</p>
+
+<script>
+    const stack = document.querySelector('.stacked-tabs');
+    const tabs = stack.querySelectorAll('.text[data-tab]');
+    const totalTabs = parseInt(stack.dataset.tabs);
+    const images = stack.querySelectorAll('.image[data-tab]');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const tabNumber = tab.dataset.tab;
+            tabs.forEach(tab => {
+                const tabNumber = tab.dataset.tab;
+                tab.removeAttribute('data-active');
+                images[tabNumber].removeAttribute('data-active');
+            });
+            tab.setAttribute('data-active', '');
+            images[tabNumber].setAttribute('data-active', '');
+        });
+    });
+
+
+
+    // Change active tab after 5 seconds and repeat indefinitely
+    let activeTab = parseInt(stack.querySelector('.text[data-active]').dataset.tab);
+    setInterval(() => {
+        console.log({
+            activeTab
+        });
+        tabs.forEach(tab => {
+            const tabNumber = tab.dataset.tab;
+            tab.removeAttribute('data-active');
+            images[tabNumber].removeAttribute('data-active');
+        });
+        tabs[activeTab].setAttribute('data-active', '');
+        images[activeTab].setAttribute('data-active', '');
+        activeTab++;
+        if (activeTab >= totalTabs) {
+            activeTab = 0;
+        }
+    }, 5000);
+</script>

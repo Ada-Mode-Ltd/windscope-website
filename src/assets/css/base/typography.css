@@ -105,5 +105,9 @@ p,
   font-variation-settings: "wght" 700;
 }
 
+.text-center {
+  text-align: center;
+}
+
 @mixin text-link primary, var(--ws-bright-blue), var(--ws-bright-blue-dark);
 @mixin text-link secondary, var(--ws-grey), var(--ws-bright-blue);

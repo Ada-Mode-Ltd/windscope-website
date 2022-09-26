@@ -1,5 +1,13 @@
 const EleventyPluginNavigation = require('@11ty/eleventy-navigation')
 const EleventyVitePlugin = require('@11ty/eleventy-plugin-vite')
+const {client} = require('./src/utils/sanity')
+const imageUrlBuilder = require('@sanity/image-url')
+
+const builder = imageUrlBuilder(client)
+
+function urlFor(source) {
+  return builder.image(source)
+}
 
 const rollupPluginCritical = require('rollup-plugin-critical').default
 
@@ -13,19 +21,12 @@ module.exports = function(eleventyConfig) {
 		return page.url.startsWith('/design-system/')
 	})
 
-	eleventyConfig.addFilter('navLink', function (obj) {
-
-		const path = obj.url || obj.path
-		const title = obj?.data?.title || obj.title
-
-		return {
-			title,
-			path,
-		}
-	})
-
 	// Shortcodes
 	eleventyConfig.addShortcode("currentYear", () => `${new Date().getFullYear()}`); // Because copyright text in the footer ...
+	eleventyConfig.addShortcode("sanityImageUrl", (image) => {
+		const url = urlFor(image.asset)
+		return `<img src="${url}" alt="${image.altText}" />`
+	})
 
 
   eleventyConfig.addPlugin(EleventyPluginNavigation)

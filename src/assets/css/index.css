@@ -22,6 +22,7 @@
 @import "./components/person.css";
 @import "./components/cta-section.css";
 @import "./components/prod-feature.css";
+@import "./components/stacked-tabs.css";
 
 body {
   background: var(--ws-snow-grey);

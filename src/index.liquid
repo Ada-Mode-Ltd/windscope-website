@@ -23,3 +23,17 @@ layout: site
     </div>
     <img src="/assets/img/Homepage-hero-image.svg" alt="">
 </section>
+<section>
+    <div class="wrapper flow">
+        {% assign tabs = homepage.tabs.tabs %}
+        {% assign sectionTitle = homepage.tabs.title %}
+        {% assign sectionLink = homepage.tabs.sectionLink %}
+        {% include 'components/stackedTabs.liquid' %}
+    </div>
+</section>
+<section>
+    {{ homepage.quotes }}
+</section>
+<section>
+    {{ homepage.feature }}
+</section>
