@@ -1,5 +1,5 @@
 {
-  "extends": ["wesbos", "eslint-config-postcss"],
+  "extends": ["wesbos"],
   "rules": {
     "selector-nested-pattern": "^&",
     "no-console": 2,
@@ -14,7 +14,7 @@
         "svelteStrictMode": true,
         "svelteBracketNewLine": true,
         "svelteAllowShorthand": true,
-        "plugins": ["prettier-plugin-svelte"]
+        "plugins": ["prettier-plugin-svelte", "postcss-nested"]
       }
     ]
   }

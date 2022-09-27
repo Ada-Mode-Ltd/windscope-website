@@ -45,5 +45,8 @@
   },
   "dependencies": {
     "focus-trap": "^7.0.0"
+  },
+  "eslintConfig": {
+    "extends": "eslint-config-postcss"
   }
 }

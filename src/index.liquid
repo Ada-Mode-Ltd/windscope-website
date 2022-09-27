@@ -32,7 +32,15 @@ layout: site
     </div>
 </section>
 <section>
-    {{ homepage.quotes }}
+    <div class="wrapper">
+        <div class="quotes">
+            {% assign quotes = homepage.quotes %}
+            {% for quote in quotes %}
+            {% assign quoteIndex = forloop.index %}
+            {% include 'components/quote.liquid' %}
+            {% endfor %}
+        </div>
+    </div>
 </section>
 <section>
     {{ homepage.feature }}
