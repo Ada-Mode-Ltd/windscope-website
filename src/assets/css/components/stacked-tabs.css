@@ -1,10 +1,20 @@
 .stacked-tabs {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
     gap: var(--space-16);
 
-    & > .text {
+    
+    ul {
+        padding: 0;
+        list-style: none;
+
+        a.section-link {
+            padding-inline-start: var(--space-24);
+        }
+    }
+
+    & .text {
         grid-column: 1/2;
         padding: var(--space-32) var(--space-24);
         background-color: var(--ws-snow-grey);
@@ -18,22 +28,22 @@
         overflow: hidden;
     }
 
-    & > .image {
+    & .image {
         grid-column: 2/3;
         grid-row: -1/1;
         display: none;
     }
     
-    & > .text[data-active], & > .text:hover {
+    & .text[data-active], & .text:hover {
         background-color: var(--ws-white);
         box-shadow: var(--shadow-light);
     }
 
-    & > .image[data-active] {
+    & .image[data-active] {
         display: block;
     }
 
-    & > .text[data-active][data-loop]::before {
+    & .text[data-active][data-loop]::before {
         content: '';
         position: absolute;
         top: 0;

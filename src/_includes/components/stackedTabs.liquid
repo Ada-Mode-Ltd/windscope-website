@@ -1,11 +1,19 @@
 <h2 class="text-center">{{ sectionTitle }}</h2>
 
 <div class="stacked-tabs" data-tabs="{{ tabs.size }}">
+    <ul role="tablist" class="flow">
+        {% for tab in tabs %}
+        <li role="tab" tabindex="0" class="text" data-tab="{{ forloop.index0 }}" {% if forloop.first == true %}
+            data-active aria-selected="true" {% endif %}>
+            <p class="h5">{{ tab.title }}</p>
+            <p>{{ tab.text }}</p>
+        </li>
+        {% endfor %}
+        {% if sectionLink %}
+        <li><a class="section-link text-link" href="{{ sectionLink.url }}">{{ sectionLink.text }}</a></li>
+        {% endif %}
+    </ul>
     {% for tab in tabs %}
-    <div class="text" data-tab="{{ forloop.index0 }}" {% if forloop.first == true %} data-active {% endif %}>
-        <p class="h5">{{ tab.title }}</p>
-        <p>{{ tab.text }}</p>
-    </div>
     <div class="image" data-tab="{{ forloop.index0 }}" {% if forloop.first == true %} data-active {% endif %}>
         <!-- <img src="{{ tab.image }}" alt=""> -->
         {% sanityImageUrl tab.image %}
@@ -13,15 +21,25 @@
     {% endfor %}
 </div>
 
-<p>
-    <a href="{{ sectionLink.url }}">{{ sectionLink.text }}</a>
-</p>
 
 <script>
     const stack = document.querySelector('.stacked-tabs');
     const tabs = stack.querySelectorAll('.text[data-tab]');
     const totalTabs = parseInt(stack.dataset.tabs);
     const images = stack.querySelectorAll('.image[data-tab]');
+
+    function a11yClick(event) {
+        if (event.type === 'click') {
+            return true;
+        } else if (event.type === 'keypress') {
+            var code = event.charCode || event.keyCode;
+            if ((code === 32) || (code === 13)) {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
 
     // Loop through the tabs changing the active tab every 5000ms, or when a tab is clicked
     let activeTab = parseInt(stack.querySelector('.text[data-active]').dataset.tab);
@@ -48,16 +66,34 @@
                 changeTab(activeTab);
             }, 5000);
         });
+
+        tab.addEventListener('keypress', (e) => {
+            if (a11yClick(e)) {
+                e.preventDefault();
+                clearInterval(intervalID);
+                changeTab(tab.dataset.tab);
+                intervalID = setInterval(() => {
+                    if (activeTab < totalTabs - 1) {
+                        activeTab++;
+                    } else {
+                        activeTab = 0;
+                    }
+                    changeTab(activeTab);
+                }, 5000);
+            }
+        });
     });
 
     function changeTab(tab) {
         tabs.forEach(tab => {
             tab.removeAttribute('data-active');
+            tab.removeAttribute('aria-selected');
         });
         images.forEach(image => {
             image.removeAttribute('data-active');
         });
         tabs[tab].setAttribute('data-active', '');
+        tabs[tab].setAttribute('aria-selected', 'true');
         images[tab].setAttribute('data-active', '');
         activeTab = parseInt(tab);
     }
