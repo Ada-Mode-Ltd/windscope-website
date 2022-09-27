@@ -8,25 +8,33 @@
     ul {
         padding: 0;
         list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-16);
 
         a.section-link {
             padding-inline-start: var(--space-24);
+            font-size: var(--text-medium);
+        }
+
+        & li {
+            grid-column: 1/2;
+            padding: var(--space-32) var(--space-24);
+            background-color: var(--ws-snow-grey);
+            border-radius: var(--space-16);
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            position: relative;
+            overflow: hidden;
         }
     }
 
     & .text {
-        grid-column: 1/2;
-        padding: var(--space-32) var(--space-24);
-        background-color: var(--ws-snow-grey);
-        border-radius: var(--space-16);
         display: flex;
-        flex-direction: column;
-        gap: var(--space-24);
-        cursor: pointer;
-        transition: all 0.2s ease-in-out;
-        position: relative;
-        overflow: hidden;
+            flex-direction: column;
+            gap: var(--space-24);
     }
+
 
     & .image {
         grid-column: 2/3;
@@ -38,9 +46,14 @@
             height: auto;
             object-fit: contain;
         }
+
+    }
+
+    & .image--mobile {
+        display: none;
     }
     
-    & .text[data-active], & .text:hover {
+    & li[data-active], & li[role]:hover {
         background-color: var(--ws-white);
         box-shadow: var(--shadow-light);
     }
@@ -49,7 +62,7 @@
         display: block;
     }
 
-    & .text[data-active][data-loop]::before {
+    & li[data-active][data-loop]::before {
         content: '';
         position: absolute;
         top: 0;
@@ -61,12 +74,49 @@
         animation: active 5s linear 1 forwards;
     }
 
-    @keyframes active {
-        0% {
-            height: 0%;
+}
+
+.stacked-tabs--mobile {
+    grid-template-columns: 1fr;
+
+    ul {
+        display: flex;
+        flex-direction: column;
+
+        & li {
+            display: flex;
+            flex-direction: column-reverse;
+            gap: var(--space-56);
+            cursor: default;
+            pointer-events: none;
         }
-        100% {
-            height: 100%;
+    }
+
+    & li[data-active][data-loop]::before {
+        display: none;
+    }
+
+    & .image, .image[data-active] {
+        display: none;
+    }
+
+    & .image--mobile {
+        display: block;
+
+        & picture, img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
         }
+    }
+
+}
+
+@keyframes active {
+    0% {
+        height: 0%;
+    }
+    100% {
+        height: 100%;
     }
 }

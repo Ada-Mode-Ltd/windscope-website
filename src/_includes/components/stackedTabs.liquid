@@ -3,14 +3,25 @@
 <div class="stacked-tabs" data-tabs="{{ tabs.size }}">
     <ul role="tablist" class="flow">
         {% for tab in tabs %}
-        <li role="tab" tabindex="0" class="text" data-tab="{{ forloop.index0 }}" {% if forloop.first == true %}
-            data-active aria-selected="true" {% endif %}>
-            <p class="h5">{{ tab.title }}</p>
-            <p>{{ tab.text }}</p>
+        <li role="presentation" data-tab="{{ forloop.index0 }}" {% if forloop.first == true %} data-active
+            aria-selected="true" {% endif %}>
+            <div role="tab" tabindex="0" class="text">
+                <p class="h5">{{ tab.title }}</p>
+                <p>{{ tab.text }}</p>
+            </div>
+            <div class="image--mobile" data-tab="{{ forloop.index0 }}" {% if forloop.first == true %} data-active
+                {% endif %}>
+                <!-- <img src="{{ tab.image }}" alt=""> -->
+                {% capture imgUrl %}
+                {% sanityImageUrl tab.image%}
+                {% endcapture %}
+
+                {% image imgUrl, tab.image.altText %}
+            </div>
         </li>
         {% endfor %}
         {% if sectionLink %}
-        <li><a class="section-link text-link" href="{{ sectionLink.url }}">{{ sectionLink.text }}</a></li>
+        <li><a class="section-link text-link primary" href="{{ sectionLink.url }}">{{ sectionLink.text }}</a></li>
         {% endif %}
     </ul>
     {% for tab in tabs %}
@@ -28,9 +39,40 @@
 
 <script>
     const stack = document.querySelector('.stacked-tabs');
-    const tabs = stack.querySelectorAll('.text[data-tab]');
+    const tabs = stack.querySelectorAll('li[data-tab]');
     const totalTabs = parseInt(stack.dataset.tabs);
     const images = stack.querySelectorAll('.image[data-tab]');
+
+    // Detect window width
+    let windowWidth = window.innerWidth;
+    // check if window width is less than 768px
+    function isMobile() {
+        return windowWidth < 768 ? true : false;
+    }
+
+    // Check if window is mobile on resize
+    window.addEventListener('resize', function () {
+        windowWidth = window.innerWidth;
+        if (isMobile()) {
+            // add mobile class to stacked-tabs
+            document.querySelector('.stacked-tabs').classList.add('stacked-tabs--mobile');
+        } else {
+            // remove mobile class from stacked-tabs
+            document.querySelector('.stacked-tabs').classList.remove('stacked-tabs--mobile');
+            tabListener();
+        }
+    })
+
+
+    if (isMobile()) {
+        // add mobile class to stacked-tabs
+        document.querySelector('.stacked-tabs').classList.add('stacked-tabs--mobile');
+    } else {
+        // remove mobile class from stacked-tabs
+        document.querySelector('.stacked-tabs').classList.remove('stacked-tabs--mobile');
+        tabListener();
+    }
+
 
     function a11yClick(event) {
         if (event.type === 'click') {
@@ -46,34 +88,22 @@
     }
 
     // Loop through the tabs changing the active tab every 5000ms, or when a tab is clicked
-    let activeTab = parseInt(stack.querySelector('.text[data-active]').dataset.tab);
+    let activeTab = parseInt(stack.querySelector('li[data-active]').dataset.tab);
     let intervalID = setInterval(() => {
-        if (activeTab < totalTabs - 1) {
-            activeTab++;
-        } else {
-            activeTab = 0;
+        if (!isMobile()) {
+            if (activeTab < totalTabs - 1) {
+                activeTab++;
+            } else {
+                activeTab = 0;
+            }
+            changeTab(activeTab);
         }
-        changeTab(activeTab);
     }, 5000);
 
-    tabs.forEach(tab => {
-        tab.setAttribute('data-loop', '')
-        tab.addEventListener('click', () => {
-            clearInterval(intervalID);
-            changeTab(tab.dataset.tab);
-            intervalID = setInterval(() => {
-                if (activeTab < totalTabs - 1) {
-                    activeTab++;
-                } else {
-                    activeTab = 0;
-                }
-                changeTab(activeTab);
-            }, 5000);
-        });
-
-        tab.addEventListener('keypress', (e) => {
-            if (a11yClick(e)) {
-                e.preventDefault();
+    function tabListener() {
+        tabs.forEach(tab => {
+            tab.setAttribute('data-loop', '')
+            tab.addEventListener('click', () => {
                 clearInterval(intervalID);
                 changeTab(tab.dataset.tab);
                 intervalID = setInterval(() => {
@@ -84,9 +114,26 @@
                     }
                     changeTab(activeTab);
                 }, 5000);
-            }
+            });
+
+            tab.addEventListener('keypress', (e) => {
+                if (a11yClick(e)) {
+                    e.preventDefault();
+                    clearInterval(intervalID);
+                    changeTab(tab.dataset.tab);
+                    intervalID = setInterval(() => {
+                        if (activeTab < totalTabs - 1) {
+                            activeTab++;
+                        } else {
+                            activeTab = 0;
+                        }
+                        changeTab(activeTab);
+                    }, 5000);
+                }
+            });
         });
-    });
+    }
+
 
     function changeTab(tab) {
         tabs.forEach(tab => {
