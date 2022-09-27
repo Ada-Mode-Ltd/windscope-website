@@ -9,10 +9,16 @@
 
 {% if quotes.size > 1 %}
 <div class=" quote-nav">
+    <button class="quote-nav__item--prev">
+        {% include 'svg/arrow-right.svg' %}
+    </button>
     {% for quote in quotes %}
     {% assign quoteIndex = forloop.index0 %}
     <button class="quote-nav__item" data-quote="{{ quoteIndex }}" />
     {% endfor %}
+    <button class="quote-nav__item--next">
+        {% include 'svg/arrow-right.svg' %}
+    </button>
 </div>
 
 <script>
@@ -22,6 +28,21 @@
     const totalQuotes = quotes.length;
     const quoteNav = document.querySelector('.quote-nav');
     const quoteNavItems = quoteNav.querySelectorAll('.quote-nav__item');
+    const quoteNavPrev = quoteNav.querySelector('.quote-nav__item--prev');
+    const quoteNavNext = quoteNav.querySelector('.quote-nav__item--next');
+
+    function a11yClick(event) {
+        if (event.type === 'click') {
+            return true;
+        } else if (event.type === 'keypress') {
+            var code = event.charCode || event.keyCode;
+            if ((code === 32) || (code === 13)) {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
 
     // Set initial quote
     let currentQuote = 0;
@@ -29,29 +50,110 @@
     quoteNavItems[currentQuote].setAttribute('data-active', '');
 
     let activeQuote = parseInt(quoteHolder.querySelector('li.quote[data-active]').dataset.quote);
+    console.log({
+        activeQuote
+    });
+    if (activeQuote === 0) {
+        quoteNavPrev.setAttribute('disabled', '');
+    }
+
     quoteNavItems.forEach(item => {
         const quoteIndex = parseInt(item.dataset.quote);
-        item.addEventListener('click', () => {
-            scrollableSection.scrollTo({
-                top: 0,
-                left: quotes[quoteIndex].offsetLeft,
-                behavior: 'smooth'
-            });
+        item.addEventListener('click', (e) => {
+            if (a11yClick(e)) {
+                e.preventDefault();
+                changeQuote(quoteIndex);
+            }
+        });
 
-            quoteNavItems.forEach(nav => {
-                nav.removeAttribute('data-active');
-                nav.removeAttribute('aria-selected');
-            });
-
-            quotes.forEach(quote => {
-                quote.removeAttribute('data-active');
-            });
-
-            quoteNavItems[quoteIndex].setAttribute('data-active', '');
-            quoteNavItems[quoteIndex].setAttribute('aria-selected', 'true');
-            quotes[quoteIndex].setAttribute('data-active', '');
-            activeQuote = parseInt(quoteIndex);
+        item.addEventListener('keypress', (e) => {
+            if (a11yClick(e)) {
+                e.preventDefault();
+                changeQuote(quoteIndex);
+            }
         });
     })
+
+    quoteHolder.addEventListener('keydown', (e) => {
+        // Change quote on left/right arrow key press
+        if (e.keyCode === 37) {
+            e.preventDefault();
+            changeQuote(activeQuote - 1);
+        } else if (e.keyCode === 39) {
+            e.preventDefault();
+            changeQuote(activeQuote + 1);
+        }
+    })
+
+    quoteNavPrev.addEventListener('click', (e) => {
+        if (a11yClick(e)) {
+            e.preventDefault();
+            changeQuote(activeQuote - 1);
+        }
+    })
+
+    quoteNavNext.addEventListener('click', (e) => {
+        if (a11yClick(e)) {
+            e.preventDefault();
+            changeQuote(activeQuote + 1);
+        }
+    })
+
+    quoteNavPrev.addEventListener('keypress', (e) => {
+        if (a11yClick(e)) {
+            e.preventDefault();
+            changeQuote(activeQuote - 1);
+        }
+    })
+
+    quoteNavNext.addEventListener('keypress', (e) => {
+        if (a11yClick(e)) {
+            e.preventDefault();
+            changeQuote(activeQuote + 1);
+        }
+    })
+
+    function changeQuote(index) {
+        if (index === 0) {
+            quoteNavPrev.setAttribute('disabled', '');
+            quoteNavNext.removeAttribute('disabled');
+        } else if (index === totalQuotes - 1) {
+            quoteNavNext.setAttribute('disabled', '');
+            quoteNavPrev.removeAttribute('disabled');
+        } else {
+            quoteNavPrev.removeAttribute('disabled');
+            quoteNavNext.removeAttribute('disabled');
+        }
+
+        scrollableSection.scrollTo({
+            top: 0,
+            left: scrollableSection.scrollWidth / totalQuotes * index,
+            behavior: 'smooth'
+        });
+
+        console.log(scrollableSection.offsetLeft)
+
+        quoteNavItems.forEach(nav => {
+            nav.removeAttribute('data-active');
+            nav.removeAttribute('aria-selected');
+        });
+
+        quotes.forEach(quote => {
+            quote.removeAttribute('data-active');
+        });
+
+        quoteNavItems[index].setAttribute('data-active', '');
+        quoteNavItems[index].setAttribute('aria-selected', 'true');
+        quotes[index].setAttribute('data-active', '');
+        quotes[index].setAttribute('aria-selected', 'true ');
+
+        if (index === 0) {
+            activeQuote = 0;
+        } else if (index === totalQuotes - 1) {
+            activeQuote = totalQuotes - 1;
+        } else {
+            activeQuote = parseInt(index);
+        }
+    }
 </script>
 {% endif %}

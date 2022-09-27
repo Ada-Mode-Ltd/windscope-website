@@ -1,12 +1,13 @@
 .quote-holder > ul {
-  @mixin flex-row var(--space-32), center, flex-start;
-  overflow-x: auto;
+  @mixin flex-row var(--space-48), center, flex-start;
+  overflow-x: hidden;
   scroll-snap-type: x mandatory;
-  @mixin container-padding;
+  @mixin container-padding var(--space-104) 0;
+  scroll-behavior: smooth;
 
   @media (max-width: 768px) {
     padding: 0 inherit;  
-  }
+  } 
 }
 
 .quote {
@@ -22,7 +23,7 @@
   grid-template-columns: auto 1fr;
   color: var(--ws-grey);
   min-width: 100%;
-  width: 100%;
+  width: 100vw;
   scroll-snap-align: center;
 
   & > picture, img {
@@ -72,8 +73,34 @@
     border: none;
     cursor: pointer;
 
+    &:hover, &:focus {
+      background: var(--ws-ui-light-blue);
+    }
+    
     &[data-active] {
       background: var(--ws-bright-blue);
     }
-  }
+    
+    &[class^="quote-nav__item--"] {
+      height: 4rem;
+      width: 4rem;
+      background: var(--ws-ui-grey);
+      color: var(--ws-white);
+      display: grid;
+      place-items: center;
+      
+      &:hover, &:focus {
+        background: var(--ws-ui-light-blue);
+      }
+    }
+
+    &.quote-nav__item--prev {
+      transform: rotate(180deg);
+    }
+
+    &[class^="quote-nav__item--"][disabled] {
+      background: var(--ws-light-grey);
+      cursor: not-allowed;
+    }
+   }
 }
