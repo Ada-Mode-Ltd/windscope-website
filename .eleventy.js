@@ -2,6 +2,7 @@ const EleventyPluginNavigation = require('@11ty/eleventy-navigation')
 const EleventyVitePlugin = require('@11ty/eleventy-plugin-vite')
 const {client} = require('./src/utils/sanity')
 const imageUrlBuilder = require('@sanity/image-url')
+const imageShortcode = require('./src/_11ty/shortcodes/image')
 
 const builder = imageUrlBuilder(client)
 
@@ -22,10 +23,11 @@ module.exports = function(eleventyConfig) {
 	})
 
 	// Shortcodes
+	eleventyConfig.addShortcode("image", imageShortcode); // Because copyright text in the footer ...
 	eleventyConfig.addShortcode("currentYear", () => `${new Date().getFullYear()}`); // Because copyright text in the footer ...
 	eleventyConfig.addShortcode("sanityImageUrl", (image) => {
-		const url = urlFor(image.asset).auto('format').url()
-		return `<img src="${url}" alt="${image.altText}" />`
+		const url = urlFor(image.asset).url()
+		return url
 	})
 
 
@@ -98,7 +100,8 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("src/assets/css");
     eleventyConfig.addPassthroughCopy("src/assets/js");
     eleventyConfig.addPassthroughCopy("public/assets/fonts");
-    eleventyConfig.addPassthroughCopy("public/assets/img");
+	eleventyConfig.addPassthroughCopy("public/assets/img");
+	eleventyConfig.addPassthroughCopy("public/assets/img/remote");
 
     // Return your Object options:
     return {

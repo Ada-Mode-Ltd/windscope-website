@@ -13,6 +13,7 @@ package-lock.json
 _site/
 _dev
 .cache
+/public/assets/img/remote/
 
 # Misc
 .DS_Store

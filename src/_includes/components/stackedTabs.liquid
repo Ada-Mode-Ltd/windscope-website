@@ -16,7 +16,11 @@
     {% for tab in tabs %}
     <div class="image" data-tab="{{ forloop.index0 }}" {% if forloop.first == true %} data-active {% endif %}>
         <!-- <img src="{{ tab.image }}" alt=""> -->
-        {% sanityImageUrl tab.image %}
+        {% capture imgUrl %}
+        {% sanityImageUrl tab.image%}
+        {% endcapture %}
+
+        {% image imgUrl, tab.image.altText %}
     </div>
     {% endfor %}
 </div>
