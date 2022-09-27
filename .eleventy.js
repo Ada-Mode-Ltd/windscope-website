@@ -99,9 +99,7 @@ module.exports = function(eleventyConfig) {
 
     eleventyConfig.addPassthroughCopy("src/assets/css");
     eleventyConfig.addPassthroughCopy("src/assets/js");
-    eleventyConfig.addPassthroughCopy("public/assets/fonts");
-	eleventyConfig.addPassthroughCopy("public/assets/img");
-	eleventyConfig.addPassthroughCopy("public/assets/img/remote");
+    eleventyConfig.addPassthroughCopy("public/assets/**");
 
     // Return your Object options:
     return {
