@@ -31,17 +31,14 @@ layout: site
         {% include 'components/stackedTabs.liquid' %}
     </div>
 </section>
-<section>
-    <div class="wrapper">
-        <div class="quotes">
-            {% assign quotes = homepage.quotes %}
-            {% for quote in quotes %}
-            {% assign quoteIndex = forloop.index %}
-            {% include 'components/quote.liquid' %}
-            {% endfor %}
-        </div>
-    </div>
-</section>
+
 <section>
     {{ homepage.feature }}
+</section>
+
+<section>
+    <div class="wrapper">
+        {% assign quotes = homepage.quotes %}
+        {% include 'components/quotes.liquid' %}
+    </div>
 </section>

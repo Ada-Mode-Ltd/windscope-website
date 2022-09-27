@@ -1,0 +1,57 @@
+<div class="quote-holder" role="region" aria-label="quotes" tabindex="0">
+    <ul>
+        {% for quote in quotes %}
+        {% assign quoteIndex = forloop.index0 %}
+        {% include 'components/quote.liquid' %}
+        {% endfor %}
+    </ul>
+</div>
+
+{% if quotes.size > 1 %}
+<div class=" quote-nav">
+    {% for quote in quotes %}
+    {% assign quoteIndex = forloop.index0 %}
+    <button class="quote-nav__item" data-quote="{{ quoteIndex }}" />
+    {% endfor %}
+</div>
+
+<script>
+    const quoteHolder = document.querySelector('.quote-holder');
+    const scrollableSection = quoteHolder.querySelector('ul');
+    const quotes = quoteHolder.querySelectorAll('li.quote');
+    const totalQuotes = quotes.length;
+    const quoteNav = document.querySelector('.quote-nav');
+    const quoteNavItems = quoteNav.querySelectorAll('.quote-nav__item');
+
+    // Set initial quote
+    let currentQuote = 0;
+    quotes[currentQuote].setAttribute('data-active', '');
+    quoteNavItems[currentQuote].setAttribute('data-active', '');
+
+    let activeQuote = parseInt(quoteHolder.querySelector('li.quote[data-active]').dataset.quote);
+    quoteNavItems.forEach(item => {
+        const quoteIndex = parseInt(item.dataset.quote);
+        item.addEventListener('click', () => {
+            scrollableSection.scrollTo({
+                top: 0,
+                left: quotes[quoteIndex].offsetLeft,
+                behavior: 'smooth'
+            });
+
+            quoteNavItems.forEach(nav => {
+                nav.removeAttribute('data-active');
+                nav.removeAttribute('aria-selected');
+            });
+
+            quotes.forEach(quote => {
+                quote.removeAttribute('data-active');
+            });
+
+            quoteNavItems[quoteIndex].setAttribute('data-active', '');
+            quoteNavItems[quoteIndex].setAttribute('aria-selected', 'true');
+            quotes[quoteIndex].setAttribute('data-active', '');
+            activeQuote = parseInt(quoteIndex);
+        });
+    })
+</script>
+{% endif %}

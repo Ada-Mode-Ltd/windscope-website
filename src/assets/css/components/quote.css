@@ -1,8 +1,12 @@
-.quote-holder {
+.quote-holder > ul {
   @mixin flex-row var(--space-32), center, flex-start;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   @mixin container-padding;
+
+  @media (max-width: 768px) {
+    padding: 0 inherit;  
+  }
 }
 
 .quote {
@@ -19,10 +23,14 @@
   color: var(--ws-grey);
   min-width: 100%;
   width: 100%;
-  scroll-snap-align: start;
+  scroll-snap-align: center;
 
-  & > img {
+  & > picture, img {
     grid-area: partner;
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    object-fit: contain;
   }
 
   & > p {
@@ -38,10 +46,34 @@
 
   @media (max-width: 768px) {
     grid-template-areas:
+    "partner"
       "text"
-      "details"
-      "partner";
-    gap: var(--space-24);
+      "details";
+    gap: var(--space-48);
     grid-template-columns: 1fr;
+    max-width: calc(100vw - var(--space-72));
+
+    & > img {
+      justify-self: center;
+      margin-bottom: var(--space-24);
+    }
+  }
+}
+
+.quote-nav {
+  @mixin flex-row var(--space-32), center, center;
+  margin-top: var(--space-48);
+
+  button {
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    background: var(--ws-light-grey);
+    border: none;
+    cursor: pointer;
+
+    &[data-active] {
+      background: var(--ws-bright-blue);
+    }
   }
 }

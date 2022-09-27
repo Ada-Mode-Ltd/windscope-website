@@ -1,4 +1,4 @@
-<div class="quote" id="{{ quoteIndex }}">
+<li class="quote" id="quote-{{ quoteIndex }}" data-quote="{{ quoteIndex }}">
     <p>{{ quote.text }}</p>
     <small class="text--regular">
         {{ quote.attribution.name }}
@@ -10,4 +10,4 @@
     {% endcapture %}
 
     {% image imgUrl, '' %}
-</div>
+</li>
