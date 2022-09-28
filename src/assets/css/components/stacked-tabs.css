@@ -112,6 +112,14 @@
 
 }
 
+.no-js .stacked-tabs {
+    & li[role]:hover {
+        background-color: var(--ws-snow-grey);
+        box-shadow: none;
+        cursor: default;
+    }
+}
+
 @keyframes active {
     0% {
         height: 0%;
