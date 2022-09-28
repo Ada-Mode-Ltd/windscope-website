@@ -5,7 +5,7 @@
   @mixin container-padding var(--space-104) 0;
   scroll-behavior: smooth;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     padding: 0 inherit;  
   } 
 }
@@ -45,7 +45,7 @@
     grid-area: details;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     grid-template-areas:
     "partner"
       "text"
@@ -103,4 +103,14 @@
       cursor: not-allowed;
     }
    }
+}
+
+.no-js {
+  .quote-nav {
+    display: none;
+  }
+
+  .quote:not(:first-child) {
+    display: none;
+  }
 }

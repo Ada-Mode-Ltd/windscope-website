@@ -112,11 +112,50 @@
 
 }
 
-.no-js .stacked-tabs {
-    & li[role]:hover {
-        background-color: var(--ws-snow-grey);
-        box-shadow: none;
-        cursor: default;
+.no-js {
+    .stacked-tabs {
+        & li[role]:hover {
+            background-color: var(--ws-snow-grey);
+            box-shadow: none;
+            cursor: default;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .stacked-tabs {
+            grid-template-columns: 1fr;
+
+            ul {
+                display: flex;
+                flex-direction: column;
+        
+                & li {
+                    display: flex;
+                    flex-direction: column-reverse;
+                    gap: var(--space-56);
+                    cursor: default;
+                    pointer-events: none;
+                }
+            }
+        
+            & li[data-active][data-loop]::before {
+                display: none;
+            }
+        
+            & .image, .image[data-active] {
+                display: none;
+            }
+        
+            & .image--mobile {
+                display: block;
+        
+                & picture, img {
+                    width: 100%;
+                    height: auto;
+                    object-fit: contain;
+                }
+            }
+        }
     }
 }
 

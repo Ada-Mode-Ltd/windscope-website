@@ -12,7 +12,7 @@ section.homepage-hero {
     padding-block-end: var(--space-104);
     align-items: center;
     
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
         gap: var(--space-80);
         grid-template-columns: 1fr;
         grid-template-areas: "text"
@@ -34,7 +34,7 @@ section.homepage-hero {
         grid-area: text;
         font-size: var(--text-small);
 
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
             grid-area: small;
         }
 
