@@ -1,13 +1,21 @@
 <div class="product-feature" data-style="{{ featureStyle }}" data-image-placement="{{ featureImagePlacement }}">
     <div class="image-holder" {% if floatImage %} data-float-image="{{ floatImage }}" {% endif %}>
-        <img alt=" " src="/assets/img/demo_cta_image (1).png"/>
+        {% capture imgUrl %}
+        {% sanityImageUrl featureImage %}
+        {% endcapture %}
+
+        {% image imgUrl, featureImage.altText %}
     </div>
     <div class="content flow">
-        <p class="secondary-title">Predict failure</p>
-        <h3>From fleet, to farm, to turbine, to system</h3>
-        <p>Determine individual system health to predict and prevent failure events. Browse automatically generated alerts. Direct effective condition-based maintenance.</p>
+        <p class="secondary-title">{{ secondaryTitle }}</p>
+        <p class="h3">{{ featureTitle }}</p>
+        <p>{{ featureText }}</p>
+        {% if featureStyle == "large" %}
+        {% if feature.link %}
         <p>
-            <a class="text-link secondary" href="#">Book a demo →</a>
+            <a class="text-link secondary" href="{{ feature.link.url }}">{{ feature.link.text }}</a>
         </p>
+        {% endif %}
+        {% endif %}
     </div>
 </div>

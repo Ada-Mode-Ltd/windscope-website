@@ -33,7 +33,31 @@ layout: site
 </section>
 
 <section>
-    {{ homepage.feature }}
+    {{ homepage.feature | json }}
+    <div class="wrapper">
+        {% assign feature = homepage.feature %}
+        {% assign featureStyle = feature.featureType %}
+        {% if featureStyle == "large" %}
+        {% assign featureImage = feature.largeImage %}
+        {% assign featureTitle = feature.longTitle %}
+        {% assign featureText = feature.largeText %}
+        {% assign secondaryTitle = feature.secondaryTitle %}
+        {% elsif featureStyle == "medium" %}
+        {% assign featureImage = feature.mediumImage %}
+        {% assign featureTitle = feature.mediumTitle %}
+        {% assign featureText = feature.mediumText %}
+        {% assign secondaryTitle = null %}
+        {% else %}
+        {% assign featureImage = feature.smallImage %}
+        {% assign featureTitle = feature.smallTitle %}
+        {% assign featureText = feature.smallText %}
+        {% assign secondaryTitle = null %}
+        {% endif %}
+
+        {% assign featureImagePlacement = "left" %}
+        {% assign floatImage = false %}
+        {% include 'components/prod-feature.liquid' %}
+    </div>
 </section>
 
 <section>
