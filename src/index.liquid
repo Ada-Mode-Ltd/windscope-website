@@ -1,5 +1,11 @@
 ---
 layout: site
+ctaLink:
+    text: "Book a demo"
+    url: "#"
+ctaLinkSecondary:
+    text: "Join the beta"
+    url: "#"
 ---
 <section class="homepage-hero" id="hero">
     <div class="text wrapper">
@@ -67,3 +73,8 @@ layout: site
         {% include 'components/quotes.liquid' %}
     </div>
 </section>
+
+{% assign ctaTitle = "See how AI can transform your business." %}
+{% assign ctaText = "We are looking for beta partners to be some of the first to transform their farm or fleet through Windscope." %}
+
+{% include 'components/cta-section.liquid' %}

@@ -1,16 +1,18 @@
 {% if ctaCols %}
-    {% assign cols = ctaCols %}
+{% assign cols = ctaCols %}
 {% else %}
-    {% assign cols = 1 %}
+{% assign cols = 1 %}
 {% endif %}
 
 <section class="cta" data-cols="{{ cols }}">
     <div class="content">
-        <p class="h1" {% if editable %} contenteditable="true" {% endif %}>See how AI can transform your business.</p>
-        <p {% if editable %} contenteditable="true" {% endif %}>We are looking for beta partners to be some of the first to transform their farm or fleet through Windscope.</p>
+        <p class="h1">{{ ctaTitle }}</p>
+        <p>{{ ctaText }}</p>
         <div class="button-group">
-            <a class="button primary" href="#" {% if editable %} contenteditable="true" {% endif %}>Book a demo</a>
-            <a class="button secondary" href="#" {% if editable %} contenteditable="true" {% endif %}>Join the beta</a>
+            <a class="button primary" href="{{ ctaLink.url }}">{{ ctaLink.text }}</a>
+            {% if ctaLinkSecondary %}
+            <a class="button secondary" href="{{ ctaLinkSecondary.url }}">{{ ctaLinkSecondary.text }}</a>
+            {% endif %}
         </div>
     </div>
 </section>
