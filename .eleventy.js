@@ -3,6 +3,7 @@ const EleventyVitePlugin = require('@11ty/eleventy-plugin-vite')
 const {client} = require('./src/utils/sanity')
 const imageUrlBuilder = require('@sanity/image-url')
 const imageShortcode = require('./src/_11ty/shortcodes/image')
+const { toHTML } = require('@portabletext/to-html')
 
 const builder = imageUrlBuilder(client)
 
@@ -28,6 +29,15 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addShortcode("sanityImageUrl", (image) => {
 		const url = urlFor(image.asset).url()
 		return url
+	})
+
+	eleventyConfig.addShortcode("portableText", (text) => {
+		const html = toHTML(text, {
+			serializers: {
+				// Add custom serializers here
+			},
+		})
+		return html
 	})
 
 

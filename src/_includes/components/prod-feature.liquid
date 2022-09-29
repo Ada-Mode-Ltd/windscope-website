@@ -9,7 +9,7 @@
     <div class="content flow">
         <p class="secondary-title">{{ secondaryTitle }}</p>
         <p class="h3">{{ featureTitle }}</p>
-        <p>{{ featureText }}</p>
+        <p>{% portableText featureText %}</p>
         {% if featureStyle == "large" %}
         {% if feature.link %}
         <p>
