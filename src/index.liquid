@@ -33,10 +33,10 @@ layout: site
 </section>
 
 <section>
-    {{ homepage.feature | json }}
     <div class="wrapper">
         {% assign feature = homepage.feature %}
         {% assign featureStyle = feature.featureType %}
+
         {% if featureStyle == "large" %}
         {% assign featureImage = feature.largeImage %}
         {% assign featureTitle = feature.longTitle %}
@@ -56,6 +56,7 @@ layout: site
 
         {% assign featureImagePlacement = "left" %}
         {% assign floatImage = false %}
+
         {% include 'components/prod-feature.liquid' %}
     </div>
 </section>
