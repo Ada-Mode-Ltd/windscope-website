@@ -1,0 +1,4 @@
+article.text-page {
+    padding-inline: var(--space-144);
+    padding-block: var(--space-56);
+}

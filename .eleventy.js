@@ -4,6 +4,8 @@ const {client} = require('./src/utils/sanity')
 const imageUrlBuilder = require('@sanity/image-url')
 const imageShortcode = require('./src/_11ty/shortcodes/image')
 const { toHTML } = require('@portabletext/to-html')
+const dayjs = require('dayjs')
+
 
 const builder = imageUrlBuilder(client)
 
@@ -21,6 +23,15 @@ module.exports = function(eleventyConfig) {
 	// Check if the page is part of the Design System
 	eleventyConfig.addFilter('isDesignSystem', function (page) {
 		return page.url.startsWith('/design-system/')
+	})
+
+	eleventyConfig.addFilter('w3cDate', function(value) {
+		const dateObject = new Date(value);
+    	return dateObject.toISOString();
+	})
+
+	eleventyConfig.addFilter('dateFormat', function(value) {
+		return dayjs(value).format('MMMM DD, YYYY')
 	})
 
 	// Shortcodes

@@ -1,0 +1,19 @@
+---
+layout: site
+pagination:
+    data: textPages
+    alias: page
+    size: 1
+permalink: /{{ page.slug.current | slug }}/index.html
+---
+<section>
+    <div class="wrapper flow text-page-header">
+        <p class="text--small timestamp">Last updated: <time datetime="{{ page._updatedAt | w3cDate }}">{{ page._updatedAt | dateFormat }}</time></p>
+        <h1>{{ page.title }}</h1>
+    </div>
+</section>
+    <div class="wrapper">
+        <article class="text-page flow">
+            {% portableText page.body %}
+        </article>
+    </div>

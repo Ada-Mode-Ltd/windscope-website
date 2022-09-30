@@ -35,7 +35,7 @@
     "html": "liquid"
   },
   "files.associations": {
-    "*.html": "html",
+    "*.html": "liquid",
     "*.svelte": "svelte",
     "*.css": "postcss"
   },
