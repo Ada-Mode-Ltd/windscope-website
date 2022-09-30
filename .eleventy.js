@@ -1,17 +1,11 @@
 const EleventyPluginNavigation = require('@11ty/eleventy-navigation')
 const EleventyVitePlugin = require('@11ty/eleventy-plugin-vite')
-const {client} = require('./src/utils/sanity')
-const imageUrlBuilder = require('@sanity/image-url')
+
 const imageShortcode = require('./src/_11ty/shortcodes/image')
-const { toHTML } = require('@portabletext/to-html')
-const dayjs = require('dayjs')
+const { dateFormat, w3cDate } = require('./src/_11ty/filters/date')
+const sanityImageUrl = require('./src/_11ty/shortcodes/sanityImageUrl')
+const portableText = require('./src/_11ty/shortcodes/portableText')
 
-
-const builder = imageUrlBuilder(client)
-
-function urlFor(source) {
-  return builder.image(source)
-}
 
 const rollupPluginCritical = require('rollup-plugin-critical').default
 
@@ -25,31 +19,14 @@ module.exports = function(eleventyConfig) {
 		return page.url.startsWith('/design-system/')
 	})
 
-	eleventyConfig.addFilter('w3cDate', function(value) {
-		const dateObject = new Date(value);
-    	return dateObject.toISOString();
-	})
-
-	eleventyConfig.addFilter('dateFormat', function(value) {
-		return dayjs(value).format('MMMM DD, YYYY')
-	})
+	eleventyConfig.addFilter('w3cDate', w3cDate)
+	eleventyConfig.addFilter('dateFormat', dateFormat)
 
 	// Shortcodes
 	eleventyConfig.addShortcode("image", imageShortcode); // Because copyright text in the footer ...
 	eleventyConfig.addShortcode("currentYear", () => `${new Date().getFullYear()}`); // Because copyright text in the footer ...
-	eleventyConfig.addShortcode("sanityImageUrl", (image) => {
-		const url = urlFor(image.asset).url()
-		return url
-	})
-
-	eleventyConfig.addShortcode("portableText", (text) => {
-		const html = toHTML(text, {
-			serializers: {
-				// Add custom serializers here
-			},
-		})
-		return html
-	})
+	eleventyConfig.addShortcode("sanityImageUrl", sanityImageUrl)
+	eleventyConfig.addShortcode("portableText", portableText)
 
 
   eleventyConfig.addPlugin(EleventyPluginNavigation)
