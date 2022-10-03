@@ -109,5 +109,9 @@ p,
   text-align: center;
 }
 
+.color-primary {
+  color: var(--ws-bright-blue);
+}
+
 @mixin text-link primary, var(--ws-bright-blue), var(--ws-bright-blue-dark);
 @mixin text-link secondary, var(--ws-grey), var(--ws-bright-blue);

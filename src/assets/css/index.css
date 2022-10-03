@@ -14,6 +14,7 @@
 @import "./sections/footer.css";
 @import "./sections/homepage-hero.css";
 @import "./sections/article.css";
+@import "./sections/columns.css";
 @import "./sections/text-page-header.css";
 
 /* Components */
@@ -25,6 +26,7 @@
 @import "./components/cta-section.css";
 @import "./components/prod-feature.css";
 @import "./components/stacked-tabs.css";
+@import "./components/styled-ol.css";
 
 body {
   background: var(--ws-snow-grey);

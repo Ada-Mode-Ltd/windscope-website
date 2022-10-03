@@ -1,8 +1,8 @@
 ---
 layout: site
 ctaLink:
-    text: "Book a demo"
-    url: "#"
+text: "Book a demo"
+url: "#"
 ctaLinkSecondary:
     text: "Join the beta"
     url: "#"
@@ -29,6 +29,8 @@ ctaLinkSecondary:
     </div>
     <img src="/assets/img/Homepage-hero-image.svg" alt="">
 </section>
+
+<!-- Start of dynamic section -->
 <section>
     <div class="wrapper flow">
         {% assign tabs = homepage.tabs.tabs %}
@@ -71,6 +73,32 @@ ctaLinkSecondary:
     <div class="wrapper">
         {% assign quotes = homepage.quotes %}
         {% include 'components/quotes.liquid' %}
+    </div>
+</section>
+<!-- End of dynamic section -->
+
+<section>
+    <div class="wrapper columns" data-colums="2">
+        <div class="flow">
+            <p class="h5 color-primary">
+                Why choose windscope?
+            </p>
+            <h2 class="h3">Know what to
+                maintain, why
+                and when</h2>
+            <p>
+                Windscope monitors the health of the turbine at system level - providing greater forewarning of system
+                degradation and component failure.
+            </p>
+        </div>
+        <div class="flow">
+            <ol class="flow styled">
+                <li>Individual system health alerts</li>
+                <li>Automatic fault diagnosis and maintenance recommendations</li>
+                <li>Seamless integration with CMMS to help prioritise maintenance schedules</li>
+            </ol>
+            <p><a href="">Learn more about the product →</a></p>
+        </div>
     </div>
 </section>
 
