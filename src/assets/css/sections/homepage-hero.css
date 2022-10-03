@@ -1,72 +1,72 @@
 section.homepage-hero {
-    @mixin dark-bg;
+  @mixin dark-bg;
 
-    max-height: 100vh;
-    min-height: 50vh;
-    display: grid;
-    grid-template-areas: "text image"
-                         "text image";
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr auto;
-    gap: var(--space-96);
-    padding-block-end: var(--space-104);
-    align-items: center;
-    
+  max-height: 100vh;
+  min-height: 50vh;
+  display: grid;
+  grid-template-areas:
+    "text image"
+    "text image";
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr auto;
+  gap: var(--space-96);
+  padding-block-end: var(--space-104);
+  align-items: center;
+
+  @media (max-width: 1024px) {
+    gap: var(--space-80);
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "text"
+      "image"
+      "small";
+    padding-top: calc(var(--header-height, 7.125rem) + 4rem);
+  }
+
+  & > .text {
+    display: flex;
+    grid-area: text;
+    flex-direction: column;
+    gap: var(--space-24);
+    justify-self: flex-end;
+  }
+
+  & .small {
+    grid-row: 2/3;
+    grid-column: 1/2;
+    grid-area: text;
+    font-size: var(--text-small);
+
     @media (max-width: 1024px) {
-        gap: var(--space-80);
-        grid-template-columns: 1fr;
-        grid-template-areas: "text"
-                             "image"
-                             "small";
+      grid-area: small;
     }
 
-    & > .text {
-        display: flex;
-        grid-area: text;
-        flex-direction: column;
-        gap: var(--space-24);
-        justify-self: flex-end;
+    & p {
+      font-size: var(--text-small);
     }
 
-    & .small {
-        grid-row: 2/3;
-        grid-column: 1/2;
-        grid-area: text;
-        font-size: var(--text-small);
+    & .flex {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--space-24);
+      font-size: var(--text-small);
+      align-items: center;
 
-        @media (max-width: 1024px) {
-            grid-area: small;
-        }
-
-        & p {
-            font-size: var(--text-small);
-        }
-
-        & .flex {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: var(--space-24);
-            font-size: var(--text-small);
-            align-items: center;
-            
-
-            & > .logo > img, svg {
-                filter: invert(1) brightness(100);
-                width: 100%;
-            }
-        }
-            
-        
-    }
-
-    & > img, svg {
-        grid-area: image;
+      & > .logo > img,
+      svg {
+        filter: invert(1) brightness(100);
         width: 100%;
-        height: auto;
-        max-height: 80%;
-        object-fit: contain;
-        object-position: right;
+      }
     }
-    
-}
+  }
 
+  & > img,
+  svg {
+    grid-area: image;
+    width: 100%;
+    height: auto;
+    max-height: 80%;
+    object-fit: contain;
+    object-position: right;
+  }
+}

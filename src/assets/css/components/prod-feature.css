@@ -11,17 +11,21 @@
   &[data-style="large"] {
     grid-template-columns: 1fr 1fr;
     gap: var(--space-104);
+    @mixin mobile-large-feature;
 
     &[data-image-placement="left"] {
       grid-template-areas: "image content";
+      @mixin mobile-large-feature;
     }
 
     &[data-image-placement="right"] {
       grid-template-areas: "content image";
+      @mixin mobile-large-feature;
     }
 
     &:not([data-image-placement="left"]):not([data-image-placement="right"]) {
       grid-template-areas: "image" "content";
+      @mixin mobile-large-feature;
     }
 
     & > .image-holder {
@@ -32,6 +36,7 @@
       & img {
         grid-area: image;
         border-radius: 16px;
+        margin: auto;
       }
 
       &[data-float-image]::after {
@@ -85,8 +90,15 @@
       }
     }
   }
+}
 
+@define-mixin mobile-large-feature {
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      "image"
+      "content";
   }
+  justify-content: center;
+  align-items: center;
 }
