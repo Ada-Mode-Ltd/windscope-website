@@ -113,5 +113,13 @@ p,
   color: var(--ws-bright-blue);
 }
 
+.color-accent {
+  color: var(--ws-bright-green);
+}
+
+.color-secondary {
+  color: var(--ws-grey);
+}
+
 @mixin text-link primary, var(--ws-bright-blue), var(--ws-bright-blue-dark);
 @mixin text-link secondary, var(--ws-grey), var(--ws-bright-blue);

@@ -27,6 +27,7 @@
 @import "./components/prod-feature.css";
 @import "./components/stacked-tabs.css";
 @import "./components/styled-ol.css";
+@import "./components/comparison.css";
 
 body {
   background: var(--ws-snow-grey);

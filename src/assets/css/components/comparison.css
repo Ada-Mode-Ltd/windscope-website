@@ -1,0 +1,66 @@
+.comparison {
+  > div {
+    box-shadow: var(--shadow-light);
+
+    & :last-child {
+      border-radius: 0 0 8px 8px;
+    }
+
+    & :not(ul > li):first-child {
+      border-radius: 8px 8px 0 0;
+    }
+  }
+
+  p,
+  li {
+    padding: var(--space-32) var(--space-24);
+    border: 1px solid var(--ws-light-grey);
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    border: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(var(--comparison-rows, 3), 1fr);
+
+    & > li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-24);
+      position: relative;
+
+      &::before {
+        content: "";
+        display: block;
+        width: 1rem;
+        height: 1rem;
+        aspect-ratio: 1;
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin-top: 0.275rem;
+      }
+    }
+
+    &[data-marker="cross"] > li::before {
+      background-image: url("data:image/svg+xml,%3Csvg%20width%3D%2248%22%20height%3D%2248%22%20viewBox%3D%220%200%2048%2048%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M12.4501%2037.6501L10.3501%2035.5501L21.9001%2024.0001L10.3501%2012.4501L12.4501%2010.3501L24.0001%2021.9001L35.5501%2010.3501L37.6501%2012.4501L26.1001%2024.0001L37.6501%2035.5501L35.5501%2037.6501L24.0001%2026.1001L12.4501%2037.6501Z%22%20fill%3D%22%232A3245%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2Fsvg%3E");
+    }
+    &[data-marker="check"] > li::before {
+      color: var(--ws-bright-green);
+      background-image: url("data:image/svg+xml,%3Csvg%20width%3D%2248%22%20height%3D%2248%22%20viewBox%3D%220%200%2048%2048%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%09%3Cpath%20d%3D%22M18.9002%2035.7L7.7002%2024.5L9.8502%2022.35L18.9002%2031.4L38.1002%2012.2L40.2502%2014.35L18.9002%2035.7Z%22%20fill%3D%22%231fca51%22%20%2F%3E%0A%3C%2Fsvg%3E%0A");
+    }
+  }
+
+  & > div:first-child > ul > li:first-child::after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: calc(var(--space-144) * -1);
+    width: var(--space-144);
+    height: 4rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml,%3Csvg%20width%3D%2273%22%20height%3D%2230%22%20viewBox%3D%220%200%2073%2030%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cg%20opacity%3D%220.5%22%3E%0A%3Cpath%20opacity%3D%220.8%22%20d%3D%22M73%2015.4334L51.25%2027.9907L51.25%202.87598L73%2015.4334Z%22%20fill%3D%22%231FCA51%22%2F%3E%0A%3Cpath%20opacity%3D%220.3%22%20d%3D%22M51%2015.4334L29.25%2027.9907L29.25%202.87598L51%2015.4334Z%22%20fill%3D%22%231FCA51%22%2F%3E%0A%3Cpath%20opacity%3D%220.1%22%20d%3D%22M29%2015.4334L7.25%2027.9907L7.25%202.87598L29%2015.4334Z%22%20fill%3D%22%2352607B%22%2F%3E%0A%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A");
+  }
+}

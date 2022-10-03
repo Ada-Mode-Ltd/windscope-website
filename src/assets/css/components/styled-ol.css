@@ -5,12 +5,22 @@ ol.styled {
   flex-direction: column;
   gap: var(--space-24);
 
+  @media (max-width: 1024px) {
+    gap: var(--space-16);
+  }
+
   & > li {
     counter-increment: counter;
     margin: 0.25rem;
     display: flex;
     align-items: center;
     gap: var(--space-24);
+
+    @media (max-width: 1024px) {
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
   }
 
   & > li::before {
