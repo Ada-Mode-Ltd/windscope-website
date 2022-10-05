@@ -121,5 +121,10 @@ p,
   color: var(--ws-grey);
 }
 
+ul,
+ol {
+  font-size: var(--text-medium);
+}
+
 @mixin text-link primary, var(--ws-bright-blue), var(--ws-bright-blue-dark);
 @mixin text-link secondary, var(--ws-grey), var(--ws-bright-blue);
