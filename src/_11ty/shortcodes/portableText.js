@@ -1,17 +1,15 @@
 const { toHTML } = require('@portabletext/to-html')
+const image = require('./image')
+const imageUrl = require('./sanityImageUrl')
 
 const htm = require('htm')
 const vhtml = require('vhtml')
 const html = htm.bind(vhtml)
 
 const serializer = {
-    // types: {
-    //   image: ({value}) => html`<img src="${value.imageUrl}" />`,
-    //   callToAction: ({value, isInline}) =>
-    //     isInline
-    //       ? html`<a href="${value.url}">${value.text}</a>`
-    //       : html`<div class="callToAction">${value.text}</div>`,
-    // },
+    types: {
+      image: ({ value }) => html`<img src="${imageUrl(value)}" alt="${value.altText}" />`
+    },
   
     marks: {
         highlightBlue: ({children}) => html`<span class="color-primary">${children}</span>`,
@@ -19,8 +17,8 @@ const serializer = {
     },
 }
 
-const portableText = (text) => {
-    const output = toHTML(text, {components: serializer})
+const portableText = async (text) => {
+    const output = await toHTML(text, {components: serializer})
     
     return output
 }

@@ -11,4 +11,8 @@
   & > * {
     grid-row: auto;
   }
+
+  & > img {
+    margin: auto;
+  }
 }

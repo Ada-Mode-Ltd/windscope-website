@@ -9,7 +9,7 @@ permalink: /{{ thisPage.slug.current | slug }}/index.html
 
 {% for content in thisPage.body %}
     {% if content._type == 'pageHeading' %}
-     {% include "components/pageHeading.liquid" %}     
+        {% include "components/pageHeading.liquid" %}     
     {% endif %}
 
     {% if content._type == 'blockContent' %}
@@ -19,4 +19,53 @@ permalink: /{{ thisPage.slug.current | slug }}/index.html
         </article>
     </div>
     {% endif %}
+
+    {% if content._type == 'blockLayout' %}
+        <section>
+            <div class="wrapper columns">
+                {% assign textPlacement = content.layout %}
+                    {% capture imgUrl %}
+                        {% sanityImageUrl content.image %}
+                    {% endcapture %}
+                {% if textPlacement == 'left' %}
+                    <div class="flow">{% portableText content.text.content %}</div>
+                    {% image imgUrl, content.image.altText %}
+                {% else %}
+                    {% image imgUrl, content.image.altText %}
+                    <div class="flow">{% portableText content.text.content %}</div>
+                {% endif %}
+            </div>
+        </section>
+    {% endif %}
+
+    {% if content._type == 'quote' %}
+        <section>
+            <div class="wrapper">
+                {% assign quotes = content | makeArray %}
+                {% include 'components/quotes.liquid' %}
+            </div>
+        </section>
+    {% endif %}
+
+    {% if content._type == 'quoteCarousel' and content.allQuotes %}
+        <section>
+            <div class="wrapper">
+                {% assign quotes = allQuotes %}
+                {% include 'components/quotes.liquid' %}
+            </div>
+        </section>
+    {% elsif content._type == 'quoteCarousel' and content.allQuotes != true %}
+        <section>
+            <div class="wrapper">
+                {% assign quotes = content.quotes %}
+                {% include 'components/quotes.liquid' %}
+            </div>
+        </section>
+    {% endif %}
+
+    {% if content._type == 'ctaSection' %}
+        {% include 'components/cta-section.liquid' %} 
+    {% endif %}
+
+    <div class="wrapper">{{ content | json }}</div>
 {% endfor %}

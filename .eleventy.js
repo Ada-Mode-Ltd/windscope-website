@@ -5,6 +5,7 @@ const imageShortcode = require('./src/_11ty/shortcodes/image')
 const { dateFormat, w3cDate } = require('./src/_11ty/filters/date')
 const sanityImageUrl = require('./src/_11ty/shortcodes/sanityImageUrl')
 const portableText = require('./src/_11ty/shortcodes/portableText')
+const getReferences = require('./src/_11ty/shortcodes/getReference')
 
 
 const rollupPluginCritical = require('rollup-plugin-critical').default
@@ -21,12 +22,19 @@ module.exports = function(eleventyConfig) {
 
 	eleventyConfig.addFilter('w3cDate', w3cDate)
 	eleventyConfig.addFilter('dateFormat', dateFormat)
+	eleventyConfig.addFilter('makeArray', function(obj) {
+		return [obj]
+	});
+	eleventyConfig.addFilter('setId', function(content) {
+		return content?._key || content?._id
+	});
 
 	// Shortcodes
 	eleventyConfig.addShortcode("image", imageShortcode); // Because copyright text in the footer ...
 	eleventyConfig.addShortcode("currentYear", () => `${new Date().getFullYear()}`); // Because copyright text in the footer ...
 	eleventyConfig.addShortcode("sanityImageUrl", sanityImageUrl)
 	eleventyConfig.addShortcode("portableText", portableText)
+	eleventyConfig.addShortcode("getReferences", getReferences)
 
 
   eleventyConfig.addPlugin(EleventyPluginNavigation)

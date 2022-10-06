@@ -4,10 +4,21 @@
 {% assign cols = 1 %}
 {% endif %}
 
+{% if content %}
+    {% assign ctaTitle = content.title %}
+    {% assign ctaText = content.text %}
+    {% assign ctaLink = content.ctaButtons[0] %}
+    {% if content.ctaButtons[1] %}
+        {% assign ctaLinkSecondary = ctaButton[1] %}
+    {% endif %}
+{% endif %}
+
 <section class="cta" data-cols="{{ cols }}">
     <div class="content">
         <p class="h1">{{ ctaTitle }}</p>
-        <p>{{ ctaText }}</p>
+        {% if ctaText %}
+            <p>{{ ctaText }}</p>
+        {% endif %}
         <div class="button-group">
             <a class="button primary" href="{{ ctaLink.url }}">{{ ctaLink.text }}</a>
             {% if ctaLinkSecondary %}

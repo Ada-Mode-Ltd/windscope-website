@@ -1,4 +1,4 @@
-<div class="quote-holder" role="region" aria-label="quotes" tabindex="0">
+<div class="quote-holder" id="{{ content | setId }}" role="region" aria-label="quotes" tabindex="0">
     <ul>
         {% for quote in quotes %}
         {% assign quoteIndex = forloop.index0 %}
@@ -22,7 +22,7 @@
 </div>
 
 <script>
-    const quoteHolder = document.querySelector('.quote-holder');
+    const quoteHolder = document.getElementById('{{ content | setId }}');
     const scrollableSection = quoteHolder.querySelector('ul');
     const quotes = quoteHolder.querySelectorAll('li.quote');
     const totalQuotes = quotes.length;
