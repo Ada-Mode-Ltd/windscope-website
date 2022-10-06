@@ -4,7 +4,7 @@ pagination:
     data: pages
     alias: thisPage
     size: 1
-permalink: "/{{ thisPage.slug.current | slug }}/index.html"
+permalink: "{{ thisPage.slug.current | slug }}/index.html"
 ---
 
 {% for content in thisPage.body %}
