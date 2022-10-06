@@ -7,7 +7,7 @@ pagination:
 permalink: "{{ thisPage.slug.current | slugify }}/index.html"
 ---
 
-{% console thisPage.slug.current %}
+{% console thisPage %}
 
 {% for content in thisPage.body %}
     {% if content._type == 'pageHeading' %}
