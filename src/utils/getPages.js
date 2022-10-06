@@ -63,7 +63,7 @@ async function getPages() {
         ...,
      }`
     const docs = await client.fetch(query).catch(err => console.error(err));
-    const preparePages = await docs.flatMap(doc => generatePage(doc))
+    const preparePages = await Promise.all(docs.flatMap(doc => generatePage(doc)))
     return preparePages;
 }
 

@@ -36,8 +36,6 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addShortcode("portableText", portableText)
 	eleventyConfig.addShortcode("getReferences", getReferences)
 
-	eleventyConfig.addShortcode("console", (content) => { console.log(content); return })
-
 
   eleventyConfig.addPlugin(EleventyPluginNavigation)
 	eleventyConfig.addPlugin(EleventyVitePlugin, {
