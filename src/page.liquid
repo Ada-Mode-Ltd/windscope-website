@@ -7,6 +7,8 @@ pagination:
 permalink: "{{ thisPage.slug.current | slugify }}/index.html"
 ---
 
+{% console thisPage.slug.current %}
+
 {% for content in thisPage.body %}
     {% if content._type == 'pageHeading' %}
         {% include "components/pageHeading.liquid" %}     
