@@ -4,6 +4,10 @@
   grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
   grid-template-rows: min-content;
 
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+  }
+
   & > [data-span="2"] {
     grid-column: span 2;
   }
@@ -14,5 +18,9 @@
 
   & > img {
     margin: auto;
+
+    @media (max-width: 1024px) {
+      object-fit: cover;
+    }
   }
 }

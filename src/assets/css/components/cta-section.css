@@ -5,6 +5,10 @@ section.cta {
   overflow: hidden;
   padding: var(--space-104) var(--space-144);
 
+  @media (max-width: 1024px) {
+    padding: 0;
+  }
+
   & > .content {
     text-align: center;
     display: flex;

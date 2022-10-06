@@ -14,7 +14,7 @@
     </button>
     {% for quote in quotes %}
     {% assign quoteIndex = forloop.index0 %}
-    <button class="quote-nav__item" data-quote="{{ quoteIndex }}" />
+    <button class="quote-nav__item" data-quote="{{ quoteIndex }}"></button>
     {% endfor %}
     <button class="quote-nav__item--next">
         {% include 'svg/arrow-right.svg' %}

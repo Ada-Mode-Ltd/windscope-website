@@ -40,4 +40,8 @@
   gap: var(--space-56);
   flex-wrap: wrap;
   @mixin container-padding;
+
+  @media (max-width: 1024px) {
+    padding: 0;
+  }
 }

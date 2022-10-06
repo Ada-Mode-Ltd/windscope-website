@@ -35,8 +35,7 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addShortcode("sanityImageUrl", sanityImageUrl)
 	eleventyConfig.addShortcode("portableText", portableText)
 	eleventyConfig.addShortcode("getReferences", getReferences)
-
-
+	
   eleventyConfig.addPlugin(EleventyPluginNavigation)
 	eleventyConfig.addPlugin(EleventyVitePlugin, {
 		tempFolderName: '.11ty-vite', // Default name of the temp folder

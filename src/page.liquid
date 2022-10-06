@@ -75,13 +75,12 @@ permalink: /{{ thisPage.slug.current | slug }}/index.html
             {% include 'components/sectionHeading.liquid' %}
             {% endif %}
             {% include 'components/people.liquid' %}
-            {{ content | json }}
         </div></section>
         
     {% endif %}
 
     {% if content._type == 'ctaSection' %}
-        {% include 'components/cta-section.liquid' %} 
+        <section><div class="wrapper">{% include 'components/cta-section.liquid' %} </div></section>
     {% endif %}
 
 {% endfor %}
