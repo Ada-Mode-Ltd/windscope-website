@@ -1,3 +1,7 @@
+h2 + .stacked-tabs {
+  margin-top: var(--space-72);
+}
+
 .stacked-tabs {
   display: grid;
   grid-template-columns: 1fr 1fr;
