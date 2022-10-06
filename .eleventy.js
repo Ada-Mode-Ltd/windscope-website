@@ -26,7 +26,7 @@ module.exports = function(eleventyConfig) {
 		return [obj]
 	});
 	eleventyConfig.addFilter('setId', function(content) {
-		return content?._key || content?._id
+		return content?._key || content?._id || new Date().getTime()
 	});
 
 	// Shortcodes
