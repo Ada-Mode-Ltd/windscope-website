@@ -2,13 +2,12 @@
 layout: site
 pagination:
     data: pages
-    alias: thisPage
+    alias: p
     size: 1
-permalink: "{{ thisPage.slug.current | slug }}/index.html"
+permalink: /{{ p.slug.current | slug }}/index.html
 ---
 
-{% assign test = thisPage.slug.current | slug  %}
-{% console test %}
+{% assign thisPage = page %}
 
 {% for content in thisPage.body %}
     {% if content._type == 'pageHeading' %}
