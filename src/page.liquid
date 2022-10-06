@@ -4,7 +4,7 @@ pagination:
     data: pages
     alias: thisPage
     size: 1
-permalink: "{{ thisPage.slug.current | slugify }}/index.html"
+permalink: "{{ thisPage.slug.current }}/index.html"
 ---
 
 {% console thisPage %}
