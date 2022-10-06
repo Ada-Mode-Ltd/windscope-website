@@ -1,13 +1,13 @@
 ---
 layout: site
 pagination:
-    data: pages
-    alias: p
+    data: builder
+    alias: build
     size: 1
-permalink: /{{ p.slug.current | slug }}/index.html
+permalink: /{{ build.slug.current | slug }}/index.html
 ---
 
-{% assign thisPage = page %}
+{% assign thisPage = build %}
 
 {% for content in thisPage.body %}
     {% if content._type == 'pageHeading' %}
