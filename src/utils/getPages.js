@@ -1,11 +1,5 @@
 const { client } = require('./sanity');
 
-const getQuote = async (id) => {
-    const query = `*[_type == "quote" && _id == "${id}"]`;
-    const doc = await client.fetch(query).then(res => ({...res, partner: client.getDocument(res.partner._ref)})).catch(err => console.error(err));
-    return doc;
-};
-
 const checkDoc = async (doc) => {
     if (doc._type === 'quote') {
         const quote = await {
@@ -21,6 +15,13 @@ const checkDoc = async (doc) => {
         }
 
         return quote
+    } else if (doc._type === 'people' && doc.people) {
+        const people = await {
+            ...doc,
+            people: await Promise.all(doc.people.map(async person => getReference(person))),
+        }
+
+        return people
     }
 
 
@@ -42,6 +43,10 @@ async function generatePage(doc) {
             }
 
             if (block._type === 'quoteCarousel') {
+                return checkDoc(block)
+            }
+
+            if (block._type === 'people') {
                 return checkDoc(block)
             }
 

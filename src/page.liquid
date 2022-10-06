@@ -63,9 +63,24 @@ permalink: /{{ thisPage.slug.current | slug }}/index.html
         </section>
     {% endif %}
 
+    {% if content._type == 'people' %}
+        {% if content.allPeople %}
+            {% assign people = allPeople %}
+        {% else %}
+            {% assign people = content.people %}
+        {% endif %}
+        <section><div class="wrapper flow">
+            {% if content.sectionTitle %}
+            {% include 'components/sectionHeading.liquid' %}
+            {% endif %}
+            {% include 'components/people.liquid' %}
+            {{ content | json }}
+        </div></section>
+        
+    {% endif %}
+
     {% if content._type == 'ctaSection' %}
         {% include 'components/cta-section.liquid' %} 
     {% endif %}
 
-    <div class="wrapper">{{ content | json }}</div>
 {% endfor %}

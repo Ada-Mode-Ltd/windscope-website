@@ -107,10 +107,12 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("src/assets/js");
 	eleventyConfig.addPassthroughCopy("public/assets/**");
 	
+	if (!dev) {
 	eleventyConfig.on('eleventy.after', async () => {
 		const { copy } = require('fs-extra')
 		await copy('public/assets/img/remote', '_site/assets/img/remote')
 	});
+}
 
     // Return your Object options:
     return {

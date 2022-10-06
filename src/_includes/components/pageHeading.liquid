@@ -10,5 +10,8 @@
             <p class="text--small timestamp">Last updated: <time datetime="{{ thisPage._updatedAt | w3cDate }}">{{ thisPage._updatedAt | dateFormat }}</time></p>
         {% endif %}
        {% portableText content.title %}
+              {% if content.tagline %}
+       <p class="text--medium">{{ content.tagline }}</p>
+       {% endif %}
     </div>
 </section>   
