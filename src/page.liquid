@@ -80,7 +80,7 @@ permalink: /{{ thisPage.slug.current | slug }}/index.html
     {% endif %}
 
     {% if content._type == 'ctaSection' %}
-        <section><div class="wrapper">{% include 'components/cta-section.liquid' %} </div></section>
+        {% include 'components/cta-section.liquid' %}
     {% endif %}
 
 {% endfor %}

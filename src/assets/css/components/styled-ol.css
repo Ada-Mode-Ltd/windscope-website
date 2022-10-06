@@ -5,9 +5,10 @@ ol.styled {
   flex-direction: column;
   gap: var(--space-24);
   font-size: var(--text-medium);
+  padding-inline-start: 0;
 
   @media (max-width: 1024px) {
-    gap: var(--space-16);
+    gap: var(--space-32);
   }
 
   & > li {

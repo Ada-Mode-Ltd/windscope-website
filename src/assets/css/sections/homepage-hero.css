@@ -1,7 +1,7 @@
 section.homepage-hero {
   @mixin dark-bg;
 
-  max-height: 100vh;
+  max-height: min-content;
   min-height: 50vh;
   display: grid;
   grid-template-areas:
@@ -21,6 +21,8 @@ section.homepage-hero {
       "image"
       "small";
     padding-top: calc(var(--header-height, 7.125rem) + 4rem);
+    height: 100%;
+    max-height: min-content;
   }
 
   & > .text {
@@ -52,10 +54,19 @@ section.homepage-hero {
       font-size: var(--text-small);
       align-items: center;
 
+      @media (max-width: 1024px) {
+        grid-template-columns: 1fr;
+        gap: var(--space-16);
+      }
+
       & > .logo > img,
       svg {
         filter: invert(1) brightness(100);
         width: 100%;
+
+        @media (max-width: 1024px) {
+          width: 70%;
+        }
       }
     }
   }
