@@ -37,6 +37,7 @@ ol.styled {
     padding: 20px;
     font-size: 3.125rem;
     color: var(--ws-bright-green);
+    flex: 0 0 auto;
   }
 
   + p {
