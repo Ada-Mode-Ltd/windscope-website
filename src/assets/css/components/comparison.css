@@ -17,6 +17,10 @@
     border: 1px solid var(--ws-light-grey);
   }
 
+  p.column-title {
+    font-size: 1.5rem;
+  }
+
   ul {
     list-style: none;
     padding: 0;
