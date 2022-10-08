@@ -17,6 +17,7 @@ h1 {
   font-weight: 700;
   font-variation-settings: "wght" 700;
   line-height: 1.14;
+  color: var(--ws-slate-grey);
   /* margin-bottom: 0.5rem; */
 }
 
@@ -28,6 +29,7 @@ h2 {
   font-weight: 600;
   font-variation-settings: "wght" 600;
   line-height: 1.32;
+  color: var(--ws-slate-grey);
 }
 
 /* TODO: Mobile h2 line-height: 140% */
@@ -39,6 +41,7 @@ h3 {
   font-variation-settings: "wght" 600;
   line-height: 1.17;
   letter-spacing: -0.5px;
+  color: var(--ws-slate-grey);
 }
 
 /* TODO: Mobile h3 line-height: 140% */
@@ -50,6 +53,7 @@ h4 {
   font-variation-settings: "wght" 500;
   line-height: 1.19;
   letter-spacing: -0.5px;
+  color: var(--ws-slate-grey);
 }
 
 /* TODO: Mobile h4 line-height: 1.16 */
@@ -61,6 +65,7 @@ h5 {
   font-variation-settings: "wght" 500;
   line-height: 1.4;
   letter-spacing: -0.5px;
+  color: var(--ws-slate-grey);
 }
 
 .text--regular {
