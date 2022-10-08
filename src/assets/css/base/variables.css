@@ -19,6 +19,14 @@
   --ws-snow-grey: #f8faf9;
   --ws-white: #fff;
 
+  /* Greys */
+  --ws-grey-1: #333333;
+  --ws-grey-2: #4f4f4f;
+  --ws-grey-3: #828282;
+  --ws-grey-4: #bdbdbd;
+  --ws-grey-5: #e0e0e0;
+  --ws-grey-6: #52525b;
+
   /* Backgrounds */
   --background-color: var(--ws-snow-grey);
   --background-color-dark: radial-gradient(

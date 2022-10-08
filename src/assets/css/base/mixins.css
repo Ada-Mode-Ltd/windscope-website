@@ -46,6 +46,6 @@
 }
 
 @define-mixin dark-bg {
-  background: var(--background-color-dark);
-  color: var(--text-color-light);
+  background: var(--background-color-dark) !important;
+  color: var(--text-color-light) !important;
 }
