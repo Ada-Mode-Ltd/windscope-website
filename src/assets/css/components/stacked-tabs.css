@@ -67,6 +67,7 @@ h2 + .stacked-tabs {
 
   & .image[data-active] {
     display: block;
+    animation: fadeInOut 5s ease-in-out;
   }
 
   & li[data-active][data-loop]::before {
@@ -174,5 +175,20 @@ h2 + .stacked-tabs {
   }
   100% {
     height: 100%;
+  }
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
