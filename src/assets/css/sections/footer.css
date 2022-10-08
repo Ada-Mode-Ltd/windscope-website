@@ -3,8 +3,11 @@ footer.wrapper {
   background: var(--ws-snow-grey);
   min-height: 5vh;
   color: var(--ws-grey);
-  font-size: var(--text-regular);
   padding: var(--space-32);
+
+  * {
+    font-size: var(--text-regular);
+  }
 
   & > div {
     @mixin flex-row var(--space-16), center, space-between;
@@ -24,7 +27,7 @@ footer.wrapper {
   }
 
   & > hr {
-    border-top: 1px solid var(--ws-light-grey);
+    /* border-top: 1px solid var(--ws-light-grey); */
     margin-block: var(--space-32);
   }
 
