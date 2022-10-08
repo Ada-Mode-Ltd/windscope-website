@@ -1,14 +1,14 @@
 header {
   max-height: var(--header-height, 7.125rem);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    /* background-color: transparent; */
-    background-color: var(--background-color);
-    transition: transform 0.4s;
-    padding: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  /* background-color: transparent; */
+  background-color: var(--background-color);
+  transition: transform 0.4s;
+  padding: 0;
 
   &.scroll-down {
     transform: translate3d(0, -100%, 0);
@@ -16,6 +16,7 @@ header {
 
   &.scroll-up {
     transform: none;
+    box-shadow: var(--shadow-dark-light);
     /* background-color: var(--background-color); */
   }
 
@@ -197,8 +198,8 @@ nav.page {
     transform: translate3d(0, 0, 0);
     padding-inline-start: 2em;
     display: flex;
-      flex-direction: column;
-      /* justify-content: space-between; */
+    flex-direction: column;
+    /* justify-content: space-between; */
 
     & > * {
       padding: 0;
@@ -272,7 +273,7 @@ nav.page {
   nav.page > .left {
     overflow: auto;
   }
-  
+
   nav.page > .left > [data-desktop-links] {
     display: flex;
     gap: var(--space-56);
