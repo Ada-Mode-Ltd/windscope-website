@@ -28,7 +28,7 @@
   );
 
   /* Text colours */
-  --text-color: var(--ws-slate-grey);
+  --text-color: var(--ws-grey);
   --text-color-light: var(--ws-white);
   --text-color-muted: var(--ws-grey);
 
