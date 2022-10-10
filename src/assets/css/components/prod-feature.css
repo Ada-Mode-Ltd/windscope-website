@@ -37,6 +37,7 @@
         grid-area: image;
         border-radius: 16px;
         margin: auto;
+        height: min-content;
       }
 
       &[data-float-image]::after {
@@ -101,5 +102,4 @@
   }
   justify-content: center;
   align-items: center;
-  row-gap: 0;
 }
