@@ -26,9 +26,10 @@ h2 + .stacked-tabs {
       background-color: var(--ws-snow-grey);
       border-radius: var(--space-16);
       cursor: pointer;
-      transition: all 0.2s ease-in-out;
+      transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
       position: relative;
       overflow: hidden;
+      border: 1px solid var(--ws-light-grey);
     }
 
     & li:not([role]) {
@@ -67,6 +68,7 @@ h2 + .stacked-tabs {
   & li[role]:hover {
     background-color: var(--ws-white);
     box-shadow: var(--shadow-light);
+    border: 1px solid transparent;
   }
 
   & .image[data-active] {
@@ -97,14 +99,28 @@ h2 + .stacked-tabs {
     & li {
       display: flex;
       flex-direction: column-reverse;
-      gap: var(--space-56);
+      gap: var(--space-24);
       cursor: default;
       pointer-events: none;
+      padding: 1.5rem 0.5rem;
+      border: none;
+      overflow: visible;
     }
+  }
+
+  & li[data-active] {
+    border: none;
   }
 
   & li[data-active][data-loop]::before {
     display: none;
+  }
+
+  & .text {
+    position: relative;
+    border: 1px solid var(--ws-light-grey);
+    border-radius: 8px;
+    padding: 1rem;
   }
 
   & .image,
