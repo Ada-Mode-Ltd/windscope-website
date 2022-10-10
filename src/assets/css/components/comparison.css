@@ -31,6 +31,11 @@
     font-size: var(--text-medium);
     position: relative;
 
+    @media (max-width: 1024px) {
+      display: flex;
+      flex-direction: column;
+    }
+
     & > li {
       display: flex;
       align-items: flex-start;
@@ -84,7 +89,7 @@
       left: 0;
       right: 0;
       margin: 0 auto;
-      bottom: -7rem;
+      bottom: -6rem;
       width: var(--space-144);
       transform: rotate(90deg);
       background-size: contain;
