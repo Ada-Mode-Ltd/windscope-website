@@ -6,8 +6,8 @@
   scroll-behavior: smooth;
 
   @media (max-width: 1024px) {
-    padding: 0 inherit;  
-  } 
+    padding: 0 inherit;
+  }
 }
 
 .quote {
@@ -26,7 +26,8 @@
   width: 100vw;
   scroll-snap-align: center;
 
-  & > picture, img {
+  & > picture,
+  img {
     grid-area: partner;
     width: 100%;
     max-width: 200px;
@@ -47,12 +48,14 @@
 
   @media (max-width: 1024px) {
     grid-template-areas:
-    "partner"
+      "partner"
       "text"
       "details";
     gap: var(--space-48);
     grid-template-columns: 1fr;
     max-width: calc(100vw - var(--space-72));
+    padding: 1.5rem 1rem;
+    font-size: 1.5rem;
 
     & > img {
       justify-self: center;
@@ -72,15 +75,17 @@
     background: var(--ws-light-grey);
     border: none;
     cursor: pointer;
+    aspect-ratio: 1;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background: var(--ws-ui-light-blue);
     }
-    
+
     &[data-active] {
       background: var(--ws-bright-blue);
     }
-    
+
     &[class^="quote-nav__item--"] {
       height: 4rem;
       width: 4rem;
@@ -88,8 +93,9 @@
       color: var(--ws-white);
       display: grid;
       place-items: center;
-      
-      &:hover, &:focus {
+
+      &:hover,
+      &:focus {
         background: var(--ws-ui-light-blue);
       }
     }
@@ -102,7 +108,7 @@
       background: var(--ws-light-grey);
       cursor: not-allowed;
     }
-   }
+  }
 }
 
 .no-js {
