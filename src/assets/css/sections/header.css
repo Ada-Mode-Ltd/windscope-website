@@ -16,7 +16,8 @@ header {
 
   &.scroll-up {
     transform: none;
-    box-shadow: var(--shadow-dark-light);
+    box-shadow: -5px -5px 16px rgb(28 35 45 / 10%),
+      5px 5px 30px rgb(28 35 45 / 10%);
     /* background-color: var(--background-color); */
   }
 
