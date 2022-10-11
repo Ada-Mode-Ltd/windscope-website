@@ -1,36 +1,55 @@
 section.homepage-hero {
   @mixin dark-bg;
-
-  max-height: min-content;
-  min-height: 50vh;
-  display: grid;
-  grid-template-areas:
-    "text image"
-    "text image";
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr auto;
-  gap: var(--space-96);
   padding-block-end: var(--space-104);
-  align-items: center;
+  position: relative;
 
-  @media (max-width: 1024px) {
-    gap: var(--space-80);
-    grid-template-columns: 1fr;
+  > .wrapper {
+    align-items: center;
+    display: grid;
+    gap: var(--space-96);
     grid-template-areas:
       "text"
-      "image"
-      "small";
-    padding-top: calc(var(--header-height, 7.125rem) + 4rem);
-    height: 100%;
+      "text";
+    grid-template-rows: 1fr auto;
     max-height: min-content;
+    min-height: 60vh;
+    position: relative;
+    grid-template-columns: 1fr;
+    padding: 0;
+
+    @media (max-width: 1480px) {
+      gap: var(--space-80);
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "text"
+        "image"
+        "small";
+      padding-top: calc(var(--header-height, 7.125rem) + 4rem);
+      height: 100%;
+      max-height: min-content;
+    }
+
+    > img {
+      grid-area: image;
+      height: 100%;
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: cover;
+      object-position: center;
+      width: 100%;
+
+      @media (min-width: 1480px) {
+        display: none;
+      }
+    }
   }
 
-  & > .text {
+  & .wrapper > .text {
     display: flex;
     grid-area: text;
     flex-direction: column;
     gap: var(--space-24);
-    justify-self: flex-end;
+    /* justify-self: flex-end; */
 
     * {
       color: var(--text-color-light) !important;
@@ -39,11 +58,10 @@ section.homepage-hero {
 
   & .small {
     grid-row: 2/3;
-    grid-column: 1/2;
     grid-area: text;
     font-size: var(--text-small);
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1480px) {
       grid-area: small;
     }
 
@@ -69,20 +87,49 @@ section.homepage-hero {
         filter: invert(1) brightness(100);
         width: 100%;
 
-        @media (max-width: 1024px) {
+        @media (max-width: 1480px) {
           width: 70%;
         }
       }
     }
   }
 
+  & .small.wrapper {
+    padding: 0;
+    margin: 0;
+    max-width: 60%;
+
+    @media (max-width: 1480px) {
+      padding: 0 var(--space-32);
+    }
+  }
+
+  & .text.wrapper {
+    padding: 0;
+    margin: 0;
+    max-width: 60%;
+
+    @media (max-width: 1480px) {
+      padding: 0 var(--space-32);
+    }
+  }
+
   & > img,
   svg {
-    grid-area: image;
+    position: absolute;
+    right: 0;
+    top: calc(50% - var(--space-104));
+    transform: translateY(calc(-50% + var(--space-104) + 7.125rem));
+    max-height: 100%;
+    max-width: 100%;
     width: 100%;
     height: auto;
-    max-height: 80%;
     object-fit: contain;
     object-position: right;
+    max-height: 80%;
+
+    @media (max-width: 1480px) {
+      display: none;
+    }
   }
 }
