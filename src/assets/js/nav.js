@@ -8,7 +8,10 @@ window.addEventListener("scroll", () => {
   const currentScroll = window.pageYOffset;
   if (currentScroll <= 0) {
     header.classList.remove(scrollUp);
+    header.setAttribute('data-dark', 'true')
     return;
+  } else {
+    header.removeAttribute('data-dark')
   }
  
   if (currentScroll > lastScroll && !header.classList.contains(scrollDown)) {
@@ -23,6 +26,7 @@ window.addEventListener("scroll", () => {
     header.classList.remove(scrollDown);
     header.classList.add(scrollUp);
   }
+
   lastScroll = currentScroll;
 });
 }

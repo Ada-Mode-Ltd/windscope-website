@@ -32,7 +32,7 @@
 </head>
 
 <body class="no-js">
-  <header>
+  <header {% if header == 'dark' %} data-dark {% endif %} >
     <div class="wrapper">{% include 'partials/nav.liquid' %}</div>
   </header>
   {{ content }}
