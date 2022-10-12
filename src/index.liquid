@@ -9,8 +9,8 @@ ctaLinkSecondary:
     url: "#"
 ---
 <section class="homepage-hero" id="hero">
-    <div class="wrapper">
-        <div class="text wrapper">
+    <div class="homepage-hero__wrapper">
+        <div class="homepage-hero__main-content">
             <h1>Advanced wind turbine health monitoring</h1>
             <p>Conduct maintenance at the right time to maximise turbine availability, minimise cost and increase
                 workforce
@@ -20,18 +20,17 @@ ctaLinkSecondary:
             {% assign buttonText = 'Book a demo' %}
             {% include 'components/button.liquid' %}
         </div>
-        <div class="small wrapper">
+        <div class="homepage-hero__sm-text">
             <p>Built by</p>
-            <div class="flex">
-                <div class="logo">
-                    <img src="/assets/img/ada_mode_logo.svg" class="logo" data-light alt="">
+            <div class="homepage-hero__logo-text-group">
+                <div class="homepage-hero__ada-logo">
+                    <img src="/assets/img/ada_mode_logo.svg" class="logo" data-light alt="Ada Mode">
                 </div>
-                <p>Backed by our experience in developing cutting-edge AI for power and utility operators.</p>
+                <p class="homepage-hero__about-text">Backed by our experience in developing cutting-edge AI for power and utility operators.</p>
             </div>
         </div>
         <img src="/assets/img/Homepage-hero-image.svg" alt="">
     </div>
-        <img src="/assets/img/Homepage-hero-image.svg" alt="">
 </section>
 
 <!-- Start of dynamic section -->
