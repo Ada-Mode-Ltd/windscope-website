@@ -7,6 +7,7 @@
   max-width: 15rem;
   text-align: center;
   align-self: baseline;
+  height: 100%;
 
   & > picture > img {
     width: 10rem;
@@ -19,9 +20,10 @@
   & > .details {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     gap: var(--space-8);
+    height: 100%;
 
     & svg.icon {
       height: 1rem;
@@ -33,13 +35,18 @@
 }
 
 .people-holder {
-  display: flex;
-  flex-direction: row;
+  --min: 15rem;
+  --gap: 1rem;
+
+  display: grid;
+  grid-gap: var(--gap);
+  /* min() with 100% prevents overflow
+  in extra narrow spaces */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr));
   justify-content: center;
   align-items: center;
   gap: var(--space-56);
-  flex-wrap: wrap;
-  padding: var(--space-104) var(--space-144) 0;
+  padding: var(--space-104) 0 0;
 
   @media (max-width: 1024px) {
     padding: 0;
