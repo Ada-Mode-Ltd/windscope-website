@@ -79,6 +79,18 @@ permalink: /{{ thisPage.slug.current | slug }}/index.html
         
     {% endif %}
 
+    {% if content._type == 'rowOfLogos' %}
+        <section>
+            <div class="wrapper flow">
+            {% if content.sectionTitle %}
+            {% include 'components/sectionHeading.liquid' %}
+            {% endif %}
+            {% include 'components/rowOfLogos.liquid' %}
+        </div>
+        </section>
+        
+    {% endif %}
+
     {% if content._type == 'ctaSection' %}
         {% include 'components/cta-section.liquid' %}
     {% endif %}

@@ -1,0 +1,8 @@
+<div class="flex-row">
+                {% for logo in content.logos %}
+                    {% capture imgUrl %}
+                        {% sanityImageUrl logo %}
+                    {% endcapture %}
+                    {% image imgUrl, '' %}
+                {% endfor %}
+            </div>

@@ -1,0 +1,14 @@
+.flex-row {
+  --min: 10ch;
+  --gap: var(--space-48);
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+  row-gap: var(--space-80);
+  margin-block-start: var(--space-64);
+}
+
+.flex-row > * {
+  flex: 1 1 var(--min);
+}

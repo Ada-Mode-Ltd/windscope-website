@@ -6,6 +6,7 @@
 /* Utility classes*/
 @import "./utilities/spacing.css";
 @import "./utilities/visibility.css";
+@import "./utilities/flex-row.css";
 
 /* Defines whole sections of a page */
 @import "./sections/wrapper.css";
