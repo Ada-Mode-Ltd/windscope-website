@@ -1,4 +1,5 @@
 const header = document.querySelector('body header')
+const isDarkBackground = header.hasAttribute('data-dark') ? true : false;
 const scrollUp = "scroll-up";
 const scrollDown = "scroll-down";
 let lastScroll = 0;
@@ -8,7 +9,9 @@ window.addEventListener("scroll", () => {
   const currentScroll = window.pageYOffset;
   if (currentScroll <= 0) {
     header.classList.remove(scrollUp);
-    header.setAttribute('data-dark', 'true')
+    if (isDarkBackground) {
+      header.setAttribute('data-dark', 'true');
+    }
     return;
   } else {
     header.removeAttribute('data-dark')
