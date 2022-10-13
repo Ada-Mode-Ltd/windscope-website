@@ -27,8 +27,16 @@ footer.wrapper {
   }
 
   & > hr {
-    /* border-top: 1px solid var(--ws-light-grey); */
     margin-block: var(--space-32);
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top-color: currentcolor;
+    border-top-style: none;
+    border-top-width: 0px;
+    border-top: 1px solid var(--ws-light-grey);
+    margin: 1em 0;
+    padding: 0;
   }
 
   & ul {
