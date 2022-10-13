@@ -11,6 +11,6 @@ module.exports = [
     },
     {
         title: "About us",
-        path: "/about",
+        path: "/about-us",
     }
 ]
