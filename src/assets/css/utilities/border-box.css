@@ -1,0 +1,9 @@
+.border-box__light {
+  background-color: var(--ws-white);
+  border-radius: var(--space-16);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--ws-light-grey);
+  padding: var(--space-16);
+  box-shadow: var(--shadow-light);
+}

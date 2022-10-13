@@ -7,8 +7,13 @@
   gap: var(--gap);
   row-gap: var(--space-80);
   margin-block-start: var(--space-64);
+  align-items: center;
 }
 
 .flex-row > * {
   flex: 1 1 var(--min);
+}
+
+.flex-row__align-start {
+  align-items: flex-start;
 }

@@ -91,6 +91,36 @@ permalink: /{{ thisPage.slug.current | slug }}/index.html
         
     {% endif %}
 
+    {% if content._type == 'careers' %}
+    {% if content.allJobs %}
+            {% assign jobs = allJobs %}
+        {% else %}
+            {% assign jobs = content.jobs %}
+        {% endif %}
+        <section>
+            <div class="wrapper">
+            <div class="flex-row content-col">
+                <div class="content flow">
+                    <p class="secondary-title">Careers</p>
+                    <h2>Join our team</h2>
+                    <p>Join us as we continue to drive down the cost of clean energy with AI applications.</p>
+                </div>
+                <div class="flex-col flow">
+                    {% if jobs.size > 0 %}
+                        {{ jobs.size }}
+                    {% else %}
+                        <div class="border-box__light">
+                            <p>There are no open positions.</p>
+                            <p>You can still send us your CV to keep on file. Please email <a href="mailto:careers@ada-mode.com">careers@ada-mode.com</a></p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        </section>
+        
+    {% endif %}
+
     {% if content._type == 'ctaSection' %}
         {% include 'components/cta-section.liquid' %}
     {% endif %}

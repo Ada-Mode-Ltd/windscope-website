@@ -7,6 +7,8 @@
 @import "./utilities/spacing.css";
 @import "./utilities/visibility.css";
 @import "./utilities/flex-row.css";
+@import "./utilities/content-col.css";
+@import "./utilities/border-box.css";
 
 /* Defines whole sections of a page */
 @import "./sections/wrapper.css";
