@@ -2,7 +2,7 @@
   @mixin flex-row var(--space-48), center, flex-start;
   overflow-x: hidden;
   scroll-snap-type: x mandatory;
-  @mixin container-padding var(--space-104) 0;
+  /* @mixin container-padding var(--space-104) 0; */
   scroll-behavior: smooth;
 
   @media (max-width: 1024px) {
