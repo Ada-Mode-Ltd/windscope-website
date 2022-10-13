@@ -16,6 +16,7 @@ section.cta {
     justify-content: center;
     align-items: center;
     gap: 1.5rem;
+    padding-block-end: var(--space-104);
 
     & > .button-group {
       display: flex;

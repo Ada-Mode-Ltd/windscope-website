@@ -47,8 +47,9 @@
   align-items: center;
   gap: var(--space-56);
   padding: var(--space-104) 0 0;
+  justify-items: center;
 
   @media (max-width: 1024px) {
-    padding: 0;
+    padding: var(--space-48) 0 0;
   }
 }
