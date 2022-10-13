@@ -107,11 +107,35 @@ permalink: /{{ thisPage.slug.current | slug }}/index.html
                 </div>
                 <div class="flex-col flow">
                     {% if jobs.size > 0 %}
-                        {{ jobs.size }}
+                    {% for job in jobs %}
+                        <div class="border-box__light" data-button>
+                            <div class="flow">
+                                <p class="strong text--secondary">{{ job.title }}</p>
+                            </div>
+                            <div>
+                                {% assign buttonIcon = true %}
+                                {% assign buttonType = "tertiary" %}
+                                {% assign buttonText = "Learn more" %}
+                                {% capture buttonLink %}
+                                https://ada-mode.com/careers/{{ job.slug.current }}
+                                {% endcapture %}
+                                {% include 'components/button.liquid' %}
+                            </div>
+                        </div>
+                    {% endfor %}
                     {% else %}
-                        <div class="border-box__light">
-                            <p>There are no open positions.</p>
-                            <p>You can still send us your CV to keep on file. Please email <a href="mailto:careers@ada-mode.com">careers@ada-mode.com</a></p>
+                        <div class="border-box__light" data-button>
+                            <div class="flow">
+                                <p class="strong text--secondary">No open positions.</p>
+                                <p>You can still send us your CV to keep on file.</p>
+                            </div>
+                            <div>
+                                {% assign buttonIcon = true %}
+                                {% assign buttonType = "tertiary" %}
+                                {% assign buttonText = "Email us" %}
+                                {% assign buttonLink = "mailto:careers@ada-mode.com" %}
+                                {% include 'components/button.liquid' %}
+                            </div>
                         </div>
                     {% endif %}
                 </div>

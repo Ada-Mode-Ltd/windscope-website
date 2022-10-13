@@ -22,6 +22,11 @@ const checkDoc = async (doc) => {
         }
 
         return people
+    } else if (doc._type === 'careers' && doc.jobs) {
+        const careers = await {
+            ...doc,
+            jobs: await Promise.all(doc.jobs.map(async job => getReference(job))),
+        }
     }
 
 
@@ -47,6 +52,10 @@ async function generatePage(doc) {
             }
 
             if (block._type === 'people') {
+                return checkDoc(block)
+            }
+
+            if (block._type === 'careers') {
                 return checkDoc(block)
             }
 

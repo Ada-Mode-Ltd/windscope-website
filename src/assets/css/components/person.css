@@ -39,7 +39,7 @@
   align-items: center;
   gap: var(--space-56);
   flex-wrap: wrap;
-  @mixin container-padding;
+  padding: var(--space-104) var(--space-144) 0;
 
   @media (max-width: 1024px) {
     padding: 0;

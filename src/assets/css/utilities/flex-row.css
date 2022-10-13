@@ -11,7 +11,7 @@
 }
 
 .flex-row > * {
-  flex: 1 1 var(--min);
+  flex: 1 0;
 }
 
 .flex-row__align-start {

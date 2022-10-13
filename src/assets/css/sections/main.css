@@ -3,7 +3,7 @@ main {
 }
 
 main > section {
-  padding-top: var(--space-104);
+  /* padding-top: var(--space-104); */
 }
 
 main > *:first-child {
