@@ -1,0 +1,23 @@
+.flex-grid {
+  --min: 15rem;
+  --gap: 1rem;
+
+  display: grid;
+  grid-gap: var(--gap);
+  /* min() with 100% prevents overflow
+    in extra narrow spaces */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr));
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-56);
+  padding: var(--space-104) 0 0;
+  justify-items: center;
+
+  @media (max-width: 1024px) {
+    padding: var(--space-48) 0 0;
+  }
+
+  &[data-align="start"] {
+    align-items: flex-start;
+  }
+}

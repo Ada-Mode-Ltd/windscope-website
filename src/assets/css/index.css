@@ -9,6 +9,7 @@
 @import "./utilities/flex-row.css";
 @import "./utilities/content-col.css";
 @import "./utilities/border-box.css";
+@import "./utilities/flex-grid.css";
 
 /* Defines whole sections of a page */
 @import "./sections/wrapper.css";
@@ -32,6 +33,7 @@
 @import "./components/styled-ol.css";
 @import "./components/comparison.css";
 @import "./components/blog-feature.css";
+@import "./components/index-post.css";
 
 body {
   background: var(--ws-snow-grey);

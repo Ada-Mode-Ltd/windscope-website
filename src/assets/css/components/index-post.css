@@ -1,0 +1,10 @@
+.index-post {
+  & img {
+    max-width: 22rem;
+    height: auto;
+    aspect-ratio: 350/197;
+    border-radius: var(--px-8);
+    object-fit: cover;
+    object-position: center;
+  }
+}
