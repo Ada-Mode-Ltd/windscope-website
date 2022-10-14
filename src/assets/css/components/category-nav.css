@@ -8,9 +8,11 @@
     width: 100%;
     overflow: auto;
     padding-inline-end: 1rem;
+    padding-block-end: 1rem;
 
     & > * {
-      flex: 1 0 auto;
+      width: fit-content;
+      min-width: fit-content;
     }
   }
 

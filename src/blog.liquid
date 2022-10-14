@@ -43,7 +43,7 @@ ctaLink:
         {% if allPosts.posts %}
         <section id="posts">
     <div class="wrapper">
-            <div class="flex-row" data-align="start" style="--gap: var(--space-56);">
+            <div class="flex-grid" data-align="start" style="--gap: var(--space-56);">
                 {% for post in allPosts.posts %}
                     {%- capture categories -%}
                         {%- for cat in post.categories -%}
