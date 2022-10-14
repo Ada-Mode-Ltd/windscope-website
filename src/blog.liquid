@@ -31,21 +31,26 @@ ctaLink:
 {%- comment -%} TODO: There needs to be categories in here! {%- endcomment -%}
 <div class="category-nav" role="navigation" aria-label="Post categories">
 <div class="wrapper">
-    <div class="flex-row" data-justify="start">
-        <button data-active>All posts</button>
+    <ul class="flex-row" data-justify="start">
+        <li><button data-active>All posts</button></li>
         {% for category in allPosts.categories %}
-            <button>{{ category }}</button>
+            <li><button>{{ category }}</button></li>
         {% endfor %}
-    </div>
+    </ul>
 </div>
 </div>
 
         {% if allPosts.posts %}
-        <section>
+        <section id="posts">
     <div class="wrapper">
-            <div class="flex-grid" data-align="start">
+            <div class="flex-row" data-align="start" style="--gap: var(--space-56);">
                 {% for post in allPosts.posts %}
-                    <div class="index-post flow">
+                    {%- capture categories -%}
+                        {%- for cat in post.categories -%}
+                            {{cat.title}},
+                        {%- endfor -%}
+                    {%- endcapture -%}
+                    <div class="index-post flow" data-category="{{ categories }}">
                     {% capture imgUrl %}
                         {% sanityImageUrl post.mainImage %}
                     {% endcapture %}
@@ -65,6 +70,43 @@ ctaLink:
     </div>
 </section>
         {% endif %}
+
+        <script>
+            const categoryNav = document.querySelector('.category-nav');
+            const categoryButtons = categoryNav.querySelectorAll('button');
+            const posts = document.querySelectorAll('.index-post');
+            const section = document.querySelector('#posts');
+
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    categoryButtons.forEach(button => button.removeAttribute('data-active'));
+                    button.setAttribute('data-active', '');
+                    const category = button.textContent;
+                    posts.forEach(post => {
+                        if (category === 'All posts') {
+                            post.removeAttribute('data-hidden');
+                        } else if (post.dataset.category.includes(category)) {
+                            post.removeAttribute('data-hidden');
+                        } else {
+                            post.setAttribute('data-hidden', '');
+                        }
+                    });
+
+                    scrollToSection(section)
+                });
+            });
+            
+            // scroll to section
+            const scrollToSection = (section) => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const scrollTop = window.pageYOffset;
+                const offset = sectionTop + scrollTop;
+                window.scrollTo({
+                    top: offset,
+                    behavior: 'smooth'
+                });
+            }
+        </script>
 
 
 {% assign ctaTitle = "See how AI can transform your business." %}

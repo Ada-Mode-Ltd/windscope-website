@@ -12,6 +12,10 @@
   &[data-justify="start"] {
     justify-content: flex-start;
   }
+
+  &[data-align="start"] {
+    align-items: flex-start;
+  }
 }
 
 .flex-row > * {

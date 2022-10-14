@@ -6,6 +6,12 @@
     --min: initial;
   }
 
+  & ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
   button {
     background: none;
     border: none;
@@ -17,4 +23,9 @@
       color: var(--ws-bright-green);
     }
   }
+}
+
+.category-nav + section {
+  margin-top: 0;
+  padding-block-start: var(--space-64);
 }
