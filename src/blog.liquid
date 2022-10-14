@@ -29,6 +29,16 @@ ctaLink:
         {% endif %}
 
 {%- comment -%} TODO: There needs to be categories in here! {%- endcomment -%}
+<div class="category-nav" role="navigation" aria-label="Post categories">
+<div class="wrapper">
+    <div class="flex-row" data-justify="start">
+        <button data-active>All posts</button>
+        {% for category in allPosts.categories %}
+            <button>{{ category }}</button>
+        {% endfor %}
+    </div>
+</div>
+</div>
 
         {% if allPosts.posts %}
         <section>

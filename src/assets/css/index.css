@@ -34,6 +34,7 @@
 @import "./components/comparison.css";
 @import "./components/blog-feature.css";
 @import "./components/index-post.css";
+@import "./components/category-nav.css";
 
 body {
   background: var(--ws-snow-grey);

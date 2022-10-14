@@ -1,0 +1,20 @@
+.category-nav {
+  font-weight: 600;
+  font-variation-settings: "wght" 600;
+
+  & .flex-row {
+    --min: initial;
+  }
+
+  button {
+    background: none;
+    border: none;
+    color: var(--ws-grey);
+    width: auto;
+    cursor: pointer;
+
+    &[data-active] {
+      color: var(--ws-bright-green);
+    }
+  }
+}
