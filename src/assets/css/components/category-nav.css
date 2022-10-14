@@ -4,6 +4,14 @@
 
   & .flex-row {
     --min: initial;
+    flex-wrap: nowrap;
+    width: 100%;
+    overflow: auto;
+    padding-inline-end: 1rem;
+
+    & > * {
+      flex: 1 0 auto;
+    }
   }
 
   & ul {
