@@ -1,0 +1,32 @@
+---
+layout: site
+ctaLink:
+    text: "Book a demo"
+    url: "#"
+---
+        {% if allPosts.feature %}
+        {% assign feature = allPosts.feature %}
+<section>
+    <div class="wrapper">
+            <div class="flex-row blog-feature">
+                <div>
+                    {% capture imgUrl %}
+                        {% sanityImageUrl feature.mainImage %}
+                    {% endcapture %}
+                    {% image imgUrl, feature.mainImage.altText %}
+                </div>
+                <div class="flow content-col">
+                    <p class="h4"><a href="/blog/{{feature.slug.current}}">{{ feature.title }}</a></p>
+                    <p>{{ feature.description }}</p>
+                    <div class="flex-row" data-justify="start"  style="--min: initial;">
+                        <p class="text--small color-accent semi-bold">{{ feature.categories[0].title }}</p>
+                        <p class="text--small">{{ feature.publishedAt | date: "%B %d, %Y" }}</p>
+                    </div>
+                </div>
+            </div>
+    </div>
+</section>
+        {% endif %}
+
+{% assign ctaTitle = "See how AI can transform your business." %}
+{% include 'components/cta-section.liquid' %}

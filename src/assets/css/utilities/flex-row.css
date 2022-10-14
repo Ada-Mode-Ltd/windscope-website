@@ -8,9 +8,17 @@
   row-gap: var(--space-80);
   margin-block-start: var(--space-64);
   align-items: center;
+
+  &[data-justify="start"] {
+    justify-content: flex-start;
+  }
 }
 
 .flex-row > * {
+  flex: 1 1 var(--min);
+}
+
+.flex-row[data-special="true"] > * {
   flex: 1 0;
 }
 

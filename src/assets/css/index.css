@@ -31,6 +31,7 @@
 @import "./components/stacked-tabs.css";
 @import "./components/styled-ol.css";
 @import "./components/comparison.css";
+@import "./components/blog-feature.css";
 
 body {
   background: var(--ws-snow-grey);
