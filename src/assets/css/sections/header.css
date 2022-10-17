@@ -88,6 +88,7 @@ nav.page {
 
     &:hover {
       color: var(--ws-bright-green);
+      text-decoration: underline;
     }
   }
 
