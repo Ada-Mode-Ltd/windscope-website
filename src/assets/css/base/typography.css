@@ -76,6 +76,11 @@ h5 {
   letter-spacing: -0.1px;
 }
 
+p {
+  max-width: 60rem;
+  width: 100%;
+}
+
 p,
 .text--medium {
   font-size: var(--text-medium);
@@ -117,6 +122,7 @@ p,
 
 .text-center {
   text-align: center;
+  margin-inline: auto;
 }
 
 .color-primary {
