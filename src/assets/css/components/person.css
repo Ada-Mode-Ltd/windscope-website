@@ -15,6 +15,7 @@
     aspect-ratio: 1/1;
     border-radius: var(--px-8);
     background: var(--ws-light-grey);
+    filter: grayscale(100%);
   }
 
   & > .details {
