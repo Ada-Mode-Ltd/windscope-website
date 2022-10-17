@@ -20,6 +20,7 @@
 @import "./sections/article.css";
 @import "./sections/section.css";
 @import "./sections/text-page-header.css";
+@import "./sections/post-head.css";
 
 /* Components */
 @import "./components/buttons.css";
@@ -35,6 +36,7 @@
 @import "./components/blog-feature.css";
 @import "./components/index-post.css";
 @import "./components/category-nav.css";
+@import "./components/post-content.css";
 
 body {
   background: var(--ws-snow-grey);

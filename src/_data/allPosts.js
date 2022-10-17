@@ -6,6 +6,9 @@ module.exports = async function() {
     const feature = features ? features[0] : null;
     const posts = data.filter(doc => doc._id !== feature?._id);
 
+    // combine feature and posts
+    const combined = [feature, ...posts];
+
     // Get an array of the uniques categories used in each post
     const categories = posts.reduce((acc, post) => {
         post.categories.forEach(cat => {
@@ -16,5 +19,5 @@ module.exports = async function() {
         return acc;
     }, []);
 
-    return { feature, posts, categories };
+    return { feature, posts, categories, combined };
 };

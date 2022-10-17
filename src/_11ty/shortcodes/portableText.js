@@ -8,7 +8,16 @@ const html = htm.bind(vhtml)
 
 const serializer = {
     types: {
-      image: ({ value }) => html`<img src="${imageUrl(value)}" alt="${value.altText}" />`
+      image: ({ value }) => {
+        if (value.caption) {
+            return html`<figure>
+            <img src="${imageUrl(value)}" alt="${value.altText}" />
+            <figcaption>${value.caption}</figcaption>
+            </figure>`
+        }
+
+        return html`<img src="${imageUrl(value)}" alt="${value.altText}" />`
+        }
     },
   
     marks: {
