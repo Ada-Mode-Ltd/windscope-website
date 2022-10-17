@@ -4,7 +4,7 @@
     {% assign textAlign = "text-left" %}
 {% endif %}
 
-<section>
+<section id="page-heading">
     <div class="wrapper flow text-page-header {{ textAlign }}">
         {% if content.showDate %}
             <p class="text--small timestamp">Last updated: <time datetime="{{ thisPage._updatedAt | w3cDate }}">{{ thisPage._updatedAt | dateFormat }}</time></p>

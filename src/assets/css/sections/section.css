@@ -5,3 +5,7 @@ section {
     padding-block: var(--space-72);
   }
 }
+
+section#page-heading + section {
+  padding-block-start: 0;
+}
