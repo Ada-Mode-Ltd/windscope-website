@@ -11,7 +11,21 @@
   &[data-style="large"] {
     grid-template-columns: 1fr 1fr;
     gap: var(--space-104);
+    position: relative;
+    z-index: 0;
     @mixin mobile-large-feature;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: -1.5rem;
+      left: -1.5rem;
+      background: var(--ws-white);
+      right: -1.5rem;
+      bottom: -1.5rem;
+      z-index: -1;
+      border-radius: var(--px-8);
+    }
 
     &[data-image-placement="left"] {
       grid-template-areas: "image content";
