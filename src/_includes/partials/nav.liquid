@@ -19,7 +19,6 @@
         <span data-desktop-links>{% include 'components/button.liquid' %}</span>
         <div data-menu-container>
             <button aria-haspopup="true" class="c-header__menu-btn" data-btn="menu" hidden="true">
-                <!-- <span data-menu-button-text>Menu</span> -->
                 <span class="c-header__menu-icon" data-menu-icon-open>
                     {% include 'svg/menu.svg' %}
                 </span>
@@ -28,18 +27,18 @@
                 </span>
             </button>
             <div data-menu-wrapper="data-menu-wrapper">
-                <nav class="c-header__nav">
+                <nav class="c-header__nav flow">
                     <ul class="c-header__list">
                         {% for link in links %}
                         <li>
                             <a class="text-link secondary" href="{{ link.url }}">{{ link.title }}</a>
                         </li>
                         {% endfor %}
+                    <li>
+                        <a href="#" class="text-link secondary">Contact sales</a>
+                    </li>
                     </ul>
-                    <div>
-                        <a href="#" class="text-link secondary" data-desktop-links>Contact sales</a>
-                        <span data-desktop-links>{% include 'components/button.liquid' %}</span>
-                    </div>
+                        <div>{% include 'components/button.liquid' %}</div>
                 </nav>
             </div>
         </div>
