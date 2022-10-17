@@ -17,11 +17,10 @@
     grid-row: auto;
   }
 
-  & > img {
+  & > img,
+  & > picture > img {
     margin: auto;
-
-    @media (max-width: 1024px) {
-      object-fit: cover;
-    }
+    border-radius: var(--px-8);
+    object-fit: cover;
   }
 }
