@@ -137,6 +137,10 @@ p,
   color: var(--ws-grey);
 }
 
+.text--slate {
+  color: var(--ws-slate-grey);
+}
+
 ul,
 ol {
   font-size: var(--text-medium);

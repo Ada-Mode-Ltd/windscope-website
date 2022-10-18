@@ -19,12 +19,12 @@
   }
 
   & > .details {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    gap: var(--space-8);
     height: 100%;
+
+    & > p:first-child() {
+      margin-block-end: 0.5rem;
+      color: var(--ws-slate-grey);
+    }
 
     & svg.icon {
       height: 1rem;
