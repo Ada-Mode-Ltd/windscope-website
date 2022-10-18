@@ -1,6 +1,7 @@
 .category-nav {
   font-weight: 600;
   font-variation-settings: "wght" 600;
+  scroll-margin-top: var(--space-32);
 
   & .flex-row {
     --min: initial;

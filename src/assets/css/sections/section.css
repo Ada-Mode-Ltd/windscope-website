@@ -21,4 +21,5 @@ section#page-heading + section {
 section#posts {
   border-top: 1px solid var(--ws-light-grey);
   background: var(--ws-white);
+  scroll-margin-top: var(--space-48);
 }

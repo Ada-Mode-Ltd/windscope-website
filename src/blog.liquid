@@ -78,8 +78,8 @@ ctaLink:
         <script>
             const categoryNav = document.querySelector('.category-nav');
             const categoryButtons = categoryNav.querySelectorAll('button');
-            const posts = document.querySelectorAll('.index-post');
-            const section = document.querySelector('#posts');
+            const posts = document.querySelectorAll('#posts .index-post');
+            const section = document.querySelector('.category-nav');
 
             categoryButtons.forEach(button => {
                 button.addEventListener('click', () => {
@@ -95,21 +95,11 @@ ctaLink:
                             post.setAttribute('data-hidden', '');
                         }
                     });
-
-                    scrollToSection(section)
+                    // scroll to #posts section
+                    section.scrollIntoView({ behavior: 'smooth' });
                 });
             });
             
-            // scroll to section
-            const scrollToSection = (section) => {
-                const sectionTop = section.getBoundingClientRect().top;
-                const scrollTop = window.pageYOffset;
-                const offset = sectionTop + scrollTop;
-                window.scrollTo({
-                    top: offset,
-                    behavior: 'smooth'
-                });
-            }
         </script>
 
 
