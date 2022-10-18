@@ -51,7 +51,7 @@ nav.page {
   font-variations-settings: "wght" 500;
 
   @media (max-width: 1024px) {
-    padding: var(--space-24) 0 var(--space-32);
+    padding: var(--space-24) 0 var(--space-8);
   }
 
   & > div,
@@ -197,6 +197,7 @@ nav.page {
 }
 
 .js-menu {
+  --header-height: 6.125rem;
   .c-header__nav {
     height: 100vh;
     /* max-width: 40rem; */
@@ -210,6 +211,7 @@ nav.page {
     width: 100vw;
     z-index: 99;
     background: var(--ws-snow-grey);
+    padding-block-start: 1.5rem;
   }
 
   .c-header__list {
