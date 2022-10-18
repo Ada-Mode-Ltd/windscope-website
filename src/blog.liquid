@@ -4,8 +4,12 @@ ctaLink:
     text: "Book a demo"
     url: "#"
 ---
+
         {% if allPosts.feature %}
-        {% assign feature = allPosts.feature %}
+            {% assign feature = allPosts.feature %}
+        {% else %}
+            {% assign feature = allPosts.posts | first %}
+        {% endif %}
 <section>
     <div class="wrapper">
             <div class="flex-row blog-feature">
@@ -26,7 +30,6 @@ ctaLink:
             </div>
     </div>
 </section>
-        {% endif %}
 
 {%- comment -%} TODO: There needs to be categories in here! {%- endcomment -%}
 <div class="category-nav" role="navigation" aria-label="Post categories">
