@@ -22,6 +22,14 @@
   &[data-hidden] {
     display: none;
   }
+
+  & .title {
+    color: var(--ws-slate-grey);
+    ont-weight: 500;
+    font-size: 1.5rem;
+    line-height: 28px;
+    letter-spacing: -0.5px;
+  }
 }
 
 #posts > .wrapper > .flex-row > * {
