@@ -22,11 +22,11 @@ ctaLink:
                 <div class="flow content-col">
                     <p class="h4"><a href="/blog/{{feature.slug.current}}">{{ feature.title }}</a></p>
                     <p>{{ feature.description }}</p>
+                    <p><a class="text-link secondary" href="/blog/{{feature.slug.current}}">Read →</a></p>
                     <div class="flex-row" data-justify="start"  style="--min: initial;">
                         <p class="text--small color-accent semi-bold">{{ feature.categories[0].title }}</p>
                         <p class="text--small">{{ feature.publishedAt | date: "%B %d, %Y" }}</p>
                     </div>
-                    <p><a class="text-link secondary" href="/blog/{{feature.slug.current}}">Read →</a></p>
                 </div>
             </div>
     </div>
