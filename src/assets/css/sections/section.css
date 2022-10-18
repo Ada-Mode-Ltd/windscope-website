@@ -10,6 +10,10 @@ section {
   padding-block: var(--space-72);
 }
 
+section[data-bg-white] {
+  background: var(--ws-white);
+}
+
 section#page-heading + section {
   padding-block-start: 0;
 }
