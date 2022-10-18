@@ -1,9 +1,13 @@
-section {
+.homepage > section {
   padding-block: var(--space-144);
 
   @media (max-width: 1024px) {
     padding-block: var(--space-72);
   }
+}
+
+section {
+  padding-block: var(--space-72);
 }
 
 section#page-heading + section {
