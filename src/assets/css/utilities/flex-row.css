@@ -16,6 +16,11 @@
   &[data-align="start"] {
     align-items: flex-start;
   }
+
+  @media (max-width: 1024px) {
+    --gap: 2rem;
+    --min: 100%;
+  }
 }
 
 .flex-row > * {
