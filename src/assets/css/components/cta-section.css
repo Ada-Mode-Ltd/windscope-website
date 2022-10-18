@@ -11,12 +11,16 @@ section.cta {
 
   & > .content {
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
     padding-block-end: var(--space-104);
+
+    & > .h1 {
+      margin-bottom: 1.5rem;
+    }
+
+    & > p,
+    & > .h1 {
+      margin-inline: auto;
+    }
 
     & > .button-group {
       display: flex;
@@ -25,7 +29,7 @@ section.cta {
       align-items: center;
       padding: 0;
       flex-wrap: wrap;
-      margin-top: var(--space-56);
+      margin-top: var(--space-32);
     }
   }
 
@@ -37,11 +41,6 @@ section.cta {
 
     & > .content {
       text-align: left;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: flex-start;
-      gap: 1.5rem;
 
       & > .button-group {
         display: flex;
