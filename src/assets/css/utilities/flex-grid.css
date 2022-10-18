@@ -10,7 +10,7 @@
   justify-content: center;
   align-items: center;
   gap: var(--space-56);
-  padding: var(--space-104) 0 0;
+  padding: var(--space-32) 0 0;
   justify-items: center;
 
   @media (max-width: 1024px) {
