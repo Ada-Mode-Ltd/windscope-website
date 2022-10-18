@@ -223,7 +223,7 @@ nav.page {
     transition: transform 0.25s;
     width: 100vw;
     z-index: 99;
-    background: var(--ws-snow-grey);
+    background: var(--ws-white);
     padding-block-start: 1.5rem;
   }
 
