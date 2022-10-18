@@ -33,13 +33,31 @@ header {
 
   & > .wrapper {
     --wrapper-width: 90rem;
+    transition: background 0.2s;
+
+    & svg > path {
+      transition: all 0.4s;
+    }
 
     @media (max-width: 1024px) {
       padding: 0 1rem;
-      background: var(--ws-white);
-      --ws-logo-color: var(--ws-grey);
-      color: var(--ws-grey) !important;
     }
+  }
+}
+
+/* Ensures header and mobile menu are white bg + grey text when menu is open */
+body.is-menu-open > header > .wrapper {
+  background: var(--ws-white);
+  --ws-logo-color: var(--ws-grey);
+  color: var(--ws-grey) !important;
+
+  & [data-menu-icon-open] *,
+  & [data-menu-icon-close] * {
+    color: var(--ws-grey) !important;
+  }
+
+  & .c-header__menu-btn:focus-within > * {
+    outline: 1px solid var(--ws-grey);
   }
 }
 
@@ -112,13 +130,8 @@ nav.page {
   cursor: pointer;
   margin-right: -0.5rem;
   text-underline-offset: 0;
-  transition: text-underline-offset 200ms, text-decoration-color 200ms;
+  transition: text-underline-offset 0.2s, text-decoration-color 0.2s;
   justify-content: flex-end;
-
-  & [data-menu-icon-open] *,
-  & [data-menu-icon-close] * {
-    color: var(--ws-grey) !important;
-  }
 
   @media (min-width: 1025px) {
     display: none;
