@@ -22,8 +22,11 @@
     height: 100%;
 
     & > p:first-child() {
-      margin-block-end: 0.5rem;
       color: var(--ws-slate-grey);
+    }
+
+    & > p {
+      margin-block-end: 0.5rem;
     }
 
     & svg.icon {
