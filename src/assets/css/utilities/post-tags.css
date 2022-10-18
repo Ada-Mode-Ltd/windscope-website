@@ -1,0 +1,12 @@
+.tags {
+  margin-block-start: var(--space-24);
+  --flow-space: var(--space-8);
+
+  & .category {
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

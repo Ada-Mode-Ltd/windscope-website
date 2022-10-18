@@ -26,7 +26,7 @@ ctaLink:
                     <div class="tags flow">
                         <p class="text--small">{{ feature.publishedAt | date: "%B %d, %Y" }}</p>
                         {% for category in feature.categories %}
-                        <p class="text--small color-accent semi-bold">{{ category.title }}</p>
+                        <p class="text--small color-accent semi-bold category" data-category-filter>{{ category.title }}</p>
                         {% endfor %}
                     </div>
                 </div>
@@ -65,7 +65,7 @@ ctaLink:
                     <div class="tags">
                         <p class="text--small">{{ post.publishedAt | date: "%B %d, %Y" }}</p>
                         {% for category in post.categories %}
-                        <p class="text--small color-accent semi-bold">{{ category.title }}</p>
+                        <p class="text--small color-accent semi-bold category" data-category-filter>{{ category.title }}</p>
                         {% endfor %}
                     </div>
                     <p class="h5">{{ post.title }}</p>
@@ -84,6 +84,7 @@ ctaLink:
             const categoryButtons = categoryNav.querySelectorAll('button');
             const posts = document.querySelectorAll('#posts .index-post');
             const section = document.querySelector('.category-nav');
+            const categoryTags = document.querySelectorAll('[data-category-filter]');
 
             categoryButtons.forEach(button => {
                 button.addEventListener('click', () => {
@@ -97,6 +98,30 @@ ctaLink:
                             post.removeAttribute('data-hidden');
                         } else {
                             post.setAttribute('data-hidden', '');
+                        }
+                    });
+                    // scroll to #posts section
+                    section.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+
+            categoryTags.forEach(tag => {
+                tag.addEventListener('click', () => {
+                    categoryButtons.forEach(button => button.removeAttribute('data-active'));
+                    const category = tag.textContent;
+                    posts.forEach(post => {
+                        if (category === 'All posts') {
+                            post.removeAttribute('data-hidden');
+                        } else if (post.dataset.category.includes(category)) {
+                            post.removeAttribute('data-hidden');
+                        } else {
+                            post.setAttribute('data-hidden', '');
+                        }
+                    });
+                    // set data-active on the corresponding category button
+                    categoryButtons.forEach(button => {
+                        if (button.textContent === category) {
+                            button.setAttribute('data-active', '');
                         }
                     });
                     // scroll to #posts section
