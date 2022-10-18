@@ -26,7 +26,7 @@ ctaLink:
                     <div class="tags flow">
                         <p class="text--small">{{ feature.publishedAt | date: "%B %d, %Y" }}</p>
                         {% for category in feature.categories %}
-                        <p class="text--small color-accent semi-bold category" data-category-filter>{{ category.title }}</p>
+                        <button class="text--small color-accent semi-bold category" data-category-filter>{{ category.title }}</button>
                         {% endfor %}
                     </div>
                 </div>
@@ -65,7 +65,7 @@ ctaLink:
                     <div class="tags">
                         <p class="text--small">{{ post.publishedAt | date: "%B %d, %Y" }}</p>
                         {% for category in post.categories %}
-                        <p class="text--small color-accent semi-bold category" data-category-filter>{{ category.title }}</p>
+                        <button class="text--small color-accent semi-bold category" data-category-filter>{{ category.title }}</button>
                         {% endfor %}
                     </div>
                     <p class="h5">{{ post.title }}</p>
