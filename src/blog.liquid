@@ -20,11 +20,11 @@ ctaLink:
                     {% image imgUrl, feature.mainImage.altText %}
                 </div>
                 <div class="flow content-col">
+                        <small class="text--small">{{ feature.publishedAt | date: "%B %d, %Y" }}</small>
                     <h2 class="feature-title"><a href="/blog/{{feature.slug.current}}">{{ feature.title }}</a></h2>
                     <p>{{ feature.description }}</p>
                     <p><a class="text-link secondary" href="/blog/{{feature.slug.current}}">Read →</a></p>
                     <div class="tags flow">
-                        <p class="text--small">{{ feature.publishedAt | date: "%B %d, %Y" }}</p>
                         {% for category in feature.categories %}
                         <button class="text--small color-accent semi-bold category" data-category-filter>{{ category.title }}</button>
                         {% endfor %}
@@ -62,15 +62,15 @@ ctaLink:
                     {% endcapture %}
                     {% image imgUrl, post.mainImage.altText %}
                 <div class="flow content-col">
+                        <small class="text--small">{{ post.publishedAt | date: "%B %d, %Y" }}</small>
+                    <p class="title">{{ post.title }}</p>
+                    <p class="text--regular">{{ post.description }}</p>
+                    <p><a class="text-link secondary" href="/blog/{{post.slug.current}}">Read →</a></p>
                     <div class="tags">
-                        <p class="text--small">{{ post.publishedAt | date: "%B %d, %Y" }}</p>
                         {% for category in post.categories %}
                         <button class="text--small color-accent semi-bold category" data-category-filter>{{ category.title }}</button>
                         {% endfor %}
                     </div>
-                    <p class="title">{{ post.title }}</p>
-                    <p class="text--regular">{{ post.description }}</p>
-                    <p><a class="text-link secondary" href="/blog/{{post.slug.current}}">Read →</a></p>
                 </div>  
                     </div>
                 {% endfor %}
