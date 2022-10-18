@@ -23,9 +23,11 @@ ctaLink:
                     <h2 class="feature-title"><a href="/blog/{{feature.slug.current}}">{{ feature.title }}</a></h2>
                     <p>{{ feature.description }}</p>
                     <p><a class="text-link secondary" href="/blog/{{feature.slug.current}}">Read →</a></p>
-                    <div class="flex-row" data-justify="start"  style="--min: initial;">
-                        <p class="text--small color-accent semi-bold">{{ feature.categories[0].title }}</p>
+                    <div class="tags flow">
                         <p class="text--small">{{ feature.publishedAt | date: "%B %d, %Y" }}</p>
+                        {% for category in feature.categories %}
+                        <p class="text--small color-accent semi-bold">{{ category.title }}</p>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -60,9 +62,11 @@ ctaLink:
                     {% endcapture %}
                     {% image imgUrl, post.mainImage.altText %}
                 <div class="flow content-col">
-                    <div class="flex-row" data-justify="start"  style="--min: initial;">
-                        <p class="text--small color-accent semi-bold">{{ post.categories[0].title }}</p>
+                    <div class="tags">
                         <p class="text--small">{{ post.publishedAt | date: "%B %d, %Y" }}</p>
+                        {% for category in post.categories %}
+                        <p class="text--small color-accent semi-bold">{{ category.title }}</p>
+                        {% endfor %}
                     </div>
                     <p class="h5">{{ post.title }}</p>
                     <p>{{ post.description }}</p>
