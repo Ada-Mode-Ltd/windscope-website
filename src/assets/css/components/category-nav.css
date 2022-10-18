@@ -44,3 +44,11 @@
   margin-top: 0;
   padding-block-start: var(--space-64);
 }
+
+@media (max-width: 768px) {
+  .category-nav {
+    button {
+      font-size: var(--text-small);
+    }
+  }
+}
