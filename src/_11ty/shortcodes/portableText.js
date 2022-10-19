@@ -1,23 +1,31 @@
 const { toHTML } = require('@portabletext/to-html')
 const image = require('./image')
-const imageUrl = require('./sanityImageUrl')
+const { sanityBlogImageUrl } = require('./sanityImageUrl')
 
+// TODO: Add lite-yt & lite-vimeo support
 const htm = require('htm')
 const vhtml = require('vhtml')
 const html = htm.bind(vhtml)
 
+ function imageSerializer(value) {
+    const url = sanityBlogImageUrl(value)
+
+    if (value.caption) {
+        return `<figure>
+            <img src="${url}" alt="${value.altText}" />
+        <figcaption>${value.caption}</figcaption>
+        </figure>`
+    }
+
+    return `<img src="${url}" alt="${value.altText}" />`
+}
+
 const serializer = {
     types: {
       image: ({ value }) => {
-        if (value.caption) {
-            return html`<figure>
-            <img src="${imageUrl(value)}" alt="${value.altText}" />
-            <figcaption>${value.caption}</figcaption>
-            </figure>`
-        }
-
-        return html`<img src="${imageUrl(value)}" alt="${value.altText}" />`
-        }
+        const img = imageSerializer(value)
+        return html`${img}`
+      },
     },
   
     marks: {
@@ -26,9 +34,8 @@ const serializer = {
     },
 }
 
-const portableText = async (text) => {
+async function portableText(text) {
     const output = await toHTML(text, {components: serializer})
-    
     return output
 }
 

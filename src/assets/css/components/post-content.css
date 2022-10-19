@@ -17,11 +17,14 @@ article.post-content {
     margin-block-end: var(--space-48);
 
     & img {
+      margin: 0 auto;
       object-fit: cover;
       border-radius: var(--px-8);
     }
 
     & figcaption {
+      text-align: left;
+      font-size: var(--text-small);
       margin-block-start: var(--space-16);
     }
   }
@@ -48,4 +51,6 @@ article.post-content {
   & ul > li {
     margin-block: 0.5rem;
   }
+
+  /* TODO: Style blockquotes */
 }

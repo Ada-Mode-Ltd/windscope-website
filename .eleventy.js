@@ -3,7 +3,7 @@ const EleventyVitePlugin = require('@11ty/eleventy-plugin-vite')
 
 const imageShortcode = require('./src/_11ty/shortcodes/image')
 const { dateFormat, w3cDate } = require('./src/_11ty/filters/date')
-const sanityImageUrl = require('./src/_11ty/shortcodes/sanityImageUrl')
+const {sanityImageUrl} = require('./src/_11ty/shortcodes/sanityImageUrl')
 const portableText = require('./src/_11ty/shortcodes/portableText')
 const getReferences = require('./src/_11ty/shortcodes/getReference')
 
@@ -33,7 +33,7 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addShortcode("image", imageShortcode); // Because copyright text in the footer ...
 	eleventyConfig.addShortcode("currentYear", () => `${new Date().getFullYear()}`); // Because copyright text in the footer ...
 	eleventyConfig.addShortcode("sanityImageUrl", sanityImageUrl)
-	eleventyConfig.addShortcode("portableText", portableText)
+	eleventyConfig.addLiquidShortcode("portableText", portableText)
 	eleventyConfig.addShortcode("getReferences", getReferences)
 
 	eleventyConfig.addPlugin(EleventyPluginNavigation)

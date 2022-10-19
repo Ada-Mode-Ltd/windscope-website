@@ -21,7 +21,7 @@
   & > .details {
     height: 100%;
 
-    & > p:first-child() {
+    & > p:first-child {
       color: var(--ws-slate-grey);
     }
 

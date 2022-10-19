@@ -12,4 +12,9 @@ const sanityImageUrl = (image) => {
 		return url
 }
 
-module.exports = sanityImageUrl
+const sanityBlogImageUrl = (image) => {
+    const url = urlFor(image.asset).auto('format').width(672).fit('max').url();
+		return url
+}
+
+module.exports = {sanityImageUrl, sanityBlogImageUrl}

@@ -49,6 +49,7 @@
   },
   "dependencies": {
     "@portabletext/to-html": "^1.0.4",
+    "@sanity/block-content-to-html": "^2.0.0",
     "focus-trap": "^7.0.0"
   },
   "eslintConfig": {
