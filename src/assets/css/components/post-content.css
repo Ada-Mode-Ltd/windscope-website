@@ -31,26 +31,51 @@ article.post-content {
 
   & h2 {
     font-size: var(--h4);
-    padding: 0.5rem 0 1rem 0;
+    margin-block-start: var(--space-32);
+    margin-block-end: var(--space-24);
   }
 
   & h3 {
     font-size: var(--h5);
-    padding: 0.5rem 0 1rem 0;
+    margin-block-start: var(--space-32);
+    margin-block-end: var(--space-24);
   }
 
   & h4 {
     font-size: var(--text-medium);
-    padding: 0.5rem 0 1rem 0;
+    margin-block-end: var(--space-24);
   }
 
   & :is(h2, h3, h4) + p {
     margin-top: 0;
   }
 
-  & ul > li {
-    margin-block: 0.5rem;
+  & ul {
+    margin-block: var(--space-24);
   }
 
-  /* TODO: Style blockquotes */
+  & ul > li {
+    margin-block: var(--space-16);
+  }
+
+  & blockquote {
+    padding-inline-start: var(--space-32);
+    position: relative;
+    font-weight: 500;
+    font-size: 2rem;
+    line-height: 38px;
+    letter-spacing: -0.5px;
+    margin-block-start: var(--space-80);
+    margin-block-end: var(--space-56);
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 3px;
+      height: 100%;
+      background-color: var(--ws-bright-green);
+    }
+  }
 }
