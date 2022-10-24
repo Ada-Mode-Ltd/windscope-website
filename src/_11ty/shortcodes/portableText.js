@@ -26,12 +26,21 @@ const serializer = {
         const img = imageSerializer(value)
         return html`${img}`
       },
+      videoId: ({ value }) => {
+        const { id, service } = value
+        if (service === 'youtube') {
+            return html`<div class="video-wrapper"><lite-youtube videoid="${id}"></lite-youtube></div>`
+        } else if (service === 'vimeo') {
+            return html`<div class="video-wrapper"><lite-vimeo videoid="${id}"></lite-vimeo></div>`
+        }
     },
-  
-    marks: {
-        highlightBlue: ({children}) => html`<span class="color-primary">${children}</span>`,
-        highlightGreen: ({children}) => html`<span class="color-accent">${children}</span>`,
-    },
+},
+    
+        marks: {
+            highlightBlue: ({children}) => html`<span class="color-primary">${children}</span>`,
+            highlightGreen: ({children}) => html`<span class="color-accent">${children}</span>`,
+            link: ({children, value}) => html`<a href="${value.href}" class="text-link secondary">${children}</a>`
+        },
 }
 
 async function portableText(text) {
