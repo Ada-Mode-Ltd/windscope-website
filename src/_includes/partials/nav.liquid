@@ -3,6 +3,7 @@
 <nav class="page" data-page-nav>
     <div class="left">
         <a href="/" >{% include 'svg/windscope_logo.svg' %}</a>
+        {% unless hideNav %}
         <span data-desktop-links>
             {% for link in links %}
             <li>
@@ -10,7 +11,9 @@
             </li>
             {% endfor %}
         </span>
+        {% endunless %}
     </div>
+    {% unless hideNav %}
     <div class="right">
         {% assign buttonType = 'primary' %}
         {% assign buttonLink = '#' %}
@@ -43,6 +46,7 @@
             </div>
         </div>
     </div>
+    {% endunless %}
 </nav>
 
 <script src="/assets/js/index.js" type="module"></script>

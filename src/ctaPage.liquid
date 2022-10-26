@@ -1,0 +1,20 @@
+---
+    # This needs to change
+layout: cta
+pagination:
+    data: ctaPages
+    alias: ctaPage
+    size: 1
+permalink: /{{ ctaPage.slug.current | slug }}/index.html
+---
+
+<section class="homepage-hero">    
+    <div class="wrapper columns">
+        <div class="text-content">
+                {% portableText ctaPage.body %}
+        </div>
+        <div class="form">
+            There's a form here yo!
+        </div>
+    </div>
+</section>
