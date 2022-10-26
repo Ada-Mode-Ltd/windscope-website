@@ -25,28 +25,28 @@ permalink: /{{ ctaPage.slug.current | slug }}/index.html
                     {% if field.type == 'text' or field.type == 'email' or field.type == 'url' %}
                         <label class="text--regular" for="{{ field.name.current }}">
                             {{ field.label }} {% if required %}*{% endif %}
-                            <input type="{{ field.type }}" name="{{ field.name.current }}" id="{{ field.name.current }}" required="{{ required }}">
+                            <input type="{{ field.type }}" name="{{ field.name.current }}" id="{{ field.name.current }}" {% if required %}required{% endif %}>
                         </label>
                     {% endif %}
 
                     {% if field.type == 'phone' %}
                         <label class="text--regular" for="{{ field.name.current }}">
                             {{ field.label }} {% if required %}*{% endif %}
-                            <input type="tel" name="{{ field.name.current }}" id="{{ field.name.current }}" required="{{ required }}">
+                            <input type="tel" name="{{ field.name.current }}" id="{{ field.name.current }}" {% if required %}required{% endif %}>
                         </label>
                     {% endif %}
 
                     {% if field.type == 'textarea' %}
                         <label class="text--regular" for="{{ field.name.current }}">
                             {{ field.label }} {% if required %}*{% endif %}
-                            <textarea name="{{ field.name.current }}" id="{{ field.name.current }}" required="{{ required }}"></textarea>
+                            <textarea name="{{ field.name.current }}" id="{{ field.name.current }}" {% if required %}required{% endif %}></textarea>
                         </label>
                     {% endif %}
 
                     {% if field.type == 'dropdown' %}
                         <label class="text--regular" for="{{ field.name.current }}">
                             {{ field.label }} {% if required %}*{% endif %}
-                            <select name="{{ field.name.current }}" id="{{ field.name.current }}" required="{{ required }}">
+                            <select name="{{ field.name.current }}" id="{{ field.name.current }}" {% if required %}required{% endif %}>
                                 {% for option in field.values %}
                                     <option value="{{ option | slug }}">{{ option }}</option>
                                 {% endfor %}
