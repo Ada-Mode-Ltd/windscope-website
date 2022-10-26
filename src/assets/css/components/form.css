@@ -14,6 +14,6 @@ label {
   & > input:focus-within,
   & > input:focus-visible {
     border: 1px solid var(--ws-dark-green);
-    outline: var(--ws-bright-green) auto 1px;
+    /* outline: var(--ws-bright-green) auto 1px; */
   }
 }

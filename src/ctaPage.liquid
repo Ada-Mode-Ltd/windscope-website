@@ -8,13 +8,54 @@ pagination:
 permalink: /{{ ctaPage.slug.current | slug }}/index.html
 ---
 
-<section class="homepage-hero">    
+<section id="cta-page">    
     <div class="wrapper columns">
-        <div class="text-content">
+        <div class="text-content flow">
                 {% portableText ctaPage.body %}
         </div>
         <div class="form">
-            There's a form here yo!
+            <form action="#">
+                {% for field in ctaPage.form %}
+                {% if field.required %}
+                    {% assign required = field.required %}
+                {% else %}
+                    {% assign required = false %}
+                {% endif %}
+
+                    {% if field.type == 'text' or field.type == 'email' or field.type == 'url' %}
+                        <label class="text--regular" for="{{ field.name.current }}">
+                            {{ field.label }} {% if required %}*{% endif %}
+                            <input type="{{ field.type }}" name="{{ field.name.current }}" id="{{ field.name.current }}" required="{{ required }}">
+                        </label>
+                    {% endif %}
+
+                    {% if field.type == 'phone' %}
+                        <label class="text--regular" for="{{ field.name.current }}">
+                            {{ field.label }} {% if required %}*{% endif %}
+                            <input type="tel" name="{{ field.name.current }}" id="{{ field.name.current }}" required="{{ required }}">
+                        </label>
+                    {% endif %}
+
+                    {% if field.type == 'textarea' %}
+                        <label class="text--regular" for="{{ field.name.current }}">
+                            {{ field.label }} {% if required %}*{% endif %}
+                            <textarea name="{{ field.name.current }}" id="{{ field.name.current }}" required="{{ required }}"></textarea>
+                        </label>
+                    {% endif %}
+
+                    {% if field.type == 'dropdown' %}
+                        <label class="text--regular" for="{{ field.name.current }}">
+                            {{ field.label }} {% if required %}*{% endif %}
+                            <select name="{{ field.name.current }}" id="{{ field.name.current }}" required="{{ required }}">
+                                {% for option in field.values %}
+                                    <option value="{{ option | slug }}">{{ option }}</option>
+                                {% endfor %}
+                            </select>
+                        </label>
+                    {% endif %}
+                {% endfor %}
+                <button class="button primary" type="submit">Send</button>
+            </form>
         </div>
     </div>
 </section>

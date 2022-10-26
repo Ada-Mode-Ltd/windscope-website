@@ -16,9 +16,9 @@
     {% unless hideNav %}
     <div class="right">
         {% assign buttonType = 'primary' %}
-        {% assign buttonLink = '#' %}
+        {% assign buttonLink = '/book-a-demo/' %}
         {% assign buttonIcon = false %}
-        <a href="#" class="text-link secondary" data-desktop-links>Contact sales</a>
+        <a href="/book-a-demo/" class="text-link secondary" data-desktop-links>Contact sales</a>
         <span data-desktop-links>{% include 'components/button.liquid' %}</span>
         <div data-menu-container>
             <button aria-haspopup="true" class="c-header__menu-btn" data-btn="menu" hidden="true">
@@ -34,11 +34,11 @@
                     <ul class="c-header__list">
                         {% for link in links %}
                         <li>
-                            <a class="text-link secondary" href="{{ link.url }}">{{ link.title }}</a>
+                            <a class="text-link secondary" href="{{ link.path }}">{{ link.title }}</a>
                         </li>
                         {% endfor %}
                     <li>
-                        <a href="#" class="text-link secondary">Contact sales</a>
+                        <a href="/book-a-demo/" class="text-link secondary">Contact sales</a>
                     </li>
                     </ul>
                         <div>{% include 'components/button.liquid' %}</div>

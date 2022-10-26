@@ -22,6 +22,7 @@
 @import "./sections/section.css";
 @import "./sections/text-page-header.css";
 @import "./sections/post-head.css";
+@import "./sections/cta-page.css";
 
 /* Components */
 @import "./components/buttons.css";

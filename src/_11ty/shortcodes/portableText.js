@@ -2,7 +2,6 @@ const { toHTML } = require('@portabletext/to-html')
 const image = require('./image')
 const { sanityBlogImageUrl } = require('./sanityImageUrl')
 
-// TODO: Add lite-yt & lite-vimeo support
 const htm = require('htm')
 const vhtml = require('vhtml')
 const html = htm.bind(vhtml)
@@ -17,7 +16,7 @@ const html = htm.bind(vhtml)
         </figure>`
     }
 
-    return `<img src="${url}" alt="${value.altText}" />`
+    return html`<img src="${url}" alt="${value.altText}" />`
 }
 
 const serializer = {
@@ -34,6 +33,14 @@ const serializer = {
             return html`<div class="video-wrapper"><lite-vimeo videoid="${id}"></lite-vimeo></div>`
         }
     },
+    quote: ({ value }) => {
+        const { text, attribution, partner } = value
+        return html`<div class="partner-quote flow">
+            <div class="quote__text">${text}</div>
+            <div class="quote__author text--small">${attribution.name}, ${attribution.title}</div>
+            ${imageSerializer(partner.logo)}
+        </div>`
+    }
 },
     
         marks: {

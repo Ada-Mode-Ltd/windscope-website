@@ -1,0 +1,81 @@
+section#cta-page {
+  @mixin dark-bg;
+  min-height: 100vh;
+  & h1 {
+    color: var(--ws-white);
+  }
+  display: grid;
+  place-items: center;
+  gap: var(--space-24);
+
+  ul {
+    list-style: none;
+    padding: 0;
+    border: none;
+    display: grid;
+    gap: var(--space-24);
+    font-size: var(--text-medium);
+    position: relative;
+    margin-block-start: var(--space-32);
+    margin-block-end: var(--space-48);
+
+    @media (max-width: 1024px) {
+      display: flex;
+      flex-direction: column;
+    }
+
+    & > li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-24);
+      position: relative;
+
+      &::before {
+        content: "";
+        display: block;
+        width: auto;
+        height: 2.5ex;
+        aspect-ratio: 1;
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+    }
+
+    & li::before {
+      color: var(--ws-bright-green);
+      background-image: url("data:image/svg+xml,%3Csvg%20width%3D%2248%22%20height%3D%2248%22%20viewBox%3D%220%200%2048%2048%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%09%3Cpath%20d%3D%22M18.9002%2035.7L7.7002%2024.5L9.8502%2022.35L18.9002%2031.4L38.1002%2012.2L40.2502%2014.35L18.9002%2035.7Z%22%20fill%3D%22%231fca51%22%20%2F%3E%0A%3C%2Fsvg%3E%0A");
+    }
+  }
+
+  .partner-quote {
+    img {
+      width: 100%;
+      max-width: 150px;
+    }
+  }
+
+  form {
+    background: var(--ws-white);
+    padding: var(--space-32) var(--space-24);
+    border-radius: var(--space-8);
+    border: 2px solid var(--ws-snow-grey);
+    display: grid;
+    gap: var(--space-24);
+    color: var(--ws-slate-grey);
+
+    input:is([type="text"], [type="email"], [type="tel"], [type="url"]),
+    select,
+    textarea {
+      border: 1px solid transparent;
+      border-radius: var(--space-8);
+      padding: var(--space-8) var(--space-16);
+      color: var(--ws-slate-grey);
+      width: 100%;
+      background: var(--ws-light-grey);
+    }
+
+    button[type="submit"] {
+      border: none;
+    }
+  }
+}
