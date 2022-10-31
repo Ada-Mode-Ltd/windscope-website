@@ -70,13 +70,22 @@ permalink: /{{ thisPage.slug.current | slug }}/index.html
         {% else %}
             {% assign people = content.people %}
         {% endif %}
-        <section><div class="wrapper flow">
+
+        <section>
+            <div class="wrapper flow">
             {% if content.sectionTitle %}
             {% include 'components/sectionHeading.liquid' %}
             {% endif %}
             {% include 'components/people.liquid' %}
-        </div></section>
+        </div>
+        </section>
         
+    {% endif %}
+
+    {% if content._type == 'sectionHeading' %}
+            {% assign sectionTitle = content.title %}
+            {% assign sectionText = content.text %}
+            {% include 'components/sectionHeading.liquid' %}
     {% endif %}
 
     {% if content._type == 'rowOfLogos' %}
@@ -145,8 +154,80 @@ permalink: /{{ thisPage.slug.current | slug }}/index.html
         
     {% endif %}
 
+    {% if content._type == 'productFeatures' %}
+        {% if content.allFeatures %}
+        {% assign featureType = content.featureType %}
+        {% assign features = allFeatures[featureType] %}
+        <section>
+    <div class="wrapper product-feature-holder" data-style="{{ content.featureType }}">
+        {% for feature in features %}
+            {% assign featureStyle = featureType %}
+            {% if featureStyle == "large" %}
+            {% assign featureImage = feature.largeImage %}
+            {% assign featureTitle = feature.longTitle %}
+            {% assign featureText = feature.largeText %}
+            {% assign featureImagePlacement = "left" %}
+            {% assign secondaryTitle = feature.secondaryTitle %}
+            {% elsif featureStyle == "medium" %}
+            {% assign featureImage = feature.mediumImage %}
+            {% assign featureTitle = feature.mediumTitle %}
+            {% assign featureText = feature.mediumText %}
+            {% assign secondaryTitle = null %}
+            {% assign featureImagePlacement = null %}
+            {% else %}
+            {% assign featureImage = feature.smallImage %}
+            {% assign featureTitle = feature.smallTitle %}
+            {% assign featureText = feature.smallText %}
+            {% assign secondaryTitle = null %}
+            {% assign featureImagePlacement = null %}
+            {% endif %}
+
+            {% assign floatImage = false %}
+            {% if featureImage.offset %}
+            {% assign floatImage = featureImage.offset %}
+            {% endif %}
+            <section>{% include 'components/prod-feature.liquid' %}</section>
+        {% endfor %}
+    </div>
+</section>
+        {% else %}
+            <section>
+    <div class="wrapper product-feature-holder" data-style="{{content.featureType}}">
+        {% for feature in content.features %}
+            {% assign featureStyle = feature.featureType %}
+
+            {% if featureStyle == "large" %}
+            {% assign featureImage = feature.largeImage %}
+            {% assign featureTitle = feature.longTitle %}
+            {% assign featureText = feature.largeText %}
+            {% assign featureImagePlacement = "left" %}
+            {% assign secondaryTitle = feature.secondaryTitle %}
+            {% elsif featureStyle == "medium" %}
+            {% assign featureImage = feature.mediumImage %}
+            {% assign featureTitle = feature.mediumTitle %}
+            {% assign featureText = feature.mediumText %}
+            {% assign secondaryTitle = null %}
+            {% assign featureImagePlacement = null %}
+            {% else %}
+            {% assign featureImage = feature.smallImage %}
+            {% assign featureTitle = feature.smallTitle %}
+            {% assign featureText = feature.smallText %}
+            {% assign secondaryTitle = null %}
+            {% assign featureImagePlacement = null %}
+            {% endif %}
+
+            {% assign floatImage = false %}
+            {% if featureImage.offset %}
+            {% assign floatImage = featureImage.offset %}
+            {% endif %}
+            <section>{% include 'components/prod-feature.liquid' %}</section>
+        {% endfor %}
+    </div>
+</section>
+        {% endif %}
+    {% endif %}
+
     {% if content._type == 'ctaSection' %}
         {% include 'components/cta-section.liquid' %}
     {% endif %}
-
 {% endfor %}

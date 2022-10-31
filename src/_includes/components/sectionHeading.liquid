@@ -1,4 +1,12 @@
+
+{% if content.sectionTitle.title %}
+    {% assign sectionTitle = content.sectionTitle.title %}
+{% endif %}
+{% if content.sectionTitle.text %}
+    {% assign sectionText = content.sectionTitle.text %}
+{% endif %}
+
     <div class="flow text-section-header">
-        <h2 class="text-center">{{ content.sectionTitle.title }}</h2>
-        <p class="text-center">{{ content.sectionTitle.text }}</p>
+        <h2 class="text-center">{{ sectionTitle }}</h2>
+        <p class="text-center">{{ sectionText }}</p>
     </div>

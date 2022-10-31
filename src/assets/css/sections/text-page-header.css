@@ -1,9 +1,13 @@
-.text-page-header { 
-    padding-block-start: var(--space-104);
-    padding-block-end: var(--space-56);
-    --flow-space: var(--space-24);
+.text-page-header {
+  padding-block-start: var(--space-104);
+  padding-block-end: var(--space-56);
+  --flow-space: var(--space-24);
 
-    & .timestamp {
-        color: var(--ws-grey);
-    }
+  & .timestamp {
+    color: var(--ws-grey);
+  }
+
+  & .key-visual img {
+    margin-inline: auto;
+  }
 }

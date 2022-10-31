@@ -1,21 +1,21 @@
 <div class="product-feature content-col" data-style="{{ featureStyle }}" data-image-placement="{{ featureImagePlacement }}">
     <div class="image-holder" {% if floatImage %} data-float-image="{{ floatImage }}" {% endif %}>
         {% capture imgUrl %}
-        {% sanityImageUrl featureImage %}
+            {% sanityImageUrl featureImage %}
         {% endcapture %}
 
         {% image imgUrl, featureImage.altText %}
     </div>
     <div class="content flow">
         <p class="secondary-title">{{ secondaryTitle }}</p>
-        <span class="h3">{% portableText featureTitle %}</span>
+        <span class="title">{% portableText featureTitle %}</span>
         {% portableText featureText %}
         {% if featureStyle == "large" %}
-        {% if feature.link %}
-        <p>
-            <a class="text-link secondary" href="{{ feature.link.url }}">{{ feature.link.text }}</a>
-        </p>
-        {% endif %}
+            {% if feature.link %}
+            <p>
+                <a class="text-link secondary" href="{{ feature.link.url }}">{{ feature.link.text }}</a>
+            </p>
+            {% endif %}
         {% endif %}
     </div>
 </div>

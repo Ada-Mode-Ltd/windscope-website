@@ -13,5 +13,15 @@
               {% if content.tagline %}
        <p class="text--medium {{ textAlign }}">{{ content.tagline }}</p>
        {% endif %}
+       {% if content.keyVisual.size > 0 %}
+         <div class="key-visual">
+              {% for image in content.keyVisual %}
+             {% capture imgUrl %}
+                        {% sanityImageUrl image %}
+                    {% endcapture %}
+                    {% image imgUrl, '' %}
+              {% endfor %}
+              </div>
+       {% endif %}
     </div>
 </section>   

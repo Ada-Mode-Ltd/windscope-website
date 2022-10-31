@@ -15,6 +15,13 @@ const checkDoc = async (doc) => {
         }
 
         return quote
+    } else if (doc._type === 'productFeatures' && doc.features) {
+        const quote = await {
+            ...doc,
+            features: await Promise.all(doc.features.map(async feature => getReference(feature))),
+        }
+
+        return quote
     } else if (doc._type === 'people' && doc.people) {
         const people = await {
             ...doc,
@@ -48,6 +55,10 @@ async function generatePage(doc) {
             }
 
             if (block._type === 'quoteCarousel') {
+                return checkDoc(block)
+            }
+
+            if (block._type === 'productFeatures') {
                 return checkDoc(block)
             }
 

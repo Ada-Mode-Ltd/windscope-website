@@ -10,6 +10,8 @@ ctaLink:
         {% else %}
             {% assign feature = allPosts.posts | first %}
         {% endif %}
+
+        {%- comment -%} TODO: Fallback image if none is set. {%- endcomment -%}
 <section>
     <div class="wrapper">
             <div class="flex-row blog-feature">
