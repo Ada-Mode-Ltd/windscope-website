@@ -9,15 +9,6 @@ const menuContainer = header.querySelector('[data-menu-container]')
 const menuWrapper = header.querySelector('[data-menu-wrapper]')
 
 const menu = () => {
-if (menuWrapper) {
-  menuBtn.hidden = false
-    menuWrapper.hidden = true
-    menuIconClose.hidden = true
-    menuIconOpen.hidden = false
-    menuIconClose.style.display = 'none'
-    menuWrapper.classList.add('js-menu')
-    menuBtn.addEventListener('click', toggleMenu)
-    
   const open = () => {
     menuWrapper.hidden = false
     menuBtn.setAttribute('aria-expanded', true)
@@ -60,6 +51,15 @@ if (menuWrapper) {
     if (menuWrapper.hidden) return trap.activate()
     return trap.deactivate()
   }
+  
+if (menuWrapper) {
+  menuBtn.hidden = false
+    menuWrapper.hidden = true
+    menuIconClose.hidden = true
+    menuIconOpen.hidden = false
+    menuIconClose.style.display = 'none'
+    menuWrapper.classList.add('js-menu')
+    menuBtn.addEventListener('click', toggleMenu)
 }
 }
 
