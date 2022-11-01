@@ -7,6 +7,10 @@
     color: var(--ws-grey);
   }
 
+  & .key-visual {
+    margin-top: var(--space-48);
+  }
+
   & .key-visual img {
     margin-inline: auto;
     aspect-ratio: 90/59;
