@@ -9,5 +9,7 @@
 
   & .key-visual img {
     margin-inline: auto;
+    aspect-ratio: 90/59;
+    height: auto;
   }
 }
