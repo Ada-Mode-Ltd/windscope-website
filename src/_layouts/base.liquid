@@ -37,6 +37,22 @@
   </header>
   {{ content }}
   {% include 'partials/footer.liquid' %}
+
+  <div class="cead" role="region" aria-label="Cookie consent">
+      <p>This website stores data such as cookies to enable essential site functionality, as well as marketing, personalization, and analytics. By remaining on this website you indicate your consent.</p>
+      <div class="cead__btns">
+        <a class="text-link secondary" href="/privacy-policy/">Privacy policy</a>
+        <button class="cead__btn button tertiary cead__btn--accept">Okay</button>
+      </div>
+    </div>
+<!-- set your options as an object on window.cead before loading cead -->
+    <script>
+      window.cead = {
+        cookie: 'consent'
+      }
+    </script>
+    <!-- include the browser.js file before the closing </body> -->
+    <script src="/assets/js/cead-browser.js"></script>
 </body>
 
 </html>

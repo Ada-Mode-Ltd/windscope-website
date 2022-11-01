@@ -40,6 +40,8 @@
 @import "./components/category-nav.css";
 @import "./components/post-content.css";
 
+@import "./components/cead.css";
+
 body {
   background: var(--ws-snow-grey);
   color: var(--text-color);
