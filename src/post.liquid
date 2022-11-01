@@ -10,10 +10,14 @@ permalink: /blog/{{ post.slug.current | slug }}/index.html
 <section id="post-header">    
     <div class="wrapper flow">
         <div class="main-image">
-            {% capture imgUrl %}
-                {% sanityImageUrl post.mainImage %}
-            {% endcapture %}
-            {% image imgUrl, post.mainImage.altText %}
+            {% if post.mainImage.asset %}
+                {% capture imgUrl %}
+                    {% sanityImageUrl post.mainImage %}
+                {% endcapture %}
+                {% image imgUrl, post.mainImage.altText %}
+                {% else %}
+            <img src="/assets/img/og-image.svg" alt="">
+            {% endif %}
         </div>
           <div class="flex-row" data-justify="start"  style="--min: initial;">
                         <p class="text--small color-accent semi-bold">{{ post.categories[0].title }}</p>

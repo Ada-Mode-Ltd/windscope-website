@@ -16,10 +16,14 @@ ctaLink:
     <div class="wrapper">
             <div class="flex-row blog-feature">
                 <div>
-                    {% capture imgUrl %}
-                        {% sanityImageUrl feature.mainImage %}
-                    {% endcapture %}
-                    {% image imgUrl, feature.mainImage.altText %}
+                    {% if feature.mainImage.asset %}
+                {% capture imgUrl %}
+                    {% sanityImageUrl feature.mainImage %}
+                {% endcapture %}
+                {% image imgUrl, feature.mainImage.altText %}
+                {% else %}
+            <img src="/assets/img/og-image.svg" alt="">
+            {% endif %}
                 </div>
                 <div class="flow content-col">
                         <small class="text--small">{{ feature.publishedAt | date: "%B %d, %Y" }}</small>
@@ -59,10 +63,14 @@ ctaLink:
                         {%- endfor -%}
                     {%- endcapture -%}
                     <div class="index-post flow" data-category="{{ categories }}">
-                    {% capture imgUrl %}
-                        {% sanityImageUrl post.mainImage %}
-                    {% endcapture %}
-                    {% image imgUrl, post.mainImage.altText %}
+                      {% if post.mainImage.asset %}
+                {% capture imgUrl %}
+                    {% sanityImageUrl post.mainImage %}
+                {% endcapture %}
+                {% image imgUrl, post.mainImage.altText %}
+                {% else %}
+            <img src="/assets/img/og-image.svg" alt="">
+            {% endif %}
                 <div class="flow content-col">
                         <small class="text--small">{{ post.publishedAt | date: "%B %d, %Y" }}</small>
                     <p class="title">{{ post.title }}</p>
