@@ -1,4 +1,5 @@
 section#cta-page {
+  --wrapper-width: 90rem;
   @mixin dark-bg;
   min-height: 100vh;
   & h1 {
@@ -8,6 +9,14 @@ section#cta-page {
   place-items: center;
   gap: var(--space-24);
   --col-gap: var(--space-40);
+
+  & .wrapper.columns {
+    grid-template-columns: 1fr 1fr;
+
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr;
+    }
+  }
 
   ul {
     list-style: none;
