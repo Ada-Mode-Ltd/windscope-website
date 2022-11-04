@@ -5,7 +5,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--gap);
-  row-gap: var(--space-80);
+  row-gap: var(--row-gap, var(--space-80));
   margin-block-start: var(--block-margin, var(--space-64));
   align-items: center;
 
