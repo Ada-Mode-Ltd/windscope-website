@@ -4,6 +4,7 @@
   align-self: baseline;
   height: 100%;
   max-width: 100%;
+  list-style: none;
 
   & img {
     /* max-width: 22rem; */
@@ -29,6 +30,11 @@
     font-size: 1.5rem;
     line-height: 28px;
     letter-spacing: -0.5px;
+
+    & > a {
+      text-decoration: none;
+      color: var(--ws-slate-grey);
+    }
   }
 
   & small + .title {
