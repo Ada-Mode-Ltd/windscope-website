@@ -5,6 +5,10 @@ article.post-content {
   margin: 0 auto;
   color: var(--ws-slate-grey);
 
+  @media (max-width: 1024px) {
+    --flow-space: var(--space-16);
+  }
+
   & :is(p, ul, ol) {
     font-size: var(--text-regular);
   }
@@ -32,22 +36,22 @@ article.post-content {
   & h2 {
     font-size: var(--h4);
     margin-block-start: var(--space-32);
-    margin-block-end: var(--space-24);
+    /* margin-block-end: var(--space-24); */
   }
 
   & h3 {
     font-size: var(--h5);
     margin-block-start: var(--space-32);
-    margin-block-end: var(--space-24);
+    /* margin-block-end: var(--space-24); */
   }
 
   & h4 {
     font-size: var(--text-medium);
-    margin-block-end: var(--space-24);
+    /* margin-block-end: var(--space-24); */
   }
 
   & :is(h2, h3, h4) + p {
-    margin-top: 0;
+    /* margin-top: 0; */
   }
 
   & ul {
