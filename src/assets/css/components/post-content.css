@@ -1,6 +1,6 @@
 article.post-content {
   --flow-space: var(--space-24);
-  padding-block: var(--space-56);
+  padding-block-end: var(--space-56);
   max-width: 60rem;
   margin: 0 auto;
   color: var(--ws-slate-grey);
