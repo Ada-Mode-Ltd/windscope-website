@@ -39,13 +39,12 @@ ctaLink:
     </div>
 </section>
 
-{%- comment -%} TODO: There needs to be categories in here! {%- endcomment -%}
 <div class="category-nav" role="navigation" aria-label="Post categories">
 <div class="wrapper">
     <ul class="flex-row" data-justify="start">
-        <li><button data-active>All posts</button></li>
+        <li><button data-active class="text--regular" >All posts</button></li>
         {% for category in allPosts.categories %}
-            <li><button>{{ category }}</button></li>
+            <li><button class="text--regular">{{ category }}</button></li>
         {% endfor %}
     </ul>
 </div>
