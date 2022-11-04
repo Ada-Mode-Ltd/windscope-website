@@ -3,6 +3,14 @@
   --row-gap: var(--space-24);
   --block-margin: var(--space-16);
 
+  & time + h2 {
+    margin-block-start: 0.5rem;
+  }
+
+  & h2 + p {
+    margin-block: 1rem;
+  }
+
   & > div img {
     border-radius: 260px 8px 8px 8px;
     width: 100%;

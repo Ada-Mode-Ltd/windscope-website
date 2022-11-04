@@ -30,4 +30,12 @@ section#posts {
   & .flex-grid {
     --min: 20rem;
   }
+
+  & time + h2 {
+    margin-block-start: 0.5rem;
+  }
+
+  & h2 + p {
+    margin-block: 1rem;
+  }
 }

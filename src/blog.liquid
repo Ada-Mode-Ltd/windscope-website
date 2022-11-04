@@ -24,7 +24,7 @@ ctaLink:
             <img src="/assets/img/og-image.svg" alt="">
             {% endif %}
                 </div>
-                <div class="flow content-col">
+                <div class="content-col">
                         <time class="text--small" datetime="{{ feature.publishedAt }}">{{ feature.publishedAt | date: "%B %d, %Y" }}</time>
                     <h2 class="feature-title"><a href="/blog/{{feature.slug.current}}">{{ feature.title }}</a></h2>
                     <p>{{ feature.description }}</p>
@@ -69,7 +69,7 @@ ctaLink:
                 {% else %}
             <img src="/assets/img/og-image.svg" alt="">
             {% endif %}
-                <div class="flow content-col">
+                <div class="content-col">
                         <time class="text--small" datetime="{{ post.publishedAt }}">{{ post.publishedAt | date: "%B %d, %Y" }}</time>
                     <h2 class="title"><a href="/blog/{{post.slug.current}}">{{ post.title }}</a></h2>
                     <p class="text--regular">{{ post.description }}</p>
