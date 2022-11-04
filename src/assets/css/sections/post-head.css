@@ -1,6 +1,11 @@
 #post-header {
   padding-block-end: var(--space-56);
 
+  & .flex-row {
+    --gap: 1rem;
+    --block-margin: 2rem;
+  }
+
   & .main-image img {
     padding-block-start: var(--space-104);
     border-radius: 410px 8px 8px 8px;
