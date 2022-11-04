@@ -11,3 +11,11 @@
     max-height: 32rem;
   }
 }
+
+@media (max-width: 1024px) {
+  #post-header {
+    & .main-image img {
+      padding-block-start: 0;
+    }
+  }
+}
