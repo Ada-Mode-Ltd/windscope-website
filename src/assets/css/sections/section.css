@@ -10,6 +10,10 @@ section {
   padding-block: var(--space-72);
 }
 
+section[data-narrow] {
+  padding-block-start: var(--space-48);
+}
+
 section[data-bg-white] {
   background: var(--ws-white);
 }

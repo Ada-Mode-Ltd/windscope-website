@@ -6,7 +6,7 @@
   flex-wrap: wrap;
   gap: var(--gap);
   row-gap: var(--space-80);
-  margin-block-start: var(--space-64);
+  margin-block-start: var(--block-margin, var(--space-64));
   align-items: center;
 
   &[data-justify="start"] {

@@ -1,4 +1,5 @@
 .content-col {
+  --block-margin: 0;
   & .content {
     grid-area: content;
     --flow-space: var(--space-24);
