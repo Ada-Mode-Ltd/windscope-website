@@ -51,4 +51,11 @@ footer.wrapper {
   & a[class] {
     text-decoration: none;
   }
+
+  & .social-logo svg {
+    color: var(--ws-grey);
+    max-width: 1.5rem;
+    aspect-ratio: 1/1;
+    height: auto;
+  }
 }

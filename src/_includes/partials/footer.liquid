@@ -9,11 +9,11 @@
             </a>
         </div>
         <div class="right" data-stick-right>
-            <a href="">
-                <img alt="Twitter logo" height="19" src="/assets/img/twitter.svg" width="24"/>
+            <a class="social-logo" href="https://twitter.com/adamodeAI">
+                {% include 'svg/twitter.svg' %}
             </a>
-            <a href="">
-                <img alt="LinkedIn log" height="24" src="/assets/img/linkedin.svg" width="24"/>
+            <a class="social-logo" href="https://www.linkedin.com/company/ada-mode/">
+                {% include 'svg/linkedin.svg' %}
             </a>
         </div>
     </div>
@@ -26,6 +26,7 @@
             </p>
         </div>
         <div class="right">
+            {%- comment -%} TODO: Make these dynamic (set in the backend) {%- endcomment -%}
             <ul>
                 <li><a class="text-link secondary" href="#">Privacy Policy</a></li>
                 <li><a class="text-link secondary" href="#">Cookie policy</a></li>
