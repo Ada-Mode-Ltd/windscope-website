@@ -106,7 +106,7 @@ h2 + .stacked-tabs {
       gap: var(--space-24);
       cursor: default;
       pointer-events: none;
-      padding: 1.5rem 0.5rem;
+      padding: 0;
       border: none;
       overflow: visible;
       background: none !important;
