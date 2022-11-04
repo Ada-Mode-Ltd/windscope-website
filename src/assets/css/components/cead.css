@@ -1,6 +1,6 @@
 .cead {
   --cead-bg: var(--ws-white);
-  --cead-text: var(--ws-slate-grey);
+  --cead-text: var(--ws-grey);
   --cead-btn: var(--ws-bright-blue);
   display: none;
   position: fixed;
@@ -11,7 +11,7 @@
   padding: 1rem 1rem max(0.5rem, env(safe-area-inset-bottom, 0));
   background: var(--cead-bg, #2f1121);
   color: var(--cead-text, #fff);
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   border: 1px solid var(--ws-light-grey);
   border-radius: var(--space-16);
   box-shadow: var(--shadow-dark);
@@ -27,7 +27,6 @@
     width: 32rem;
     max-width: calc(100vh - 2rem);
     padding: 1rem;
-    font-size: 0.85rem;
   }
 }
 .cead[data-show="true"] {
