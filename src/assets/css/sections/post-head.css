@@ -19,8 +19,13 @@
 
 @media (max-width: 1024px) {
   #post-header {
+    padding-block-end: var(--space-32);
     & .main-image img {
       padding-block-start: 0;
+    }
+
+    & h1 {
+      font-size: 2rem;
     }
   }
 }
