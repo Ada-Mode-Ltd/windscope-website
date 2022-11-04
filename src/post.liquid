@@ -13,7 +13,7 @@ permalink: /blog/{{ post.slug.current | slug }}/index.html
                 {% capture imgUrl %}
                     {% sanityImageUrl post.mainImage %}
                 {% endcapture %}
-                {% image imgUrl, post.mainImage.altText %}
+                {% image imgUrl, post.mainImage.altText, 'eager' %}
                 {% else %}
             <img src="/assets/img/og-image.svg" alt="">
             {% endif %}
