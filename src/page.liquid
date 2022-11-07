@@ -163,23 +163,23 @@ permalink: /{{ thisPage.slug.current | slug }}/index.html
         {% for feature in features %}
             {% assign featureStyle = featureType %}
             {% if featureStyle == "large" %}
-            {% assign featureImage = feature.largeImage %}
-            {% assign featureTitle = feature.longTitle %}
-            {% assign featureText = feature.largeText %}
-            {% assign featureImagePlacement = "left" %}
-            {% assign secondaryTitle = feature.secondaryTitle %}
+                {% assign featureImage = feature.largeImage %}
+                {% assign featureTitle = feature.longTitle %}
+                {% assign featureText = feature.largeText %}
+                {% assign featureImagePlacement = "left" %}
+                {% assign secondaryTitle = feature.secondaryTitle %}
             {% elsif featureStyle == "medium" %}
-            {% assign featureImage = feature.mediumImage %}
-            {% assign featureTitle = feature.mediumTitle %}
-            {% assign featureText = feature.mediumText %}
-            {% assign secondaryTitle = null %}
-            {% assign featureImagePlacement = null %}
+                {% assign featureImage = feature.mediumImage %}
+                {% assign featureTitle = feature.mediumTitle %}
+                {% assign featureText = feature.mediumText %}
+                {% assign secondaryTitle = false %}
+                {% assign featureImagePlacement = false %}
             {% else %}
-            {% assign featureImage = feature.smallImage %}
-            {% assign featureTitle = feature.smallTitle %}
-            {% assign featureText = feature.smallText %}
-            {% assign secondaryTitle = null %}
-            {% assign featureImagePlacement = null %}
+                {% assign featureImage = feature.smallImage %}
+                {% assign featureTitle = feature.smallTitle %}
+                {% assign featureText = feature.smallText %}
+                {% assign secondaryTitle = false %}
+                {% assign featureImagePlacement = false %}
             {% endif %}
 
             {% assign floatImage = false %}
