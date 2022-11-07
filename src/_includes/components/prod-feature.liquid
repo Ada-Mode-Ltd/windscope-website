@@ -7,8 +7,10 @@
         {% image imgUrl, featureImage.altText %}
     </div>
     <div class="content flow">
+        {% if secondaryTitle %}
         <p class="secondary-title">{{ secondaryTitle }}</p>
-        <span class="title">{% portableText featureTitle %}</span>
+        {% endif %}
+        <h3 class="title">{% portableText featureTitle %}</h3>
         {% portableText featureText %}
         {% if featureStyle == "large" %}
             {% if feature.link %}
