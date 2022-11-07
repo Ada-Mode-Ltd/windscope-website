@@ -6,6 +6,11 @@
 
   .secondary-title {
     display: none;
+
+    @media (max-width: 1024px) {
+      font-size: 1.25rem;
+      line-height: 1.4;
+    }
   }
 
   &[data-style="large"] {
@@ -40,6 +45,11 @@
         line-height: 1.17;
         letter-spacing: -0.5px;
         color: var(--ws-slate-grey);
+
+        @media (max-width: 1024px) {
+          font-size: 1.5rem;
+          line-height: 1.4;
+        }
       }
     }
 
