@@ -45,3 +45,7 @@ section#posts {
     }
   }
 }
+
+.text-section-header {
+  padding: 0 var(--space-32);
+}
