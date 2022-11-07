@@ -14,7 +14,7 @@ permalink: /{{ ctaPage.slug.current | slug }}/index.html
                 {% portableText ctaPage.body %}
         </div>
         <div class="form">
-            <form action="#">
+            <form name="ctaPage.slug.current" method="POST" data-netlify="true">
                 {% for field in ctaPage.form %}
                 {% if field.required %}
                     {% assign required = field.required %}
