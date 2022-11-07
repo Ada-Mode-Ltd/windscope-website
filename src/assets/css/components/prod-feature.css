@@ -85,7 +85,10 @@
       &[data-float-image="down"]::after {
         bottom: calc(var(--space-40));
         left: calc(-1 * var(--space-32));
-        width: 115%;
+        width: 110%;
+        @media (max-width: 1024px) {
+          width: 112%;
+        }
       }
 
       &[data-float-image="right"]::after {
@@ -97,7 +100,10 @@
       &[data-float-image="up"]::after {
         top: calc(var(--space-40));
         left: calc(var(--space-32) * -1);
-        width: 115%;
+        width: 110%;
+        @media (max-width: 1024px) {
+          width: 112%;
+        }
       }
     }
   }
