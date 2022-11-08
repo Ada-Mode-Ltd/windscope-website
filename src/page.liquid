@@ -186,7 +186,9 @@ permalink: /{{ thisPage.slug.current | slug }}/index.html
             {% if featureImage.offset %}
             {% assign floatImage = featureImage.offset %}
             {% endif %}
-            <section>{% include 'components/prod-feature.liquid' %}</section>
+                {%- unless featureType == "small" -%}
+            
+            <article>{% include 'components/prod-feature.liquid' %}</article>                
         {% endfor %}
     </div>
 </section>
