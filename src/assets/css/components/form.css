@@ -17,3 +17,37 @@ label {
     /* outline: var(--ws-bright-green) auto 1px; */
   }
 }
+
+.select {
+  position: relative;
+  display: inline-block;
+}
+
+.select select {
+  outline: none;
+  -webkit-appearance: none;
+  display: block;
+}
+
+.select .arr {
+  background-position: center;
+  /* display: block; */
+  height: 100%;
+  pointer-events: none;
+  position: absolute;
+  right: 24px;
+  top: 0;
+  width: 32px;
+  /* bottom: 0; */
+  position: absolute;
+  background: url('data:image/svg+xml;utf8,<svg width="32" height="32" viewBox="0 0 32 32" fill="2A3245" xmlns="http://www.w3.org/2000/svg"><path d="M16 20.5333L8 12.5333L9.43333 11.0999L16 17.6666L22.5667 11.0999L24 12.5333L16 20.5333Z" fill="2A3245"/></svg>')
+    no-repeat;
+  border: 0;
+  background-size: 32px;
+}
+
+.select {
+  & select:focus-within + .arr {
+    transform: rotate(180deg);
+  }
+}

@@ -46,11 +46,14 @@ permalink: /{{ ctaPage.slug.current | slug }}/index.html
                     {% if field.type == 'dropdown' %}
                         <label class="text--regular" for="{{ field.name.current }}">
                             {{ field.label }} {% if required %}*{% endif %}
-                            <select name="{{ field.name.current }}" id="{{ field.name.current }}" {% if required %}required{% endif %}>
-                                {% for option in field.values %}
-                                    <option value="{{ option | slug }}">{{ option }}</option>
-                                {% endfor %}
-                            </select>
+                            <div class="select">
+                                <select name="{{ field.name.current }}" id="{{ field.name.current }}" {% if required %}required{% endif %}>
+                                    {% for option in field.values %}
+                                        <option value="{{ option | slug }}">{{ option }}</option>
+                                    {% endfor %}
+                                </select>
+                                <span class="arr"></span>
+                            </div>
                         </label>
                     {% endif %}
                 {% endfor %}
