@@ -8,6 +8,10 @@
 
 section {
   padding-block: var(--space-72);
+
+  @media (max-width: 1024px) {
+    padding-block: var(--space-48);
+  }
 }
 
 section[data-narrow] {

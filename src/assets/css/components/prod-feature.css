@@ -183,6 +183,10 @@
 .product-feature-holder[data-style="large"] {
   & section {
     padding-block: var(--space-104);
+
+    @media (max-width: 1024px) {
+      padding-block: var(--space-64);
+    }
   }
 
   > section:nth-child(odd) > .product-feature {
@@ -195,6 +199,9 @@
 
 .product-feature-holder[data-style="small"] {
   padding-block-end: var(--space-104);
+  @media (max-width: 1024px) {
+    padding-block: var(--space-56);
+  }
   & section {
     padding-block: 0;
   }
