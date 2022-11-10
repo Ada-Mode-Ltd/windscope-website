@@ -4,24 +4,38 @@
     <ul>
         {% for quote in quotes %}
         {% assign quoteIndex = forloop.index0 %}
+        {%- if quoteIndex == 0 -%}
+        {%- assign current = true -%}
+    {%- else -%}
+        {%- assign current = false -%}
+    {%- endif -%}
         {% include 'components/quote.liquid' %}
         {% endfor %}
     </ul>
 </div>
 
 {% if quotes.size > 1 %}
-<div class=" quote-nav">
-    <button class="quote-nav__item--prev">
-        {% include 'svg/arrow-right.svg' %}
-    </button>
+<nav class=" quote-nav">
+    <button class="button-lg" aria-label="previous" disabled><svg viewBox="0 0 448 512" width="100" title="arrow-left" focusable="false" aria-hidden>
+  <path d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z" />
+</svg></button>
+<ol>
     {% for quote in quotes %}
     {% assign quoteIndex = forloop.index0 %}
-    <button class="quote-nav__item" data-quote="{{ quoteIndex }}"></button>
+    {%- if quoteIndex == 0 -%}
+        {%- assign current = true -%}
+    {%- else -%}
+        {%- assign current = false -%}
+    {%- endif -%}
+    <li>
+			<button aria-label="{{ quoteIndex }}" aria-current="{{ current }}" data-quote="{{ quoteIndex }}"></button>
+		</li>
     {% endfor %}
-    <button class="quote-nav__item--next">
-        {% include 'svg/arrow-right.svg' %}
-    </button>
-</div>
+</ol>
+    <button class="button-lg" aria-label="next"><svg viewBox="0 0 448 512" width="100" title="arrow-right" focusable="false" aria-hidden>
+  <path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z" />
+</svg></button>
+</nav>
 
 <script>
     const quoteHolder = document.getElementById('{{ id }}');
@@ -29,9 +43,8 @@
     const quotes = quoteHolder.querySelectorAll('li.quote');
     const totalQuotes = quotes.length;
     const quoteNav = document.querySelector('.quote-nav');
-    const quoteNavItems = quoteNav.querySelectorAll('.quote-nav__item');
-    const quoteNavPrev = quoteNav.querySelector('.quote-nav__item--prev');
-    const quoteNavNext = quoteNav.querySelector('.quote-nav__item--next');
+    const quoteNavItems = [...quoteNav.querySelectorAll('li button')];
+    const quoteBigButton = [...quoteNav.querySelectorAll('.button-lg')];
 
     function a11yClick(event) {
         if (event.type === 'click') {
@@ -50,14 +63,13 @@
     let currentQuote = 0;
     quotes[currentQuote].setAttribute('data-active', '');
     quoteNavItems[currentQuote].setAttribute('data-active', '');
+            const prevButton = quoteBigButton[0]
+	const nextButton = quoteBigButton[1]
 
     let activeQuote = parseInt(quoteHolder.querySelector('li.quote[data-active]').dataset.quote);
     console.log({
         activeQuote
     });
-    if (activeQuote === 0) {
-        quoteNavPrev.setAttribute('disabled', '');
-    }
 
     quoteNavItems.forEach(item => {
         const quoteIndex = parseInt(item.dataset.quote);
@@ -87,28 +99,28 @@
         }
     })
 
-    quoteNavPrev.addEventListener('click', (e) => {
+    prevButton.addEventListener('click', (e) => {
         if (a11yClick(e)) {
             e.preventDefault();
             changeQuote(activeQuote - 1);
         }
     })
 
-    quoteNavNext.addEventListener('click', (e) => {
+    nextButton.addEventListener('click', (e) => {
         if (a11yClick(e)) {
             e.preventDefault();
             changeQuote(activeQuote + 1);
         }
     })
 
-    quoteNavPrev.addEventListener('keypress', (e) => {
+    prevButton.addEventListener('keypress', (e) => {
         if (a11yClick(e)) {
             e.preventDefault();
             changeQuote(activeQuote - 1);
         }
     })
 
-    quoteNavNext.addEventListener('keypress', (e) => {
+    nextButton.addEventListener('keypress', (e) => {
         if (a11yClick(e)) {
             e.preventDefault();
             changeQuote(activeQuote + 1);
@@ -116,16 +128,19 @@
     })
 
     function changeQuote(index) {
-        if (index === 0) {
-            quoteNavPrev.setAttribute('disabled', '');
-            quoteNavNext.removeAttribute('disabled');
-        } else if (index === totalQuotes - 1) {
-            quoteNavNext.setAttribute('disabled', '');
-            quoteNavPrev.removeAttribute('disabled');
-        } else {
-            quoteNavPrev.removeAttribute('disabled');
-            quoteNavNext.removeAttribute('disabled');
-        }
+
+	
+	if (index === 0) {
+		prevButton.disabled = true
+	} else if (prevButton.disabled) {
+		prevButton.disabled = false
+	}
+	
+	if (index === quoteNavItems.length - 1) {
+		nextButton.disabled = true
+	} else if (nextButton.disabled) {
+		nextButton.disabled = false
+	}
 
         scrollableSection.scrollTo({
             top: 0,
@@ -137,17 +152,18 @@
 
         quoteNavItems.forEach(nav => {
             nav.removeAttribute('data-active');
-            nav.removeAttribute('aria-selected');
+            nav.removeAttribute('aria-current');
         });
 
         quotes.forEach(quote => {
+            quote.removeAttribute('aria-current');
             quote.removeAttribute('data-active');
         });
 
-        quoteNavItems[index].setAttribute('data-active', '');
-        quoteNavItems[index].setAttribute('aria-selected', 'true');
-        quotes[index].setAttribute('data-active', '');
-        quotes[index].setAttribute('aria-selected', 'true ');
+        quoteNavItems[index].setAttribute('aria-current', 'true');
+        quoteNavItems[index].setAttribute('data-active', 'true');
+        quotes[index].setAttribute('aria-current', 'true');
+        quotes[index].setAttribute('data-active', 'true ');
 
         if (index === 0) {
             activeQuote = 0;
