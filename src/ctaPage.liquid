@@ -13,7 +13,8 @@ permalink: /{{ ctaPage.slug.current | slug }}/index.html
         <div class="text-content flow">
                 {% portableText ctaPage.body %}
         </div>
-        <div class="form">
+        {{ ctaPage.mailchimpForm }}
+        {%- comment -%} <div class="form">
             <form name="ctaPage.slug.current" method="POST" data-netlify="true">
                 {% for field in ctaPage.form %}
                 {% if field.required %}
@@ -59,6 +60,6 @@ permalink: /{{ ctaPage.slug.current | slug }}/index.html
                 {% endfor %}
                 <button class="button primary" type="submit">Send</button>
             </form>
-        </div>
+        </div> {%- endcomment -%}
     </div>
 </section>

@@ -18,6 +18,24 @@ label {
   }
 }
 
+/* Label but not for anything starting  with mce- */
+.mc-field-group {
+  margin-block: var(--space-24);
+  & > label {
+    display: block;
+  }
+}
+
+input[type="submit"] {
+  background-color: var(--ws-dark-green);
+  color: var(--ws-white);
+  border: none;
+  margin-block: var(--space-24);
+  &:hover {
+    background-color: var(--ws-bright-green);
+  }
+}
+
 .select {
   position: relative;
   display: inline-block;
