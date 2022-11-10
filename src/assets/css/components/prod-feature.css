@@ -202,9 +202,9 @@
 .product-feature-holder[data-style="small"] {
   padding-block-end: var(--space-104);
   @media (max-width: 1024px) {
-    padding-block: var(--space-56);
+    padding-block: 0;
   }
-  & section {
+  & article {
     padding-block: 0;
   }
 

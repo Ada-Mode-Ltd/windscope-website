@@ -53,3 +53,7 @@ section#posts {
 .text-section-header {
   padding: 0 var(--space-32);
 }
+
+section + section {
+  padding-block-start: var(--space-32);
+}
