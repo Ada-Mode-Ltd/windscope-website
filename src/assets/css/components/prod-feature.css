@@ -6,11 +6,6 @@
 
   .secondary-title {
     display: none;
-
-    @media (max-width: 1024px) {
-      font-size: 1.25rem;
-      line-height: 1.4;
-    }
   }
 
   &[data-style="large"] {
