@@ -81,7 +81,7 @@ section#cta-page {
       padding: var(--space-8) var(--space-16);
       color: var(--ws-slate-grey);
       width: 100%;
-      background: var(--ws-light-grey);
+      background-color: var(--ws-light-grey);
 
       &:focus {
         border: 1px solid var(--ws-dark-green);
