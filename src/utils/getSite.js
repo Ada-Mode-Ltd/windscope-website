@@ -4,6 +4,13 @@ const { client } = require('./sanity');
 async function getSite() {
     const query = `*[_type == "wsSettings" && !(_id in path("drafts.**"))][0]{ 
         ...,
+        topMenu[]{
+            ...,
+            _type == 'reference' => {
+                "title": @->title,
+                "slug": @->slug.current,
+            },
+        },
         footerLinks[]{
             ...,
             _type == 'reference' => {

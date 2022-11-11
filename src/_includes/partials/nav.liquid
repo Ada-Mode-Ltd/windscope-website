@@ -1,4 +1,4 @@
-{% assign links = nav %}
+{% assign links = site.topMenu %}
 
 <nav class="page" data-page-nav>
     <div class="left">
@@ -7,9 +7,12 @@
         <span data-desktop-links>
             {% for link in links %}
             <li>
-                <a class="text-link secondary" href="{{ link.path }}">{{ link.title }}</a>
+                <a class="text-link secondary" href="{{ link.slug }}">{{ link.title }}</a>
             </li>
             {% endfor %}
+            <li>
+                <a class="text-link secondary" href="/blog/">Blog</a>
+            </li>
         </span>
         {% endunless %}
     </div>
@@ -34,9 +37,12 @@
                     <ul class="c-header__list">
                         {% for link in links %}
                         <li>
-                            <a class="text-link secondary" href="{{ link.path }}">{{ link.title }}</a>
+                            <a class="text-link secondary" href="{{ link.slug }}">{{ link.title }}</a>
                         </li>
                         {% endfor %}
+                        <li>
+                            <a class="text-link secondary" href="/blog/">Blog</a>
+                        </li>
                     <li>
                         <a href="/book-a-demo/" class="text-link secondary">Contact sales</a>
                     </li>
