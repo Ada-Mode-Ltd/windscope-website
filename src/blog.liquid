@@ -21,7 +21,10 @@ ctaLink:
                 {% endcapture %}
                 {% image imgUrl, feature.mainImage.altText %}
                 {% else %}
-            <img src="/assets/img/og-image.svg" alt="">
+                {% capture imgUrl %}
+                    {% sanityImageUrl site.blogFallbackImage %}
+                {% endcapture %}
+                {% image imgUrl, '' %}
             {% endif %}
                 </div>
                 <div class="content-col">
@@ -67,7 +70,10 @@ ctaLink:
                 {% endcapture %}
                 {% image imgUrl, post.mainImage.altText %}
                 {% else %}
-            <img src="/assets/img/og-image.svg" alt="">
+           {% capture imgUrl %}
+                    {% sanityImageUrl site.blogFallbackImage %}
+                {% endcapture %}
+                {% image imgUrl, '' %}
             {% endif %}
                 <div class="content-col">
                         <time class="text--small" datetime="{{ post.publishedAt }}">{{ post.publishedAt | date: "%B %d, %Y" }}</time>
