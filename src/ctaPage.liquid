@@ -6,6 +6,9 @@ pagination:
     alias: ctaPage
     size: 1
 permalink: /{{ ctaPage.slug.current | slug }}/index.html
+eleventyComputed:
+    pageTitle: '{{ ctaPage.title }}'
+    pageDescription: '{{ ctaPage.description }}'
 ---
 
 <section id="cta-page">    

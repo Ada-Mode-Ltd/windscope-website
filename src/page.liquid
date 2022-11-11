@@ -5,6 +5,9 @@ pagination:
     alias: thisPage
     size: 1
 permalink: /{{ thisPage.slug.current | slug }}/index.html
+eleventyComputed:
+    pageTitle: '{{ thisPage.title }}'
+    pageDescription: '{{ thisPage.description }}'
 ---
 
 

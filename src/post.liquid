@@ -5,6 +5,9 @@ pagination:
     alias: post
     size: 1
 permalink: /blog/{{ post.slug.current | slug }}/index.html
+eleventyComputed:
+    pageTitle: '{{ post.title }}'
+    pageDescription: '{{ post.description | default: post.blurb }}'
 ---
 <section id="post-header">    
     <div class="wrapper flow">

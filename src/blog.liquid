@@ -1,4 +1,5 @@
 ---
+pageTitle: Blog
 layout: site
 ctaLink:
     text: "Book a demo"
@@ -78,7 +79,7 @@ ctaLink:
                 <div class="content-col">
                         <time class="text--small" datetime="{{ post.publishedAt }}">{{ post.publishedAt | date: "%B %d, %Y" }}</time>
                     <h2 class="title"><a href="/blog/{{post.slug.current}}">{{ post.title }}</a></h2>
-                    <p class="text--regular">{{ post.description }}</p>
+                    <p class="text--regular">{{ post.blurb  }}</p>
                     <p><a class="text-link secondary" href="/blog/{{post.slug.current}}">Read →</a></p>
                     <div class="tags">
                         {% for category in post.categories %}
