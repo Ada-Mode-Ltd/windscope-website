@@ -26,10 +26,14 @@
             </p>
         </div>
         <div class="right">
-            {%- comment -%} TODO: Make these dynamic (set in the backend) {%- endcomment -%}
             <ul>
-                <li><a class="text-link secondary" href="#">Privacy Policy</a></li>
-                <li><a class="text-link secondary" href="#">Cookie policy</a></li>
+                {% for link in site.footerLinks %}
+                    <li>
+                        <a class="text-link secondary" href="{{ link.slug }}" title="{{ link.title }}">
+                            {{ link.title }}
+                        </a>
+                    </li>
+                {% endfor %}
             </ul>
         </div>
     </div>
