@@ -25,7 +25,7 @@ section.homepage-hero {
   }
 }
 
-.homepage-hero__wrapper > img {
+.homepage-hero__wrapper > picture {
   margin-right: -2rem;
   width: calc(100% + 2rem);
   justify-self: end;
@@ -39,6 +39,10 @@ section.homepage-hero {
     max-width: 50rem;
     grid-column: 3 / span 2;
     grid-row: 1 / span 2;
+  }
+
+  & img {
+    height: auto;
   }
 }
 
