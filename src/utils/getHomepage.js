@@ -4,7 +4,19 @@ const { client } = require('./sanity');
 async function getHomepage() {
     const query = `*[_type == "wsHomepage" && !(_id in path("drafts.**"))][0]{ 
         ...,
-        "feature": feature->{...},
+        "feature": feature->{
+            ...,
+            link{
+                ...,
+                internalLink{
+                    ...,
+                    _type == 'reference' => {
+                        "title": @->title,
+                        "slug": @->slug.current,
+                    },
+                },
+            }
+        },
         "quotes": quotes[]->{..., partner->{...}},
         tabs{
             ...,

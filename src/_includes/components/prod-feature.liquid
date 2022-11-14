@@ -14,9 +14,16 @@
         {% portableText featureText %}
         {% if featureStyle == "large" %}
             {% if feature.link %}
-            <p>
-                <a class="text-link secondary" href="{{ feature.link.url }}">{{ feature.link.text }}</a>
-            </p>
+            {%- assign slug = feature.link.url -%}
+            {% if feature.link.linkType == 'internal' %}
+            {%- if feature.link.text -%}
+                {% assign text = feature.link.text %}
+            {% else %}
+                {% assign text = feature.link.internalLink.title %}
+            {%- endif -%}
+            {%- assign slug = '/' | append: feature.link.internalLink.slug -%}
+            {% endif %}
+        <p><a class="text-link secondary" href="{{ slug }}">{{ text }}</a></p>
             {% endif %}
         {% endif %}
     </div>
