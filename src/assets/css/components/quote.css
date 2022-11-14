@@ -29,8 +29,8 @@
   & > picture,
   img {
     grid-area: partner;
-    width: 100%;
-    max-width: 200px;
+    width: 200px;
+    /* max-width: 200px; */
     height: auto;
     object-fit: contain;
   }
