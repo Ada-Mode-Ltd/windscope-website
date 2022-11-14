@@ -31,12 +31,12 @@ eleventyComputed:
                     {% capture imgUrl %}
                         {% sanityImageUrl content.image %}
                     {% endcapture %}
-                {% if textPlacement == 'left' %}
-                    <div class="flow">{% portableText content.text.content %}</div>
+                {% if textPlacement == 'right' %}
                     {% image imgUrl, content.image.altText %}
+                    <div class="flow">{% portableText content.text.content %}</div>
                 {% else %}
-                    {% image imgUrl, content.image.altText %}
                     <div class="flow">{% portableText content.text.content %}</div>
+                    {% image imgUrl, content.image.altText %}
                 {% endif %}
             </div>
         </section>
@@ -113,7 +113,6 @@ eleventyComputed:
             <div class="wrapper">
             <div class="flex-row content-col">
                 <div class="content flow">
-                    <p class="secondary-title">Careers</p>
                     <h2>Join our team</h2>
                     <p>Join us as we continue to drive down the cost of clean energy with AI applications.</p>
                 </div>

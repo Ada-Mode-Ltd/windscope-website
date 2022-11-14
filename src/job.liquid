@@ -21,7 +21,7 @@ eleventyComputed:
             <h2>{{ site.aboutText.title | default: 'About Ada Mode' }}</h2>
             {% portableText site.aboutText.text %}
         </aside>
-    {% endif %}
+    {% endunless %}
             {% portableText job.body.content %}
             <div class="flow" id="application-section">
                 <h2>Apply</h2>
