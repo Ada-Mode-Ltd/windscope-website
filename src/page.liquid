@@ -128,9 +128,7 @@ eleventyComputed:
                                 {% assign buttonIcon = true %}
                                 {% assign buttonType = "tertiary" %}
                                 {% assign buttonText = "Learn more" %}
-                                {% capture buttonLink %}
-                                https://ada-mode.com/careers/{{ job.slug.current }}
-                                {% endcapture %}
+                                {% assign buttonLink = "/careers/" | append: job.slug.current %}
                                 {% include 'components/button.liquid' %}
                             </div>
                         </div>

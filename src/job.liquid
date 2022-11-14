@@ -1,0 +1,42 @@
+---
+layout: site
+pagination:
+    data: allJobs
+    alias: job
+    size: 1
+permalink: /careers/{{ job.slug.current | slug }}/index.html
+eleventyComputed:
+    pageTitle: '{{ job.title }}'
+    pageDescription: '{{ job.description }}'
+---
+<section id="post-header">    
+    <div class="wrapper flow">
+        <h1>{{ job.title }}</h1>
+    </div>
+</section>
+<article class="post-content">
+    <div class="wrapper flow">
+    {% unless job.positionAbout == 'bottom' %}
+        <aside class="flow">
+            <h2>{{ site.aboutText.title | default: 'About Ada Mode' }}</h2>
+            {% portableText site.aboutText.text %}
+        </aside>
+    {% endif %}
+            {% portableText job.body.content %}
+            <div class="flow" id="application-section">
+                <h2>Apply</h2>
+                <p>To apply for this role, click on the button below and provide your CV and cover letter.</p>
+                <a href="mailto:careers@ada-mode.com?subject=Careers%20at%20Windscope" class="button primary">Apply for this role</a>
+                <p>Alternatively, for more information, please email careers@ada-mode.com</p>
+            </div>
+    {% if job.positionAbout == 'bottom' %}
+        <aside class="flow">
+            <h2>{{ site.aboutText.title | default: 'About Ada Mode' }}</h2>
+            {% portableText site.aboutText.text %}
+        </aside>
+    {% endif %}
+    </div>
+</article>
+
+<script src="/assets/js/lite-vimeo.js" type="module"></script>
+<script src="/assets/js/lite-youtube.js" type="module"></script>
