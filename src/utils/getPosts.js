@@ -6,6 +6,19 @@ async function getPosts() {
         "description": coalesce(description, blurb),
         "categories": categories[]->{...},
         "author": author->{...},
+        body{
+            ...,
+            content[]{
+                ...,
+                markDefs[] {
+                  ...,
+                  _type == "internalLink" => {
+                    ...,
+                    "slug": @.reference-> slug
+                  }
+                }
+            }
+          } 
      }`
     const docs = await client.fetch(query).catch(err => console.error(err));
     return docs;
