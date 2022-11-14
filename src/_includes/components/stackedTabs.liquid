@@ -21,7 +21,16 @@
         </li>
         {% endfor %}
         {% if sectionLink %}
-        <li><a class="section-link text-link primary" href="{{ sectionLink.url }}">{{ sectionLink.text }}</a></li>
+            {%- assign slug = sectionLink.url -%}
+            {% if sectionLink.linkType == 'internal' %}
+            {%- if sectionLink.text -%}
+                {% assign text = sectionLink.text %}
+            {% else %}
+                {% assign text = sectionLink.internalLink.title %}
+            {%- endif -%}
+            {%- assign slug = '/' | append: sectionLink.internalLink.slug -%}
+            {% endif %}
+        <li><a class="section-link text-link primary" href="{{ slug }}">{{ text }}</a></li>
         {% endif %}
     </ul>
     {% for tab in tabs %}

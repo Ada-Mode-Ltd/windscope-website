@@ -34,6 +34,7 @@ h2 + .stacked-tabs {
 
     & li:not([role]) {
       padding: 0;
+      border: none;
     }
   }
 

@@ -6,6 +6,19 @@ async function getHomepage() {
         ...,
         "feature": feature->{...},
         "quotes": quotes[]->{..., partner->{...}},
+        tabs{
+            ...,
+            sectionLink{
+                ...,
+                internalLink{
+                    ...,
+                    _type == 'reference' => {
+                        "title": @->title,
+                        "slug": @->slug.current,
+                    },
+                },
+            }, 
+        },
      }`
     const docs = await client.fetch(query).catch(err => console.error(err));
     return docs;
