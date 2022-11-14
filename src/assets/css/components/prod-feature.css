@@ -8,6 +8,11 @@
     display: none;
   }
 
+  .secondary-title + h2,
+  .secondary-title + h3 {
+    margin-top: var(--space-16);
+  }
+
   &[data-style="large"] {
     grid-template-columns: 1fr 1fr;
     gap: var(--space-104);

@@ -15,13 +15,6 @@ const checkDoc = async (doc) => {
         }
 
         return quote
-    } else if (doc._type === 'productFeatures' && doc.features) {
-        const quote = await {
-            ...doc,
-            features: await Promise.all(doc.features.map(async feature => getReference(feature))),
-        }
-
-        return quote
     } else if (doc._type === 'people' && doc.people) {
         const people = await {
             ...doc,
@@ -58,10 +51,6 @@ async function generatePage(doc) {
                 return checkDoc(block)
             }
 
-            if (block._type === 'productFeatures') {
-                return checkDoc(block)
-            }
-
             if (block._type === 'people') {
                 return checkDoc(block)
             }
@@ -77,10 +66,30 @@ async function generatePage(doc) {
     return fields
 }
 
+// TODO: Streamline this function (put everything into the GROQ query)
 
 async function getPages() {
     const query = `*[_type == "page" && publishTo == "ws" && !(_id in path("drafts.**"))]{ 
         ...,
+        body[]{
+            ...,
+        _type == 'productFeatures' =>{
+            ...,
+            features[]->{
+                ...,
+                link{
+                    ...,
+                    internalLink{
+                        ...,
+                        _type == 'reference' => {
+                            "title": @->title,
+                            "slug": @->slug.current,
+                        },
+                    },
+                }
+            }
+        }
+        },
      }`
     const docs = await client.fetch(query).catch(err => console.error(err));
     const preparePages = await Promise.all(docs.flatMap(doc => generatePage(doc)))
