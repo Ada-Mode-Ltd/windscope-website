@@ -6,8 +6,8 @@ pagination:
     size: 1
     preview: eleventy.serverless.path.slug
 permalink: 
-    build: "/{{ thisPage.slug.current | slug }}/index.html"
-  preview: "/preview/:slug/"
+    build: /{{ thisPage.slug.current | slug }}/index.html
+  preview: /preview/:slug/
 eleventyComputed:
     pageTitle: '{{ thisPage.title }}'
     pageDescription: '{{ thisPage.description }}'
