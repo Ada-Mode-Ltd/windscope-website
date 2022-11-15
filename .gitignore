@@ -21,3 +21,4 @@ public/assets/img/remote/
 
 # Local Netlify folder
 .netlify
+functions/preview/

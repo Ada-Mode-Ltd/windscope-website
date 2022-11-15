@@ -45,7 +45,8 @@ module.exports = function(eleventyConfig) {
 		copy: ['src/utils/sanityPreview.js'],
 		excludeDependencies: [
 			'@11ty/eleventy-plugin-vue',
-			'@11ty/eleventy-img',
+			'@11ty/eleventy-navigation',
+			'rollup-plugin-critical',
 		]
 	  })
 	
