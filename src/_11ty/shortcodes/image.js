@@ -1,7 +1,15 @@
 const Image = require("@11ty/eleventy-img");
+const { cache } = require("@11ty/eleventy/src/TemplateCache");
 
 async function imageShortcode(src, alt, loading = 'lazy', sizes) {
   const formats = src.includes('.gif') ? ['webp', 'gif'] : ["avif", "webp", "svg", "jpeg"]
+  let directory = '.cache'
+  let duration = '90d'
+  if(process.env.ELEVENTY_SERVERLESS) {
+    directory = 'cache'
+    duration = "*"
+  }
+  
   let metadata = await Image(src, {
     formats,
     urlPath: "/assets/img/remote/",
@@ -11,8 +19,8 @@ async function imageShortcode(src, alt, loading = 'lazy', sizes) {
     },
     svgShortCircuit: true,
         cacheOptions: {
-          duration: "30d",
-          directory: ".cache",
+          duration: duration,
+          directory: directory,
           removeUrlQueryParams: false,
         },
   });

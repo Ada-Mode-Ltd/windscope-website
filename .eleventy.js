@@ -39,7 +39,7 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addPlugin(EleventyServerlessBundlerPlugin, {
 		name: 'preview',
 		functionsDir: './functions/',
-		copy: ['src/utils/sanityPreview.js'],
+		copy: ['src/utils/sanityPreview.js', { from: ".cache", to: "cache" }],
 		excludeDependencies: [
 			'rollup-plugin-critical',
 		]
