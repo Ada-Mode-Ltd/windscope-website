@@ -5,15 +5,17 @@ async function imageShortcode(src, alt, loading = 'lazy', sizes) {
   const formats = src.includes('.gif') ? ['webp', 'gif'] : ["avif", "webp", "svg", "jpeg"]
   let directory = '.cache'
   let duration = '90d'
+  let outputDir = './public/assets/img/remote/'
   if(process.env.ELEVENTY_SERVERLESS) {
     directory = 'cache'
     duration = "*"
+    outputDir = 'public/assets/img/remote/'
   }
   
   let metadata = await Image(src, {
     formats,
     urlPath: "/assets/img/remote/",
-    outputDir: "./public/assets/img/remote/",
+    outputDir: outputDir,
     sharpOptions: {
       animated: true
     },
