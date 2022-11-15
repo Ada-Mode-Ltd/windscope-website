@@ -41,7 +41,7 @@ module.exports = function(eleventyConfig) {
 
 	eleventyConfig.addPlugin(EleventyServerlessBundlerPlugin, {
 		name: 'preview',
-		functionsDir: './netlify/functions/',
+		functionsDir: './functions/',
 		copy: ['src/utils/sanityPreview.js']
 	  })
 	
