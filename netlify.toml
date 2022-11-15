@@ -1,9 +1,13 @@
+[build]
+publish = "_site"
+command = "npm run build"
+
 [functions]
 directory = "functions/"
 
 [[redirects]]
 from = "/preview/:slug/"
-to = "/.netlify/functions/preview"/
+to = "/.netlify/functions/preview"
 status = 200
 force = true
 _generated_by_eleventy_serverless = "preview"
