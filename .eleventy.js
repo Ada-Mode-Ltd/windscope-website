@@ -1,5 +1,6 @@
 const EleventyPluginNavigation = require('@11ty/eleventy-navigation')
 const EleventyVitePlugin = require('@11ty/eleventy-plugin-vite')
+const { EleventyServerlessBundlerPlugin } = require('@11ty/eleventy')
 
 const imageShortcode = require('./src/_11ty/shortcodes/image')
 const { dateFormat, w3cDate } = require('./src/_11ty/filters/date')
@@ -37,6 +38,12 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addShortcode("getReferences", getReferences)
 
 	eleventyConfig.addPlugin(EleventyPluginNavigation)
+
+	eleventyConfig.addPlugin(EleventyServerlessBundlerPlugin, {
+		name: 'preview',
+		functionsDir: './netlify/functions/',
+		copy: ['src/utils/sanityPreview.js']
+	  })
 	
 	eleventyConfig.addPlugin(EleventyVitePlugin, {
 		tempFolderName: '.11ty-vite', // Default name of the temp folder
