@@ -8,9 +8,6 @@ const {sanityImageUrl} = require('./src/_11ty/shortcodes/sanityImageUrl')
 const portableText = require('./src/_11ty/shortcodes/portableText')
 const getReferences = require('./src/_11ty/shortcodes/getReference')
 
-
-const rollupPluginCritical = require('rollup-plugin-critical').default
-
 const dev = process.env.NODE_ENV === 'production' ? false : true;
 
 module.exports = function(eleventyConfig) {
