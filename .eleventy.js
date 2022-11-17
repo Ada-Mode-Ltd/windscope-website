@@ -44,6 +44,7 @@ module.exports = function(eleventyConfig) {
 			'rollup-plugin-critical',
 		]
 	  })
+
 	
 	eleventyConfig.addPlugin(EleventyVitePlugin, {
 		tempFolderName: '.11ty-vite', // Default name of the temp folder
@@ -56,8 +57,8 @@ module.exports = function(eleventyConfig) {
 				mode: 'development',
 				middlewareMode: true,
 			},
-			appType: 'mpa',
-			// assetsInclude: ['**/*.xml', '**/*.txt'],
+			appType: 'custom',
+			assetsInclude: ['**/*.xml', '**/*.txt'],
 			build: {
 				mode: 'production',
 				sourcemap: 'true',
