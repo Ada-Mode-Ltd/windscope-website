@@ -258,3 +258,14 @@
   align-items: center;
   gap: var(--space-56);
 }
+
+.large-stat {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: center;
+
+  & > span {
+    font-size: 3.5rem;
+  }
+}

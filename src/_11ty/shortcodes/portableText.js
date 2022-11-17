@@ -40,6 +40,10 @@ const serializer = {
             <div class="quote__author text--small">${attribution.name}, ${attribution.title}</div>
             ${imageSerializer(partner.logo)}
         </div>`
+    },
+    largeStat: ({ value }) => {
+        const { statDescription, stat } = value
+        return html`<div class="large-stat"><span class="color-accent">${stat}</span><p class="text--small">${statDescription}</p></div>`
     }
 },
     
