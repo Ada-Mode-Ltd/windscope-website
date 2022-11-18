@@ -1,12 +1,15 @@
 section.homepage-hero {
   @mixin dark-bg;
-  padding-block-end: var(--space-104);
   position: relative;
   overflow: hidden;
 
   & h1 {
     color: var(--ws-white);
   }
+}
+
+.homepage > section.homepage-hero {
+  padding-block-end: var(--space-104);
 }
 
 .homepage-hero__wrapper {
@@ -21,7 +24,6 @@ section.homepage-hero {
     grid-template-columns:
       1fr [wrapper-start] minmax(0, var(--col)) minmax(0, var(--col))
       [wrapper-end] 1fr;
-    align-items: center;
   }
 }
 
@@ -73,7 +75,6 @@ section.homepage-hero {
   @media (min-width: 900px) {
     grid-column: 2 / span 1;
     grid-row: 2;
-    align-self: end;
   }
 }
 
