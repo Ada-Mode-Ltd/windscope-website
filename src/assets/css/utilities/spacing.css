@@ -4,14 +4,6 @@
  */
 .flow > * + * {
   margin-top: var(--flow-space, var(--space-24));
-
-  & ul > li + li {
-    margin-top: var(--flow-space, var(--space-16));
-  }
-
-  & ol > li + li {
-    margin-top: var(--flow-space, var(--space-16));
-  }
 }
 
 .v-space-24 {

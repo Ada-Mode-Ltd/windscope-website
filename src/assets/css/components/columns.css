@@ -23,4 +23,12 @@
     border-radius: var(--px-8);
     object-fit: cover;
   }
+
+  & .text-content ul > li + li {
+    margin-top: var(--flow-space, var(--space-16));
+  }
+
+  & .text-conten ol > li + li {
+    margin-top: var(--flow-space, var(--space-16));
+  }
 }
