@@ -4,7 +4,7 @@ module.exports = async function() {
     const data = await allPosts();
     const features = await data.filter(doc => doc.featured);
     const feature = features.length > 0 ? features[0] : data[0];
-    const posts = data.filter(doc => doc._id !== feature?._id).slice(0, 8);
+    const posts = data.filter(doc => doc._id !== feature?._id);
 
     // combine feature and posts
     const combined = [feature, ...posts];
