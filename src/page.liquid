@@ -12,7 +12,12 @@ eleventyComputed:
     pageTitle: '{{ thisPage.title }}'
     pageDescription: '{{ thisPage.description }}'
 ---
-
+{% if eleventy.serverless.path.slug %}
+    {{ eleventy.serverless | json }}
+      <marquee>
+        PREVIEW MODE PREVIEW MODE PREVIEW MODE PREVIEW MODE PREVIEW MODE PREVIEW MODE PREVIEW MODE
+      </marquee>
+      {% endif %}
 
 {% for content in thisPage.body %}
     {% if content._type == 'pageHeading' %}
@@ -36,9 +41,9 @@ eleventyComputed:
                     {% endcapture %}
                 {% if textPlacement == 'right' %}
                     {% image imgUrl, content.image.altText %}
-                    <div class="flow">{% portableText content.text.content %}</div>
+                    <div class="flow text-content">{% portableText content.text.content %}</div>
                 {% else %}
-                    <div class="flow">{% portableText content.text.content %}</div>
+                    <div class="flow text-content">{% portableText content.text.content %}</div>
                     {% image imgUrl, content.image.altText %}
                 {% endif %}
             </div>

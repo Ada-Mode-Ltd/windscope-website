@@ -1,4 +1,10 @@
 const { client } = require('./sanity');
+const isServerless = process.env.ELEVENTY_SERVERLESS || false
+
+const buildConstraint =
+  !isServerless
+    ? `&& !(_id in path("drafts.**"))`
+    : `&& (_id in path("drafts.**"))`
 
 const checkDoc = async (doc) => {
     if (doc._type === 'quote') {
@@ -69,7 +75,8 @@ async function generatePage(doc) {
 // TODO: Streamline this function (put everything into the GROQ query)
 
 async function getPages() {
-    const query = `*[_type == "page" && publishTo == "ws" && !(_id in path("drafts.**"))]{ 
+    console.log('isServerless', isServerless)
+    const query = `*[_type == "page" && publishTo == "ws" ${buildConstraint}]{ 
         ...,
         body[]{
             ...,
@@ -91,7 +98,9 @@ async function getPages() {
         }
         },
      }`
-    const docs = await client.fetch(query).catch(err => console.error(err));
+    const docs = await client.withConfig({
+        token: isServerless && process.env.SANITY_READ_TOKEN
+    }).fetch(query).catch(err => console.error(err));
     const preparePages = await Promise.all(docs.flatMap(doc => generatePage(doc)))
     return preparePages;
 }
