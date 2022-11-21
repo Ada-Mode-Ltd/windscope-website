@@ -194,6 +194,12 @@ nav.page {
 }
 
 .is-menu-open {
+  & header {
+    top: 0;
+    left: 0;
+    transform: none;
+  }
+
   .c-header__menu-icon {
     span {
       opacity: 0;

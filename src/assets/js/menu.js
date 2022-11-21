@@ -1,5 +1,5 @@
 import * as focusTrap from 'focus-trap'
-import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
+// import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 
 const header = document.querySelector('[data-page-nav]')
 const menuIconOpen = header.querySelector('[data-menu-icon-open]')
@@ -14,7 +14,7 @@ const menu = () => {
     menuBtn.setAttribute('aria-expanded', true)
     menuIconClose.hidden = false
     menuIconOpen.hidden = true
-    disableBodyScroll(menuWrapper)
+    // disableBodyScroll(menuWrapper)
   
     setTimeout(() => {
       menuIconOpen.style.display = 'none'
@@ -37,7 +37,7 @@ const menu = () => {
       menuIconClose.hidden = true
       menuIconOpen.hidden = false
       menuBtn.setAttribute('aria-expanded', false)
-      enableBodyScroll(menuWrapper)
+      // enableBodyScroll(menuWrapper)
     }, 250)
   }
   
