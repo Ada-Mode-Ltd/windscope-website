@@ -23,10 +23,12 @@
     --min: 100%;
   }
 
-  & > img,
-  > picture {
-    height: auto;
-    max-width: 200px;
+  &.logos {
+    & img,
+    > picture {
+      height: auto;
+      max-width: 150px;
+    }
   }
 }
 
