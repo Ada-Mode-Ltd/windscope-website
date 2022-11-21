@@ -35,7 +35,8 @@ module.exports = function(eleventyConfig) {
 		const relatedPosts = posts.filter(p => p._id !== post._id).filter(p => p.categories.some(t => tags.includes(t.title)))
 		// Ensure that 3 related posts are returned, or add more if there are not enough
 		if (relatedPosts.length < 3) {
-			relatedPosts.push(...posts.filter(p => p._id !== post._id).slice(0, 3 - relatedPosts.length))
+			const morePosts = posts.filter(p => p._id !== post._id).filter(p => !p.categories.some(t => tags.includes(t.title)))
+			relatedPosts.push(...morePosts.slice(0, 3 - relatedPosts.length))
 		}
 
 		return relatedPosts
