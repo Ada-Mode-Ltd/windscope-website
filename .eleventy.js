@@ -30,7 +30,6 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addFilter('getRelatedPosts', function(posts, post) {
 		// Get the tags from the post
 		const tags = post.categories.map(c => c.title)
-		console.log({tags})
 		// Filter out the current post
 		const relatedPosts = posts.filter(p => p._id !== post._id).filter(p => p.categories.some(t => tags.includes(t.title)))
 		// Ensure that 3 related posts are returned, or add more if there are not enough
