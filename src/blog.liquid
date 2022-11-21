@@ -98,7 +98,7 @@ ctaLink:
             const categoryNav = document.querySelector('.category-nav');
             const categoryButtons = categoryNav.querySelectorAll('button');
             const posts = document.querySelectorAll('#posts .index-post');
-            const section = document.querySelector('.category-nav');
+            const section = document.querySelector('.category-nav > .wrapper');
             const categoryTags = document.querySelectorAll('[data-category-filter]');
 
             categoryButtons.forEach(button => {
@@ -115,8 +115,6 @@ ctaLink:
                             post.setAttribute('data-hidden', '');
                         }
                     });
-                    // scroll to #posts section
-                    section.scrollIntoView({ behavior: 'smooth' });
                 });
             });
 
@@ -139,8 +137,6 @@ ctaLink:
                             button.setAttribute('data-active', '');
                         }
                     });
-                    // scroll to #posts section
-                    section.scrollIntoView({ behavior: 'smooth' });
                 });
             });
             
