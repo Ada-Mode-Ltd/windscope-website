@@ -1,5 +1,8 @@
 ---
 layout: site
+ctaLink:
+    text: "Book a demo"
+    url: "/book-a-demo/"
 pagination:
     data: allPosts.combined
     alias: post
@@ -33,6 +36,43 @@ eleventyComputed:
             {% portableText post.body.content %}
     </div>
 </article>
+<section>
+    <h2 class="text-center">Related posts</h2>
+    <div class="wrapper">
+            <ul class="flex-row" data-align="start" style="--gap: var(--space-56);">
+                {%- assign relatedPosts = allPosts.posts | getRelatedPosts: post -%}
+                {% for post in relatedPosts limit:3 %}
+                    {%- capture categories -%}
+                        {%- for cat in post.categories -%}
+                            {{cat.title}},
+                        {%- endfor -%}
+                    {%- endcapture -%}
+                    <li class="index-post flow" data-category="{{ categories }}">
+                      {% if post.mainImage.asset %}
+                {% capture imgUrl %}
+                    {% sanityImageUrl post.mainImage %}
+                {% endcapture %}
+                {% image imgUrl, post.mainImage.altText %}
+                {% else %}
+           {% capture imgUrl %}
+                    {% sanityImageUrl site.blogFallbackImage %}
+                {% endcapture %}
+                {% image imgUrl, '' %}
+            {% endif %}
+                <div class="content-col flow ">
+                        <time class="text--small" datetime="{{ post.publishedAt }}">{{ post.publishedAt | date: "%B %d, %Y" }}</time>
+                    <h2 class="title"><a href="/blog/{{post.slug.current}}">{{ post.title }}</a></h2>
+                    <p class="text--regular">{{ post.blurb  }}</p>
+                    <p><a class="text-link secondary" href="/blog/{{post.slug.current}}">Read →</a></p>
+                </div>  
+                    </li>
+                {% endfor %}
+            </ul>
+    </div>
+</section>
+
+{% assign ctaTitle = "See how AI can transform your business." %}
+{% include 'components/cta-section.liquid' %}   
 
 <script src="/assets/js/lite-vimeo.js" type="module"></script>
 <script src="/assets/js/lite-youtube.js" type="module"></script>

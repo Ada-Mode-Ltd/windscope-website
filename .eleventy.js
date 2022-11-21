@@ -27,6 +27,20 @@ module.exports = function(eleventyConfig) {
 		return content?._key || content?._id || new Date().getTime()
 	});
 
+	eleventyConfig.addFilter('getRelatedPosts', function(posts, post) {
+		// Get the tags from the post
+		const tags = post.categories.map(c => c.title)
+		console.log({tags})
+		// Filter out the current post
+		const relatedPosts = posts.filter(p => p._id !== post._id).filter(p => p.categories.some(t => tags.includes(t.title)))
+		// Ensure that 3 related posts are returned, or add more if there are not enough
+		if (relatedPosts.length < 3) {
+			relatedPosts.push(...posts.filter(p => p._id !== post._id).slice(0, 3 - relatedPosts.length))
+		}
+
+		return relatedPosts
+	})
+
 	// Shortcodes
 	eleventyConfig.addShortcode("image", imageShortcode); // Because copyright text in the footer ...
 	eleventyConfig.addShortcode("currentYear", () => `${new Date().getFullYear()}`); // Because copyright text in the footer ...

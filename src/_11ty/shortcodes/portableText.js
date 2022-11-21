@@ -50,8 +50,8 @@ const serializer = {
         marks: {
             highlightBlue: ({children}) => html`<span class="color-primary">${children}</span>`,
             highlightGreen: ({children}) => html`<span class="color-accent">${children}</span>`,
-            link: ({children, value}) => html`<a href="${value.href}" class="text-link secondary">${children}</a>`,
-            internalLink: ({children, value}) => html`<a href="/${value.slug.current}" class="text-link secondary">${children}</a>`
+            link: ({children, value}) => html`<a href="${value.href}" class="text-link secondary">${html(children)}</a>`,
+            internalLink: ({children, value}) => html`<a href="/${value.slug.current}" class="text-link secondary">${html(children)}</a>`
         },
 }
 
