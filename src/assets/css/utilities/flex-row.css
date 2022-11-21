@@ -8,6 +8,7 @@
   row-gap: var(--row-gap, var(--space-80));
   margin-block-start: var(--block-margin, var(--space-64));
   align-items: center;
+  justify-content: center;
 
   &[data-justify="start"] {
     justify-content: flex-start;
@@ -22,8 +23,10 @@
     --min: 100%;
   }
 
-  & img {
+  & > img,
+  > picture {
     height: auto;
+    max-width: 200px;
   }
 }
 

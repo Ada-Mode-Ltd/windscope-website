@@ -248,15 +248,16 @@
 }
 
 @define-mixin mobile-large-feature {
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-136);
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;
+    gap: var(--space-16);
     grid-template-areas:
       "content"
       "image";
   }
-  justify-content: center;
-  align-items: center;
-  gap: var(--space-136);
 }
 
 .large-stat {

@@ -1,5 +1,5 @@
 .comparison {
-  --comparison-row-gap: var(--space-112);
+  --comparison-row-gap: var(--space-144);
   row-gap: var(--comparison-row-gap);
   > div {
     box-shadow: var(--shadow-light);
