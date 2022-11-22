@@ -7,10 +7,7 @@ const buildConstraint =
     : `&& (_id in path("drafts.**"))`
 
 
-// TODO: Streamline this function (put everything into the GROQ query)
-
 async function getPages() {
-    console.log('isServerless', isServerless)
     const query = `*[_type == "page" && publishTo == "ws" ${buildConstraint}]{ 
         ...,
         body[]{

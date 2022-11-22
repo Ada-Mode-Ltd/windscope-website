@@ -1,6 +1,6 @@
 const EleventyPluginNavigation = require('@11ty/eleventy-navigation')
 const EleventyVitePlugin = require('@11ty/eleventy-plugin-vite')
-const { EleventyServerlessBundlerPlugin } = require('@11ty/eleventy')
+// const { EleventyServerlessBundlerPlugin } = require('@11ty/eleventy')
 
 const imageShortcode = require('./src/_11ty/shortcodes/image')
 const { dateFormat, w3cDate } = require('./src/_11ty/filters/date')
@@ -50,14 +50,14 @@ module.exports = function(eleventyConfig) {
 
 	eleventyConfig.addPlugin(EleventyPluginNavigation)
 
-	eleventyConfig.addPlugin(EleventyServerlessBundlerPlugin, {
-		name: 'preview',
-		functionsDir: './functions/',
-		copy: ['src/utils/sanityPreview.js', { from: ".cache", to: "cache" }, 'src/assets/css', 'src/assets/js', 'public/assets/'],
-		excludeDependencies: [
-			'rollup-plugin-critical',
-		]
-	  })
+	// eleventyConfig.addPlugin(EleventyServerlessBundlerPlugin, {
+	// 	name: 'preview',
+	// 	functionsDir: './netlify/functions/',
+	// 	copy: ['src/utils/sanityPreview.js', { from: ".cache", to: "cache" }, 'src/assets/css', 'src/assets/js', 'public/assets/'],
+	// 	excludeDependencies: [
+	// 		'rollup-plugin-critical',
+	// 	]
+	//   })
 
 	
 	eleventyConfig.addPlugin(EleventyVitePlugin, {
