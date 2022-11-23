@@ -3,29 +3,23 @@ permalink:
   preview: /preview/:type/:id
 ---
 
-<div class="wrapper">
-  {% assign id = eleventy.serverless.path.id %}
-  {% for person in preview.person %}
-    {% if person._id == id %}
-      <ul class="flex-grid people-holder">
-    {% capture imgUrl %}
-      {% sanityImageUrl person.photo %}
-    {% endcapture %}
-
-        <li class="person">
-            {% image imgUrl, '' %}
-            <div class="details">
-                <p class="text--medium strong">{{ person.name }}</p>
-                <p class="text--regular">{{ person.position }}</p>
-                {% if person.linkedIn %}
-                    <a href="{{ person.linkedIn }}">{% include 'svg/linkedin.svg' %}</a>
-                {% endif %}
-            </div>
-        </li>
-</ul>
-    {% endif %}
-  {% endfor %}
-</div>
+<section style="height: 100vh; width: 100vw; display: grid; place-content: center;">
+    {% assign id = eleventy.serverless.path.id %}
+    {% assign type = eleventy.serverless.path.type %}
+  
+  {% if type == 'person' %}
+    {% for person in preview.person %}
+      {% if person._id == id %}
+      {% capture imgUrl %}
+        {% sanityImageUrl person.photo %}
+      {% endcapture %}
+      {% include 'components/person.liquid' %}
+      {% endif %}
+    {% endfor %}
+  {% else %}
+    <p>Nothing to preview.</p>
+  {% endif %}
+</section>
 
 <style>
   {% postcss %}
