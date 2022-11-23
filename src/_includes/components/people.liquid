@@ -1,18 +1,5 @@
 <ul class="flex-grid people-holder">
     {% for person in people %}
-    {% capture imgUrl %}
-    {% sanityImageUrl person.photo %}
-    {% endcapture %}
-
-        <li class="person">
-            {% image imgUrl, '' %}
-            <div class="details">
-                <p class="text--medium strong">{{ person.name }}</p>
-                <p class="text--regular">{{ person.position }}</p>
-                {% if person.linkedIn %}
-                    <a href="{{ person.linkedIn }}">{% include 'svg/linkedin.svg' %}</a>
-                {% endif %}
-            </div>
-        </li>
+    {% include 'components/person.liquid' %}
     {% endfor %}
 </ul>
