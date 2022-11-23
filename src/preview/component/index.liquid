@@ -1,0 +1,34 @@
+---
+permalink:
+  preview: /preview/:type/:id
+---
+
+<div class="wrapper">
+  {% assign id = eleventy.serverless.path.id %}
+  {% for person in preview.person %}
+    {% if person._id == id %}
+      <ul class="flex-grid people-holder">
+    {% capture imgUrl %}
+      {% sanityImageUrl person.photo %}
+    {% endcapture %}
+
+        <li class="person">
+            {% image imgUrl, '' %}
+            <div class="details">
+                <p class="text--medium strong">{{ person.name }}</p>
+                <p class="text--regular">{{ person.position }}</p>
+                {% if person.linkedIn %}
+                    <a href="{{ person.linkedIn }}">{% include 'svg/linkedin.svg' %}</a>
+                {% endif %}
+            </div>
+        </li>
+</ul>
+    {% endif %}
+  {% endfor %}
+</div>
+
+<style>
+  {% postcss %}
+    {% include 'assets/css/index.css' %}
+  {% endpostcss %}
+</style>
