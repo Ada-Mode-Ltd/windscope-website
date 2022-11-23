@@ -6,11 +6,14 @@ pagination:
     size: 1
 permalink: 
     build: /{{ thisPage.slug.current | slug }}/index.html
+    preview: /preview/page/:slug
 eleventyComputed:
     pageTitle: '{{ thisPage.title }}'
     pageDescription: '{{ thisPage.description }}'
 ---
-    
+    {%- if eleventy.serverless.path.slug -%}
+        <marquee>This is a preview yo.</marquee>
+    {%- endif -%}
 {% for content in thisPage.body %}
     {% if content._type == 'pageHeading' %}
         {% include "components/pageHeading.liquid" %}     

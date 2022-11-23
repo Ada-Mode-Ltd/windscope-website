@@ -6,6 +6,9 @@ async function imageShortcode(src, alt, loading = "lazy", sizes) {
     ? ["webp", "gif"]
     : ["avif", "webp", "svg", "jpeg"];
   let directory = ".cache";
+  if (process.env.ELEVENTY_SERVERLESS) {
+    return `<img src="${src}" alt="${alt}">`;
+  }
 
   let metadata = await Image(src, {
     formats,
