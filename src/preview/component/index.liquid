@@ -14,6 +14,7 @@ permalink:
         {% sanityImageUrl person.photo %}
       {% endcapture %}
       {% include 'components/person.liquid' %}
+      {% break %}
       {% endif %}
     {% endfor %}
   {% elsif type == 'quote' %}
@@ -28,6 +29,7 @@ permalink:
               </ul>
           </div>
         </div>
+        {% break %}
       {% endif %}
     {% endfor %}
   {% elsif type == 'productFeature' %}
@@ -61,6 +63,7 @@ permalink:
             <div class="wrapper product-feature-holder" data-style="{{ feature.featureType }}">
             <article>{% include 'components/prod-feature.liquid' %}</article> 
                   </div>
+                  {% break %}
       {% endif %}
     {% endfor %}
   {% else %}

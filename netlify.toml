@@ -6,7 +6,7 @@ command = "npm run build"
 directory = "netlify/functions/"
 
 [[redirects]]
-from = "/preview/page/:slug"
+from = "/homepage/preview/:id"
 to = "/.netlify/functions/preview"
 status = 200
 force = true

@@ -1,6 +1,9 @@
 ---
 layout: homepage
 header: dark
+permalink:
+    build: /index.html
+    preview: /homepage/preview/:id
 ctaLink:
     text: "Book a demo"
     url: "/book-a-demo/"
@@ -8,6 +11,19 @@ ctaLinkSecondary:
     text: "Join the beta"
     url: "/book-a-demo/"
 ---
+{% assign id = eleventy.serverless.path.id %}
+
+{% if eleventy.serverless.path %}
+{% for hp in preview.homepage %}
+    {% if hp._id == id %}
+        {% assign homeContent = hp %}
+        {% break %}
+    {% endif %}
+{% endfor %}
+{% else %}
+    {% assign homeContent = homepage %}
+{% endif %}
+
 <section class="homepage-hero" id="hero">
     <div class="homepage-hero__wrapper">
         <div class="homepage-hero__main-content">
@@ -36,17 +52,17 @@ ctaLinkSecondary:
 <!-- Start of dynamic section -->
 <section>
     <div class="wrapper flow">
-        {% assign tabs = homepage.tabs.tabs %}
-        {% assign sectionTitle = homepage.tabs.title %}
-        {% assign sectionLink = homepage.tabs.sectionLink %}
+        {% assign tabs = homeContent.tabs.tabs %}
+        {% assign sectionTitle = homeContent.tabs.title %}
+        {% assign sectionLink = homeContent.tabs.sectionLink %}
         {% include 'components/stackedTabs.liquid' %}
     </div>
 </section>
 
 <section data-bg-white>
     <div class="wrapper">
-        {% assign feature = homepage.feature %}
-        {% assign featureStyle = feature.featureType %}
+        {% assign feature = homeContent.feature %}
+        {% assign featureStyle = homeContent.featureType %}
 
         {% if featureStyle == "large" %}
         {% assign featureImage = feature.largeImage %}
@@ -74,7 +90,7 @@ ctaLinkSecondary:
 
 <section>
     <div class="wrapper">
-        {% assign quotes = homepage.quotes %}
+        {% assign quotes = homeContent.quotes %}
         {% include 'components/quotes.liquid' %}
     </div>
 </section>
@@ -132,3 +148,11 @@ ctaLinkSecondary:
 {% assign ctaText = "We are looking for beta partners to be some of the first to transform their farm or fleet through Windscope." %}
 
 {% include 'components/cta-section.liquid' %}
+
+{% if eleventy.serverless.path %}
+    <style>
+    {% postcss %}
+        {% include 'assets/css/index.css' %}
+    {% endpostcss %}
+    </style>
+{% endif %}
