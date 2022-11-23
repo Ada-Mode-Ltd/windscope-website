@@ -16,6 +16,20 @@ permalink:
       {% include 'components/person.liquid' %}
       {% endif %}
     {% endfor %}
+  {% elsif type == 'quote' %}
+    {% for quote in preview.quote %}
+      {% if quote._id == id %}
+        {% assign quoteIndex = 0 %}
+        {% assign current = true %}
+        <div class="wrapper">
+          <div class="quote-holder" role="region" aria-label="quotes" tabindex="0">
+              <ul>
+                {% include 'components/quote' %}
+              </ul>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
   {% elsif type == 'productFeature' %}
     {% for feature in preview.productFeature %}
       {% if feature._id == id %}
