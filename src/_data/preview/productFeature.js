@@ -1,7 +1,7 @@
 const { client } = require("../../utils/sanity");
 
 module.exports = async function() {
-    const query = `*[_type == "person" && "ws" in publishTo] { 
+    const query = `*[_type == "productFeature"] { 
         ...
      }`
     const docs = await client.withConfig({
