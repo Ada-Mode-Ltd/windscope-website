@@ -32,6 +32,7 @@ if(!isServerless) {
           .process(css, { from: filepath, to: 'src/_includes/assets/css/build.css' })
           .then(result => {
             fs.writeFile('src/_includes/assets/css/build.css', result.css, () => true)
+            fs.writeFile('public/assets/build.css', result.css, () => true)
           })
       })
     });
@@ -175,8 +176,9 @@ if(!isServerless) {
   // if (!dev) {
   //     eleventyConfig.ignores.add("src/design-system/**");
   // }
-
+  eleventyConfig.ignores.delete("public/assets/build.css");
   eleventyConfig.addPassthroughCopy("src/_includes/assets/css");
+  // eleventyConfig.addPassthroughCopy({ "public/assets/build.css": "assets/preview/index.css" });
   eleventyConfig.addPassthroughCopy("src/_includes/assets/js");
   eleventyConfig.addPassthroughCopy("public/assets/**");
 
