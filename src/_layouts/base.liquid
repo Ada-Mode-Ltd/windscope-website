@@ -20,10 +20,14 @@
 </head>
 
 <body class="no-js">
+  {% unless eleventy.serverless.path %}
   <header {% if header == 'dark' %} data-dark {% endif %} >
     <div class="wrapper">{% include 'partials/nav.liquid' %}</div>
   </header>
+  {% endunless %}
   {{ content }}
+
+  {% unless eleventy.serverless.path %}  
   {% include 'partials/footer.liquid' %}
 
   <div class="cead" role="region" aria-label="Cookie consent">
@@ -41,6 +45,7 @@
     </script>
     <!-- include the browser.js file before the closing </body> -->
     <script src="/assets/js/cead-browser.js"></script>
+  {% endunless %}
 </body>
 
 </html>
