@@ -71,8 +71,6 @@ permalink:
   {% endif %}
 </section>
 
-<style>
-  {% postcss %}
-    {% include 'assets/css/index.css' %}
-  {% endpostcss %}
-</style>
+{% if eleventy.serverless.path %}
+    <link rel="stylesheet" href="/_includes/assets/css/build.css">
+{% endif %}

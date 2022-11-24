@@ -14,10 +14,28 @@ const postcssMixins = require('postcss-mixins')
 const postcssNested = require('postcss-nested')
 const cssnano = require('cssnano')
 const path = require('path')
+const fs = require('fs')
 
 const dev = process.env.NODE_ENV === "production" ? false : true;
+const isServerless = process.env.ELEVENTY_SERVERLESS || false
 
 module.exports = function (eleventyConfig) {
+if(!isServerless) {
+  eleventyConfig.on("eleventy.before", async () => {
+    console.log("Building stylesheet for preview!")
+      const filepath = path.join(
+        __dirname,
+        "src/_includes/assets/css/index.css");
+
+      await fs.readFile("src/_includes/assets/css/index.css", (err, css) => {
+        postcss([autoprefixer, postcssMixins, postcssNested, postcssImport, cssnano])
+          .process(css, { from: filepath, to: 'src/_includes/assets/css/build.css' })
+          .then(result => {
+            fs.writeFile('src/_includes/assets/css/build.css', result.css, () => true)
+          })
+      })
+    });
+  }
   // Filters
   // Check if the page is part of the Design System
   eleventyConfig.addFilter("isDesignSystem", function (page) {
@@ -61,7 +79,7 @@ module.exports = function (eleventyConfig) {
     "src/_includes/assets/css/index.css");
 
   return await postcss([
-    autoprefixer, postcssMixins, postcssNested, postcssImport, cssnano
+    autoprefixer, postcssMixins, postcssNested, postcssImport
   ]).process(
     code,
     { from: filepath })
@@ -87,13 +105,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(EleventyServerlessBundlerPlugin, {
     name: "preview", // The serverless function name from your permalink object
     functionsDir: "./netlify/functions/",
-    copy: [
-      "src/utils/sanityPreview.js",
-      { from: ".cache", to: "cache" },
-      "src/_includes/assets/css",
-      "src/_includes/assets/js",
-      "public/assets/",
-    ],
+    copy: ['src/_includes/assets/css/build.css'],
     excludeDependencies: ["rollup-plugin-critical"],
   });
 
@@ -168,12 +180,13 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/_includes/assets/js");
   eleventyConfig.addPassthroughCopy("public/assets/**");
 
-  if (!dev) {
+
+  if(!dev) {
     eleventyConfig.on("eleventy.after", async () => {
       const { copy } = require("fs-extra");
       await copy("public/assets/img/remote", "_site/assets/img/remote");
-    });
-  }
+  })
+}
 
   // Return your Object options:
   return {
