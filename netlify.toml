@@ -6,6 +6,13 @@ command = "npm run build"
 directory = "netlify/functions/"
 
 [[redirects]]
+from = "/cta/preview/:id"
+to = "/.netlify/functions/preview"
+status = 200
+force = true
+_generated_by_eleventy_serverless = "preview"
+
+[[redirects]]
 from = "/homepage/preview/:id"
 to = "/.netlify/functions/preview"
 status = 200

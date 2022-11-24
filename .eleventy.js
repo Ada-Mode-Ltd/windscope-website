@@ -13,7 +13,6 @@ const autoprefixer = require('autoprefixer')
 const postcssMixins = require('postcss-mixins')
 const postcssNested = require('postcss-nested')
 const cssnano = require('cssnano')
-const fs = require('fs')
 const path = require('path')
 
 const dev = process.env.NODE_ENV === "production" ? false : true;
@@ -77,15 +76,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addShortcode("sanityImageUrl", sanityImageUrl);
   eleventyConfig.addLiquidShortcode("portableText", portableText);
   eleventyConfig.addShortcode("getReferences", getReferences);
-  eleventyConfig.addAsyncFilter("postcss", async function (cssPath) {
-    return fs.readFile(cssPath, (err, css) => {
-      postcss([autoprefixer, postcssMixins, postcssNested, postcssImport])
-        .process(css, { from: cssPath })
-        .then(result => {
-          return result.css
-        })
-    })
-  });
 
   eleventyConfig.addPlugin(EleventyPluginNavigation);
 
