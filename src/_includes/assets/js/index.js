@@ -1,6 +1,6 @@
 
-import menu from './menu'
-import scroll from './nav'
+import menu from './menu.js'
+import scroll from './nav.js'
 
 document.body.classList.remove('no-js')
 
