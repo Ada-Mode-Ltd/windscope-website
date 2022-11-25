@@ -7,36 +7,11 @@ const { dateFormat, w3cDate } = require("./src/_11ty/filters/date");
 const { sanityImageUrl } = require("./src/_11ty/shortcodes/sanityImageUrl");
 const portableText = require("./src/_11ty/shortcodes/portableText");
 const getReferences = require("./src/_11ty/shortcodes/getReference");
-const postcss = require('postcss')
-const postcssImport = require('postcss-import')
-const autoprefixer = require('autoprefixer')
-const postcssMixins = require('postcss-mixins')
-const postcssNested = require('postcss-nested')
-const cssnano = require('cssnano')
-const path = require('path')
-const fs = require('fs')
 
 const dev = process.env.NODE_ENV === "production" ? false : true;
 const isServerless = process.env.ELEVENTY_SERVERLESS || false
 
 module.exports = function (eleventyConfig) {
-if(!isServerless) {
-  eleventyConfig.on("eleventy.before", async () => {
-    console.log("Building stylesheet for preview!")
-      const filepath = path.join(
-        __dirname,
-        "src/_includes/assets/css/index.css");
-
-      await fs.readFile("src/_includes/assets/css/index.css", (err, css) => {
-        postcss([autoprefixer, postcssMixins, postcssNested, postcssImport, cssnano])
-          .process(css, { from: filepath, to: 'src/_includes/assets/css/build.css' })
-          .then(result => {
-            fs.writeFile('src/_includes/assets/css/build.css', result.css, () => true)
-            fs.writeFile('public/assets/build.css', result.css, () => true)
-          })
-      })
-    });
-  }
   // Filters
   // Check if the page is part of the Design System
   eleventyConfig.addFilter("isDesignSystem", function (page) {
@@ -176,7 +151,7 @@ if(!isServerless) {
   // if (!dev) {
   //     eleventyConfig.ignores.add("src/design-system/**");
   // }
-  eleventyConfig.ignores.delete("public/assets/build.css");
+  // eleventyConfig.ignores.delete("public/assets/build.css");
   eleventyConfig.addPassthroughCopy("src/_includes/assets/css");
   // eleventyConfig.addPassthroughCopy({ "public/assets/build.css": "assets/preview/index.css" });
   eleventyConfig.addPassthroughCopy("src/_includes/assets/js");

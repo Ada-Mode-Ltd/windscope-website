@@ -46,3 +46,6 @@ to = "/.netlify/functions/preview"
 status = 200
 force = true
 _generated_by_eleventy_serverless = "preview"
+
+[context.deploy-preview]
+  command = "npm run build:site"

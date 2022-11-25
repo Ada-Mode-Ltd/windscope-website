@@ -14,7 +14,7 @@ _site/
 _dev
 .cache
 public/assets/img/remote/
-build.css
+build/
 
 # Misc
 .DS_Store
