@@ -9,6 +9,7 @@ const portableText = require("./src/_11ty/shortcodes/portableText");
 const getReferences = require("./src/_11ty/shortcodes/getReference");
 
 const dev = process.env.NODE_ENV === "production" ? false : true;
+console.log("dev", dev);
 const isServerless = process.env.ELEVENTY_SERVERLESS || false
 
 module.exports = function (eleventyConfig) {
