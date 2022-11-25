@@ -48,4 +48,4 @@ force = true
 _generated_by_eleventy_serverless = "preview"
 
 [context.deploy-preview]
-  command = "npm run build:site"
+command = "npm run build:site"
