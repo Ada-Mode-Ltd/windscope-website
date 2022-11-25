@@ -62,8 +62,12 @@ ctaLinkSecondary:
 <section data-bg-white>
     <div class="wrapper">
         {% assign feature = homeContent.feature %}
+        {% if eleventy.serverless.path %}
         {% assign featureStyle = homeContent.featureType %}
-
+        {% else %}
+        {% assign featureStyle = feature.featureType %}
+        {% endif %}
+            
         {% if featureStyle == "large" %}
         {% assign featureImage = feature.largeImage %}
         {% assign featureTitle = feature.longTitle %}

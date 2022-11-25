@@ -8,8 +8,10 @@ const { sanityImageUrl } = require("./src/_11ty/shortcodes/sanityImageUrl");
 const portableText = require("./src/_11ty/shortcodes/portableText");
 const getReferences = require("./src/_11ty/shortcodes/getReference");
 
+const { copy } = require("fs-extra");
+
 const dev = process.env.NODE_ENV === "production" ? false : true;
-console.log("dev", dev);
+// console.log("dev", dev);
 const isServerless = process.env.ELEVENTY_SERVERLESS || false
 
 module.exports = function (eleventyConfig) {
@@ -152,19 +154,21 @@ module.exports = function (eleventyConfig) {
   // if (!dev) {
   //     eleventyConfig.ignores.add("src/design-system/**");
   // }
-  eleventyConfig.ignores.delete("public/assets/build/**");
   eleventyConfig.addPassthroughCopy("src/_includes/assets/css");
   // eleventyConfig.addPassthroughCopy({ "public/assets/build.css": "assets/preview/index.css" });
   eleventyConfig.addPassthroughCopy("src/_includes/assets/js");
   eleventyConfig.addPassthroughCopy("public/assets/**");
 
 
-  if(!dev) {
-    eleventyConfig.on("eleventy.after", async () => {
-      const { copy } = require("fs-extra");
+  eleventyConfig.on("eleventy.after", async () => {
+  if(!dev || !isServerless) {
       await copy("public/assets/img/remote", "_site/assets/img/remote");
+    }
+    if (!isServerless) {
+      console.log("Copying build css")
+      await copy("public/assets/build/index.css", "_site/assets/build/index.css");
+    }
   })
-}
 
   // Return your Object options:
   return {
