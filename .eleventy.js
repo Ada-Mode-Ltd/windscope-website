@@ -151,7 +151,7 @@ module.exports = function (eleventyConfig) {
   // if (!dev) {
   //     eleventyConfig.ignores.add("src/design-system/**");
   // }
-  // eleventyConfig.ignores.delete("public/assets/build.css");
+  eleventyConfig.ignores.delete("public/assets/build/**");
   eleventyConfig.addPassthroughCopy("src/_includes/assets/css");
   // eleventyConfig.addPassthroughCopy({ "public/assets/build.css": "assets/preview/index.css" });
   eleventyConfig.addPassthroughCopy("src/_includes/assets/js");
