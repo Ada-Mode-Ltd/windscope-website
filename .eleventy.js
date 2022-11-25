@@ -164,10 +164,6 @@ module.exports = function (eleventyConfig) {
   if(!dev || !isServerless) {
       await copy("public/assets/img/remote", "_site/assets/img/remote");
     }
-    if (!isServerless) {
-      console.log("Copying build css")
-      await copy("public/assets/build/index.css", "_site/assets/build/index.css");
-    }
   })
 
   // Return your Object options:
