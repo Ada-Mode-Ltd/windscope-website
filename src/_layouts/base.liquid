@@ -5,7 +5,7 @@
   {% include 'partials/metadata.liquid' %}
   <link rel="stylesheet" href="/_includes/assets/css/index.css">
 {% unless eleventy.serverless.path %}  
-<!-- TODO: Remove before production -->
+{% analyticsScript %}
   <script>
     if(window.location.host === 'verdant-cucurucho-b5ae26.netlify.app') {
   window.markerConfig = {

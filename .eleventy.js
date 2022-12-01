@@ -73,6 +73,19 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addShortcode("sanityImageUrl", sanityImageUrl);
   eleventyConfig.addLiquidShortcode("portableText", portableText);
   eleventyConfig.addShortcode("getReferences", getReferences);
+  eleventyConfig.addShortcode("analyticsScript", () => {
+    if (dev) return "";
+    return `
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-213481953-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-213481953-1');
+</script>
+    `})
 
   eleventyConfig.addPlugin(EleventyPluginNavigation);
 
