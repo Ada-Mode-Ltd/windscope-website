@@ -99,16 +99,16 @@ eleventyComputed:
 {% if content._type == 'stackedTabs' %}
     <section>
     <div class="wrapper flow">
-        {% assign tabs = content.tabs.tabs %}
-        {% assign sectionTitle = content.tabs.title %}
-        {% assign sectionLink = content.tabs.sectionLink %}
+        {% assign tabs = content.tabs %}
+        {% assign sectionTitle = content.title %}
+        {% assign sectionLink = content.sectionLink %}
         {% include 'components/stackedTabs.liquid' %}
     </div>
 </section>
 {% endif %}
 
 {% if content._type == 'comparison' %}
-    {% assign rows = content.left.size %}
+    {% assign rows = content.left.size | minus: 1 %}
     {% assign left = content.left %}
     {% assign right = content.right %}
     <section>
