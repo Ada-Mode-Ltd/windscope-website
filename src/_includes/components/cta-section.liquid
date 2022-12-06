@@ -13,17 +13,49 @@
     {% endif %}
 {% endif %}
 
-<section class="cta" data-cols="{{ cols }}">
-    <div class="wrapper content">
-        <p class="h1">{{ ctaTitle }}</p>
-        {% if ctaText %}
-            <p>{{ ctaText }}</p>
-        {% endif %}
-        <div class="button-group">
-            <a class="button primary" href="{{ ctaLink.url }}">{{ ctaLink.text }}</a>
-            {% if ctaLinkSecondary %}
-            <a class="button secondary" href="{{ ctaLinkSecondary.url }}">{{ ctaLinkSecondary.text }}</a>
+
+
+<section class="cta">
+    <div class="wrapper {% if cols == 2 %}columns{% endif %}" data-cols="{{ cols }}">
+        {% if cols == 2 %}
+            {% if content.media.mediaType == 'image' %}
+                {% capture imgUrl %}
+                    {% sanityImageUrl content.media.image %}
+                {% endcapture %}
+                {% if content.blockLayout == 'left' %}
+                    {% include 'components/cta-section/content.liquid' %}
+                    {% image imgUrl, '' %}
+                {% else %}
+                    {% image imgUrl, '' %}
+                    {% include 'components/cta-section/content.liquid' %}
+                {% endif %}
+            {% elsif content.media.mediaType == 'video' %}
+                {% assign service = content.media.video.service %}
+                {% assign id = content.media.video.id %}
+                {% if service == 'youtube' %}
+                    {% if content.blockLayout == 'left' %}
+                    {% include 'components/cta-section/content.liquid' %}
+                    <div class="video-wrapper"><lite-youtube videoid="{{ id }}" autoload></lite-youtube></div>
+                    {% else %}
+                    <div class="video-wrapper"><lite-youtube videoid="{{ id }}" autoload></lite-youtube></div>
+                    {% include 'components/cta-section/content.liquid' %}
+                    {% endif %}
+<script src="/assets/js/lite-youtube.js" type="module"></script>
+                {% elsif service == 'vimeo' %}
+                    {% if content.blockLayout == 'left' %}
+                    {% include 'components/cta-section/content.liquid' %}
+                    <div class="video-wrapper"><lite-vimeo videoid="{{ id }}" autoload></lite-vimeo></div>
+                    {% else %}
+                    <div class="video-wrapper"><lite-vimeo videoid="{{ id }}" autoload></lite-vimeo></div>
+                    {% include 'components/cta-section/content.liquid' %}
+                    {% endif %}
+                                        <script src="/assets/js/lite-vimeo.js" type="module"></script>
+                {% endif %}
+        {% else %}        
+            {% include 'components/cta-section/content.liquid' %}
             {% endif %}
-        </div>
+        {% else %}        
+            {% include 'components/cta-section/content.liquid' %}
+        {% endif %}
     </div>
 </section>

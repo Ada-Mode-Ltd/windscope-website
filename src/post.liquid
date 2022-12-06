@@ -7,11 +7,24 @@ pagination:
     data: allPosts.combined
     alias: post
     size: 1
-permalink: /blog/{{ post.slug.current | slug }}/index.html
+permalink: 
+    build: /blog/{{ post.slug.current | slug }}/index.html
+    preview: /post/preview/:id
 eleventyComputed:
     pageTitle: '{{ post.title }}'
     pageDescription: '{{ post.description | default: post.blurb }}'
 ---
+    {% assign id = eleventy.serverless.path.id %}
+
+{% if eleventy.serverless.path %}
+{% for p in preview.post %}
+    {% if p._id == id %}
+        {% assign post = p %}
+        {% break %}
+    {% endif %}
+{% endfor %}
+{% endif %}
+
 <section id="post-header">    
     <div class="wrapper flow">
         <div class="main-image">
@@ -36,6 +49,7 @@ eleventyComputed:
             {% portableText post.body.content %}
     </div>
 </article>
+{% unless eleventy.serverless.path %}
 <section>
     <h2 class="text-center">Related posts</h2>
     <div class="wrapper">
@@ -70,9 +84,10 @@ eleventyComputed:
             </ul>
     </div>
 </section>
-
 {% assign ctaTitle = "See how AI can transform your business." %}
 {% include 'components/cta-section.liquid' %}   
+{% endunless %}
+
 
 <script src="/assets/js/lite-vimeo.js" type="module"></script>
 <script src="/assets/js/lite-youtube.js" type="module"></script>

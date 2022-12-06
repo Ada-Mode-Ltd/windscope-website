@@ -4,11 +4,25 @@ pagination:
     data: allJobs
     alias: job
     size: 1
-permalink: /careers/{{ job.slug.current | slug }}/index.html
+permalink: 
+    build: /careers/{{ job.slug.current | slug }}/index.html
+    preview: /job/preview/:id
 eleventyComputed:
     pageTitle: '{{ job.title }}'
     pageDescription: '{{ job.description }}'
 ---
+
+    {% assign id = eleventy.serverless.path.id %}
+
+{% if eleventy.serverless.path %}
+{% for page in preview.job %}
+    {% if page._id == id %}
+        {% assign job = page %}
+        {% break %}
+    {% endif %}
+{% endfor %}
+{% endif %}
+
 <section id="post-header">    
     <div class="wrapper flow">
         <h1>{{ job.title }}</h1>

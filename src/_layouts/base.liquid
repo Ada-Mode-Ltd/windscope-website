@@ -3,8 +3,9 @@
 
 <head>
   {% include 'partials/metadata.liquid' %}
-  <link rel="stylesheet" href="/assets/css/index.css">
-<!-- TODO: Remove before production -->
+  <link rel="stylesheet" href="/_includes/assets/css/index.css">
+{% unless eleventy.serverless.path %}  
+{% analyticsScript %}
   <script>
     if(window.location.host === 'verdant-cucurucho-b5ae26.netlify.app') {
   window.markerConfig = {
@@ -17,15 +18,24 @@
 <script>
 !function(e,r,a){if(!e.__Marker){e.__Marker={};var t=[],n={__cs:t};["show","hide","isVisible","capture","cancelCapture","unload","reload","isExtensionInstalled","setReporter","setCustomData","on","off"].forEach(function(e){n[e]=function(){var r=Array.prototype.slice.call(arguments);r.unshift(e),t.push(r)}}),e.Marker=n;var s=r.createElement("script");s.async=1,s.src="https://edge.marker.io/latest/shim.js";var i=r.getElementsByTagName("script")[0];i.parentNode.insertBefore(s,i)}}(window,document);
 </script>
+{% endunless %}
+{% if eleventy.serverless.path %}
+    <link rel="stylesheet" href="/assets/build/index.css">
+    <script src="/_includes/assets/js/index.js" type="module"></script>
+{% endif %} 
 </head>
 
 <body class="no-js">
+  {%- comment -%} {% unless eleventy.serverless.path %} {%- endcomment -%}
   <header {% if header == 'dark' %} data-dark {% endif %} >
     <div class="wrapper">{% include 'partials/nav.liquid' %}</div>
   </header>
+  {%- comment -%} {% endunless %} {%- endcomment -%}
   {{ content }}
+
   {% include 'partials/footer.liquid' %}
 
+  {% unless eleventy.serverless.path %}  
   <div class="cead" role="region" aria-label="Cookie consent">
       <p class="text--regular">This website stores data such as cookies to enable essential site functionality, as well as marketing, personalization, and analytics. By remaining on this website you indicate your consent.</p>
       <div class="cead__btns">
@@ -41,6 +51,7 @@
     </script>
     <!-- include the browser.js file before the closing </body> -->
     <script src="/assets/js/cead-browser.js"></script>
+  {% endunless %}
 </body>
 
 </html>

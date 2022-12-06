@@ -1,0 +1,76 @@
+---
+permalink:
+  preview: /preview/:type/:id
+---
+
+<section style="height: 100vh; width: 100vw; display: grid; place-content: center;">
+    {% assign id = eleventy.serverless.path.id %}
+    {% assign type = eleventy.serverless.path.type %}
+  
+  {% if type == 'person' %}
+    {% for person in preview.person %}
+      {% if person._id == id %}
+      {% capture imgUrl %}
+        {% sanityImageUrl person.photo %}
+      {% endcapture %}
+      {% include 'components/person.liquid' %}
+      {% break %}
+      {% endif %}
+    {% endfor %}
+  {% elsif type == 'quote' %}
+    {% for quote in preview.quote %}
+      {% if quote._id == id %}
+        {% assign quoteIndex = 0 %}
+        {% assign current = true %}
+        <div class="wrapper">
+          <div class="quote-holder" role="region" aria-label="quotes" tabindex="0">
+              <ul>
+                {% include 'components/quote' %}
+              </ul>
+          </div>
+        </div>
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  {% elsif type == 'productFeature' %}
+    {% for feature in preview.productFeature %}
+      {% if feature._id == id %}
+       {% assign featureStyle = feature.featureType %}
+       {% if featureStyle == "large" %}
+                {% assign featureImage = feature.largeImage %}
+                {% assign featureTitle = feature.longTitle %}
+                {% assign featureText = feature.largeText %}
+                {% assign featureImagePlacement = "left" %}
+                {% assign secondaryTitle = feature.secondaryTitle %}
+            {% elsif featureStyle == "medium" %}
+                {% assign featureImage = feature.mediumImage %}
+                {% assign featureTitle = feature.mediumTitle %}
+                {% assign featureText = feature.mediumText %}
+                {% assign secondaryTitle = false %}
+                {% assign featureImagePlacement = false %}
+            {% else %}
+                {% assign featureImage = feature.smallImage %}
+                {% assign featureTitle = feature.smallTitle %}
+                {% assign featureText = feature.smallText %}
+                {% assign secondaryTitle = false %}
+                {% assign featureImagePlacement = false %}
+            {% endif %}
+
+            {% assign floatImage = false %}
+            {% if featureImage.offset %}
+              {% assign floatImage = featureImage.offset %}
+            {% endif %}
+            <div class="wrapper product-feature-holder" data-style="{{ feature.featureType }}">
+            <article>{% include 'components/prod-feature.liquid' %}</article> 
+                  </div>
+                  {% break %}
+      {% endif %}
+    {% endfor %}
+  {% else %}
+    <p>Nothing to preview.</p>
+  {% endif %}
+</section>
+
+{% if eleventy.serverless.path %}
+    <link rel="stylesheet" href="/assets/build/index.css">
+{% endif %}

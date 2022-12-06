@@ -3,11 +3,52 @@ publish = "_site"
 command = "npm run build"
 
 [functions]
-directory = "functions/"
+directory = "netlify/functions/"
 
 [[redirects]]
-from = "/preview/:slug/"
+from = "/page/preview/:id"
 to = "/.netlify/functions/preview"
 status = 200
 force = true
 _generated_by_eleventy_serverless = "preview"
+
+[[redirects]]
+from = "/job/preview/:id"
+to = "/.netlify/functions/preview"
+status = 200
+force = true
+_generated_by_eleventy_serverless = "preview"
+
+[[redirects]]
+from = "/post/preview/:id"
+to = "/.netlify/functions/preview"
+status = 200
+force = true
+_generated_by_eleventy_serverless = "preview"
+
+[[redirects]]
+from = "/cta/preview/:id"
+to = "/.netlify/functions/preview"
+status = 200
+force = true
+_generated_by_eleventy_serverless = "preview"
+
+[[redirects]]
+from = "/homepage/preview/:id"
+to = "/.netlify/functions/preview"
+status = 200
+force = true
+_generated_by_eleventy_serverless = "preview"
+
+[[redirects]]
+from = "/preview/:type/:id"
+to = "/.netlify/functions/preview"
+status = 200
+force = true
+_generated_by_eleventy_serverless = "preview"
+
+[context.deploy-preview]
+command = "npm run build:site"
+
+  [context.deploy-preview.environment]
+  NODE_ENV = "production"

@@ -10,7 +10,7 @@
   align-self: baseline;
   height: 100%;
 
-  & > picture > img {
+  & img {
     width: 10rem;
     height: 10rem;
     aspect-ratio: 1/1;

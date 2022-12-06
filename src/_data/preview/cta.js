@@ -1,8 +1,7 @@
-const { client } = require('./sanity');
+const { client } = require("../../utils/sanity");
 
-
-async function getPages() {
-    const query = `*[_type == "page" && publishTo == "ws" && !(_id in path("drafts.**"))]{ 
+module.exports = async function() {
+    const query = `*[_type == "ctaPage" && publishTo == "ws"]{ 
         ...,
         body[]{
             ...,
@@ -45,11 +44,15 @@ async function getPages() {
                         ...,
                     },
         }
-            }
-        },  
+            },
+            _type == 'quote' => @->{
+                ...,
+                partner->{...}
+              }
+        },
      }`
-    const docs = await client.fetch(query).catch(err => console.error(err));
+    const docs = await client.withConfig({
+        token: process.env.SANITY_READ_TOKEN
+    }).fetch(query).catch(err => console.error(err));
     return docs;
 }
-
-module.exports = getPages;

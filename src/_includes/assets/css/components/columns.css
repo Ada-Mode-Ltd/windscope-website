@@ -18,10 +18,17 @@
   }
 
   & > img,
-  & > picture > img {
+  & > picture > img,
+  & .video-wrapper {
     margin: auto;
     border-radius: var(--px-8);
     object-fit: cover;
+  }
+
+  & .video-wrapper {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
   }
 
   & .text-content ul > li + li {

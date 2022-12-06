@@ -9,7 +9,7 @@ section.cta {
     padding: 0;
   }
 
-  & > .content {
+  & .content {
     text-align: center;
     padding-block-end: var(--space-104);
 
@@ -24,6 +24,7 @@ section.cta {
 
     & > .button-group {
       display: flex;
+      width: 100%;
       gap: 1.5rem;
       justify-content: center;
       align-items: center;
@@ -33,14 +34,16 @@ section.cta {
     }
   }
 
-  &[data-cols="2"] {
+  & [data-cols="2"] {
     grid-template-columns: 1fr 1fr;
     align-items: center;
     justify-content: center;
     gap: 1.5rem;
+    padding-block-end: var(--space-104);
 
     & > .content {
       text-align: left;
+      padding-block-end: 0;
 
       & > .button-group {
         display: flex;
