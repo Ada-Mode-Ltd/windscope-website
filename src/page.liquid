@@ -240,6 +240,11 @@ eleventyComputed:
     {% endif %}
 
     {% if content._type == 'ctaSection' %}
+        {% if content.blockLayout %}
+        {% unless content.blockLayout == 'noimage' %}
+            {% assign ctaCols = 2 %}
+        {% endunless %}
+        {% endif %}
         {% include 'components/cta-section.liquid' %}
     {% endif %}
 {% endfor %}
