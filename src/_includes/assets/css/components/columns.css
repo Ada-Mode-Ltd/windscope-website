@@ -25,6 +25,12 @@
     object-fit: cover;
   }
 
+  & .video-wrapper {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+
   & .text-content ul > li + li {
     margin-top: var(--flow-space, var(--space-16));
   }
