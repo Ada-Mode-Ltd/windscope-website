@@ -74,16 +74,18 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addLiquidShortcode("portableText", portableText);
   eleventyConfig.addShortcode("getReferences", getReferences);
   eleventyConfig.addShortcode("analyticsScript", () => {
-    if (dev) return "";
+    if (dev || isServerless) return "";
     return `
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-213481953-1"></script>
-<script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-213481953-1"></script>
+    <script>
+    if(window.location.host === 'winscope.io')
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments)};
   gtag('js', new Date());
 
   gtag('config', 'UA-213481953-1');
+  }
 </script>
     `})
 
