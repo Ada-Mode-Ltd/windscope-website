@@ -96,6 +96,43 @@ eleventyComputed:
         
     {% endif %}
 
+{% if content._type == 'stackedTabs' %}
+    <section>
+    <div class="wrapper flow">
+        {% assign tabs = content.tabs.tabs %}
+        {% assign sectionTitle = content.tabs.title %}
+        {% assign sectionLink = content.tabs.sectionLink %}
+        {% include 'components/stackedTabs.liquid' %}
+    </div>
+</section>
+{% endif %}
+
+{% if content._type == 'comparison' %}
+    {% assign rows = content.left.size %}
+    {% assign left = content.left %}
+    {% assign right = content.right %}
+    <section>
+    <div class="wrapper columns comparison" style="--comparison-rows: {{rows}};">
+        <div>
+            <p class="column-title color-secondary">{{ left.title }}</p>
+            <ul data-marker="{{ left.icon}}">
+                {% for item in left.items %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div>
+            <p class="column-title color-accent">{{ right.title }}</p>
+            <ul data-marker="{{ right.icon }}">
+                {% for item in right.items %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>
+{% endif %}
+
     {% if content._type == 'sectionHeading' %}
             {% assign sectionTitle = content.title %}
             {% assign sectionText = content.text %}
