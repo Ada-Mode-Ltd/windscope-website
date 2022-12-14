@@ -6,18 +6,6 @@
   <link rel="stylesheet" href="/_includes/assets/css/index.css">
 {% unless eleventy.serverless.path %}  
 {% analyticsScript %}
-  <script>
-    if(window.location.host === 'verdant-cucurucho-b5ae26.netlify.app') {
-  window.markerConfig = {
-    destination: '633ffed73e459a9c6e2ae660', 
-    source: 'snippet'
-  };
-    }
-</script>
-
-<script>
-!function(e,r,a){if(!e.__Marker){e.__Marker={};var t=[],n={__cs:t};["show","hide","isVisible","capture","cancelCapture","unload","reload","isExtensionInstalled","setReporter","setCustomData","on","off"].forEach(function(e){n[e]=function(){var r=Array.prototype.slice.call(arguments);r.unshift(e),t.push(r)}}),e.Marker=n;var s=r.createElement("script");s.async=1,s.src="https://edge.marker.io/latest/shim.js";var i=r.getElementsByTagName("script")[0];i.parentNode.insertBefore(s,i)}}(window,document);
-</script>
 {% endunless %}
 {% if eleventy.serverless.path %}
     <link rel="stylesheet" href="/assets/build/index.css">
