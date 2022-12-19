@@ -32,9 +32,10 @@ eleventyComputed:
                 {% capture imgUrl %}
                     {% sanityImageUrl post.mainImage %}
                 {% endcapture %}
-                {% image imgUrl, post.mainImage.altText, 'eager' %}
                 {% else %}
-            <img src="/assets/img/og-image.svg" alt="">
+                {% capture imgUrl %}
+                    {% sanityImageUrl site.blogFallbackImage %}
+                {% endcapture %}
             {% endif %}
         </div>
           <div class="flex-row" data-justify="start"  style="--min: initial;">
