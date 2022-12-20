@@ -99,7 +99,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(EleventyServerlessBundlerPlugin, {
     name: "preview", // The serverless function name from your permalink object
     functionsDir: "./netlify/functions/",
-    copy: ['src/_includes/assets/css/build.css', {from: 'src/_includes/assets/js'}],
+    copy: ['src/_includes/assets/css/build.css', '_site/assets/build/index.css'],
     excludeDependencies: ["rollup-plugin-critical"],
   });
 
