@@ -79,7 +79,7 @@ module.exports = function (eleventyConfig) {
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-213481953-1"></script>
     <script>
-    if(window.location.host === 'winscope.io')
+    if(window.location.host === 'winscope.io') {
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments)};
   gtag('js', new Date());
