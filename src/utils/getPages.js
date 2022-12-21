@@ -9,6 +9,19 @@ async function getPages() {
             _type == "reference" => {
                 ...,
             },
+            _type == 'blockContent' =>{
+                ...,
+                content[]{
+                    ...,
+                    markDefs[] {
+                      ...,
+                      _type == "internalLink" => {
+                        ...,
+                        "slug": @.reference-> slug
+                      }
+                    }
+                }
+            },
         _type == 'productFeatures' =>{
             ...,
             features[]->{
