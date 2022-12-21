@@ -2,9 +2,9 @@
 {% assign title = pageTitle | default: 'Windscope'  %}
 {% assign desc = pageDescription | default: 'High fidelity wind turbine performance and component health monitoring.'  %}
 {% if page.url %}
-  {% assign canonicalURL = "https://windscope.io" | append: page.url %}
+  {% assign canonicalURL = "https://windscope.com" | append: page.url %}
 {% else %}
-  {% assign canonicalURL = "https://windscope.io/"%}
+  {% assign canonicalURL = "https://windscope.com/"%}
 {% endif %}
 
 <meta charset="utf-8">
@@ -21,7 +21,7 @@
 <meta property="og:locale" content="en_GB">
 <meta property="og:title" content="{{ title }}">
 <meta property="og:description" content="{{ desc }}">
-<meta property="og:image" content="https://windscope.io/assets/img/og-image.png">
+<meta property="og:image" content="https://windscope.com/assets/img/og-image.png">
 <meta property="og:image:alt" content="">
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
@@ -30,7 +30,7 @@
 <meta name="twitter:url" content="{{ canonicalURL }}">
 <meta name="twitter:title" content="{{ title }}">
 <meta name="twitter:description" content="{{ desc }}">
-<meta name="twitter:image" content="https://windscope.io/assets/img/og-image.png">
+<meta name="twitter:image" content="https://windscope.com/assets/img/og-image.png">
 <meta name="twitter:image:alt" content="">
 <link rel="canonical" href="{{ canonicalURL }}">
 
