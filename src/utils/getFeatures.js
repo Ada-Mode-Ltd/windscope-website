@@ -2,7 +2,7 @@ const { client } = require('./sanity');
 
 
 async function getFeatures() {
-    const query = `*[_type == "productFeature" && !(_id in path("drafts.**"))]{ 
+    const query = `*[_type == "productFeature" && "ws" in product->publishTo && !(_id in path("drafts.**"))]{ 
         ...,
         // TODO: This isn't working!!!
         link{

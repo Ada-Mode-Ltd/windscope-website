@@ -16,7 +16,7 @@
        {% if content.keyVisual.size > 0 %}
          <div class="key-visual">
               {% for image in content.keyVisual %}
-             {% capture imgUrl %}
+            {% capture imgUrl %}
                         {% sanityImageUrl image %}
                     {% endcapture %}
                     {% image imgUrl, '' %}
